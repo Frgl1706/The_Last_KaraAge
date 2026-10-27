@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>文化祭 唐揚げ屋台 COMPLETE FINAL</title>
+<title>文化祭 唐揚げ屋台 | KARAAGE STAND</title>
 
 <!-- Google Fonts: M PLUS Rounded 1c (Weights: 300, 400, 500, 700, 800, 900) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
 body {
   /* ローカルの1920×1080画像 + ダークオーバーレイ */
   background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(15, 15, 15, 0.96)),
-              url('images/01.png') no-repeat center center fixed;
+              url('01.png') no-repeat center center fixed;
   background-size: cover;
   color: var(--text-main);
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -288,12 +288,12 @@ header {
 /* =========================================================
    情熱タブ：オレンジ×ブラックのエディトリアル／キャンペーン表現
    April Gothic One（エイプリルゴシック）は見出し・ラベルに使用。
-   フォントファイルを fonts/AprilGothicOne-R_v1.01.ttf に置くと読み込まれます。
+   AprilGothicOne-R_v1.01.ttf をこのHTMLと同じ階層に置くと読み込まれます。
    ========================================================= */
 @font-face {
   font-family: "April Gothic One";
   src: local("April Gothic One"), local("エイプリルゴシック"),
-       url("fonts/AprilGothicOne-R_v1.01.ttf") format("truetype");
+       url("AprilGothicOne-R_v1.01.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -2210,6 +2210,64 @@ body.feedback-drawer-open { overflow:hidden; }
   .feedback-drawer, .feedback-drawer-backdrop, .feedback-card, .counter-action, .feedback-open-btn { transition:none !important; animation:none !important; }
 }
 
+
+/* =========================================================
+   LOCAL-ONLY COMMENTS: MEDIA, REACTIONS & REPLIES
+   ========================================================= */
+.local-data-note {
+  display:flex; align-items:flex-start; gap:10px; padding:12px 13px;
+  color:#ffe0bd; background:rgba(255,121,0,.09);
+  border:1px solid rgba(255,160,68,.24); border-radius:12px;
+  font-size:12px; line-height:1.75;
+}
+.local-data-note .material-symbols-outlined { flex:0 0 auto; color:var(--accent); font-size:19px; }
+.attachment-picker { margin-top:13px; padding:12px; border:1px dashed rgba(255,178,94,.32); border-radius:12px; background:rgba(255,255,255,.025); }
+.attachment-picker-label { display:flex; align-items:center; gap:7px; font-weight:800; font-size:13px; color:#ffe0bd; cursor:pointer; }
+.attachment-picker-label .material-symbols-outlined { color:var(--accent); font-size:20px; }
+#commentAttachments { margin-top:9px; padding:8px; font-size:12px; }
+.attachment-help { margin-top:7px; color:var(--text-muted); font-size:10px; line-height:1.7; }
+.attachment-preview { display:grid; grid-template-columns:repeat(auto-fill,minmax(92px,1fr)); gap:8px; margin-top:9px; }
+.attachment-preview:empty { display:none; }
+.attachment-preview-item { position:relative; overflow:hidden; border-radius:9px; border:1px solid rgba(255,255,255,.13); background:#171717; min-width:0; }
+.attachment-preview-item img,.attachment-preview-item video { display:block; width:100%; aspect-ratio:1 / 1; object-fit:cover; }
+.attachment-preview-item span { display:block; padding:5px 6px; font-size:10px; color:#ddd; overflow-wrap:anywhere; }
+.comment-media-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr)); gap:9px; margin-top:11px; }
+.comment-media-item { display:block; width:100%; max-height:430px; object-fit:contain; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#080808; }
+.comment-media-item.image { cursor:zoom-in; }
+.comment-media-item.video { aspect-ratio:16 / 9; }
+.comment-actions { display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin-top:12px; }
+.comment-reaction-btn,.comment-reply-toggle {
+  display:inline-flex; width:auto; min-height:34px; align-items:center; justify-content:center; gap:6px;
+  padding:6px 11px; border-radius:999px; border:1px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.055); color:#e9e5e1; box-shadow:none; font-size:12px; font-weight:800;
+  transition:background .18s ease,transform .18s ease,border-color .18s ease;
+}
+.comment-reaction-btn .material-symbols-outlined,.comment-reply-toggle .material-symbols-outlined { font-size:16px; }
+.comment-reaction-btn.like.is-selected { color:#ffd17d; background:rgba(255,153,43,.16); border-color:rgba(255,177,75,.42); }
+.comment-reaction-btn.dislike.is-selected { color:#ffc0a9; background:rgba(211,47,47,.15); border-color:rgba(255,120,100,.35); }
+.comment-reply-toggle { color:#ffd9b4; }
+.comment-reaction-btn:active,.comment-reply-toggle:active { transform:scale(.96); }
+.reply-panel { margin-top:12px; padding:12px; border-radius:12px; background:rgba(0,0,0,.23); border:1px solid rgba(255,255,255,.08); }
+.reply-panel[hidden] { display:none !important; }
+.reply-list { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
+.reply-item { margin-left:10px; padding:9px 11px; border-left:2px solid var(--primary); border-radius:0 9px 9px 0; background:rgba(255,255,255,.035); }
+.reply-head { display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:4px; }
+.reply-name { font-size:11px; font-weight:900; color:#ffd2a4; }
+.reply-date { color:var(--text-muted); font-size:10px; }
+.reply-text { font-size:12px; line-height:1.75; white-space:pre-wrap; overflow-wrap:anywhere; }
+.reply-compose { display:flex; flex-direction:column; gap:7px; }
+.reply-compose textarea { min-height:64px; margin:0; }
+.reply-compose button { align-self:flex-end; width:auto; min-width:120px; min-height:36px; font-size:12px; }
+.comment-empty { padding:25px 12px; text-align:center; color:var(--text-muted); font-size:13px; border:1px dashed rgba(255,255,255,.12); border-radius:12px; }
+.comment-meta-line { margin-top:6px; color:var(--text-muted); font-size:10px; }
+.comment-content { margin-top:7px; font-size:14px; line-height:1.85; white-space:pre-wrap; overflow-wrap:anywhere; }
+.comment .commentHeader .star-rating { flex:0 0 auto; }
+@media (max-width:420px) {
+  .comment-actions { gap:6px; }
+  .comment-reaction-btn,.comment-reply-toggle { min-height:37px; padding:7px 10px; }
+  .comment-media-grid { grid-template-columns:1fr; }
+}
+
 </style>
 </head>
 
@@ -2234,9 +2292,9 @@ body.feedback-drawer-open { overflow:hidden; }
         <span class="stat-value fw-800" id="avg">-</span>
       </div>
       <div class="stat-card">
-        <span class="material-symbols-outlined">groups</span>
-        <span>アクセス</span>
-        <span class="stat-value fw-800" id="visitors">—</span>
+        <span class="material-symbols-outlined">forum</span>
+        <span>コメント</span>
+        <span class="stat-value fw-800" id="commentCount">0件</span>
       </div>
       <div class="stat-card">
         <span class="material-symbols-outlined">shopping_cart</span>
@@ -2294,7 +2352,7 @@ body.feedback-drawer-open { overflow:hidden; }
   <div id="tab-home" class="tab-content active home-page">
 
     <section class="home-campaign scroll-animate" aria-labelledby="homeCampaignTitle">
-      <img src="images/01.png" alt="揚げたての唐揚げ" class="home-campaign-image">
+      <img src="01.png" alt="揚げたての唐揚げ" class="home-campaign-image">
       <div class="home-campaign-topline">
         <span>文化祭限定</span>
         <span>揚げたてを、まっすぐ。</span>
@@ -2348,21 +2406,21 @@ body.feedback-drawer-open { overflow:hidden; }
 
     <div class="dynamic-feature-grid home-feature-grid">
       <div class="feature-card scroll-animate">
-        <img src="images/02.png" alt="唐揚げの味付け">
+        <img src="02.png" alt="唐揚げの味付け">
         <div class="feature-card-body">
           <div class="home-feature-title">秘伝の特製ダレ</div>
           <div class="home-feature-copy">ニンニクと香味野菜のバランスで、旨味を引き出す。</div>
         </div>
       </div>
       <div class="feature-card scroll-animate">
-        <img src="images/03.png" alt="カリッとした衣">
+        <img src="03.png" alt="カリッとした衣">
         <div class="feature-card-body">
           <div class="home-feature-title">二度揚げザク衣</div>
           <div class="home-feature-copy">外はカリッと香ばしく、中は肉汁ジューシー。</div>
         </div>
       </div>
       <div class="feature-card scroll-animate">
-        <img src="images/04.png" alt="文化祭屋台のチームワーク">
+        <img src="04.png" alt="文化祭屋台のチームワーク">
         <div class="feature-card-body">
           <div class="home-feature-title">熱々おもてなし</div>
           <div class="home-feature-copy">クラスが一丸となって、できたてをお届け。</div>
@@ -2403,7 +2461,7 @@ body.feedback-drawer-open { overflow:hidden; }
     <div class="passion-scroll-progress" aria-hidden="true"><span id="passionProgressBar"></span></div>
 
     <section class="passion-hero scroll-animate" aria-labelledby="passionHeroTitle" tabindex="0" role="button" aria-pressed="false" data-passion-interaction="hero">
-      <img src="images/05.png" alt="揚げたての唐揚げと調理場の熱気">
+      <img src="05.png" alt="揚げたての唐揚げと調理場の熱気">
       <div class="passion-hero-content">
         <h1 id="passionHeroTitle">うまいは、<br><em>正義。</em></h1>
         <p class="passion-hero-lead">油がパチパチ鳴りだしたら、こっちの出番。<br>衣はザクッ。中はジュワッ。<br>語るのはここまで。あとは一口、食べてみて。</p>
@@ -2427,7 +2485,7 @@ body.feedback-drawer-open { overflow:hidden; }
 
     <article class="passion-step scroll-animate" tabindex="0" role="button" aria-pressed="false" data-passion-step="01" aria-label="工程1 下ごしらえのこだわりを強調する">
       <div class="passion-step-media">
-        <img src="images/06.png" alt="唐揚げに使う鶏肉と下ごしらえ">
+        <img src="06.png" alt="唐揚げに使う鶏肉と下ごしらえ">
         <span class="passion-step-number">01</span>
       </div>
       <div class="passion-step-body">
@@ -2438,7 +2496,7 @@ body.feedback-drawer-open { overflow:hidden; }
 
     <article class="passion-step reverse scroll-animate" tabindex="0" role="button" aria-pressed="false" data-passion-step="02" aria-label="工程2 味をしみ込ませるこだわりを強調する">
       <div class="passion-step-media">
-        <img src="images/07.png" alt="タレに漬け込んで味をなじませる工程">
+        <img src="07.png" alt="タレに漬け込んで味をなじませる工程">
         <span class="passion-step-number">02</span>
       </div>
       <div class="passion-step-body">
@@ -2449,7 +2507,7 @@ body.feedback-drawer-open { overflow:hidden; }
 
     <article class="passion-step scroll-animate" tabindex="0" role="button" aria-pressed="false" data-passion-step="03" aria-label="工程3 揚げ方のこだわりを強調する">
       <div class="passion-step-media">
-        <img src="images/08.png" alt="衣をカリッと仕上げる揚げ工程">
+        <img src="08.png" alt="衣をカリッと仕上げる揚げ工程">
         <span class="passion-step-number">03</span>
       </div>
       <div class="passion-step-body">
@@ -2468,6 +2526,11 @@ body.feedback-drawer-open { overflow:hidden; }
 
   <!-- TAB 3: コメント欄 (Comments) -->
   <div id="tab-comments" class="tab-content">
+
+    <div class="local-data-note scroll-animate">
+      <span class="material-symbols-outlined" aria-hidden="true">devices</span>
+      <span>コメント・返信・添付ファイルはこのブラウザー内に保存されます。別の端末や来場者とは自動共有されません。</span>
+    </div>
 
     <div class="box feedback-entry-box scroll-animate">
       <div class="box-header">
@@ -2509,7 +2572,17 @@ body.feedback-drawer-open { overflow:hidden; }
         </select>
       </div>
 
-      <textarea id="text" placeholder="唐揚げの感想を書いてください！" class="fw-400"></textarea>
+      <textarea id="text" placeholder="唐揚げの感想を書いてください！" class="fw-400" maxlength="2000" aria-label="レビュー本文"></textarea>
+
+      <div class="attachment-picker">
+        <label for="commentAttachments" class="attachment-picker-label">
+          <span class="material-symbols-outlined" aria-hidden="true">attach_file</span>
+          画像・動画を添付
+        </label>
+        <input id="commentAttachments" type="file" accept="image/*,video/*" multiple aria-describedby="attachmentHelp">
+        <p id="attachmentHelp" class="attachment-help">画像は1ファイル8MBまで、動画は24MBまで。合計3ファイル・25MB以内。保存容量はブラウザーに依存します。</p>
+        <div id="commentAttachmentPreview" class="attachment-preview" aria-live="polite"></div>
+      </div>
 
       <div class="btn-group">
         <button id="postBtn" class="fw-800">
@@ -2531,7 +2604,7 @@ body.feedback-drawer-open { overflow:hidden; }
     <div class="box">
       <div class="box-header">
         <span class="material-symbols-outlined">forum</span>
-        <span class="fw-800">リアルタイムコメント一覧</span>
+        <span class="fw-800">コメント一覧</span>
       </div>
       <div id="comments" class="comment-list"></div>
     </div>
@@ -2621,7 +2694,7 @@ body.feedback-drawer-open { overflow:hidden; }
   </div>
   <p id="feedbackDrawerStatus" class="feedback-status" role="status" aria-live="polite">読み込み中…</p>
   <div id="feedbackDrawerList" class="feedback-drawer-list"></div>
-  <div class="feedback-drawer-foot">この一覧は投稿データから更新されます。CSV出力は「その他」→「管理者モード」から行えます。</div>
+  <div class="feedback-drawer-foot">この一覧はこのブラウザー内の保存データから更新されます。CSV出力は「その他」→「管理者モード」から行えます。</div>
 </aside>
 <div id="passionToast" class="passion-toast" role="status" aria-live="polite"></div>
 
@@ -2645,1133 +2718,1034 @@ body.feedback-drawer-open { overflow:hidden; }
   </button>
 </nav>
 
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  query,
-  orderBy,
-  onSnapshot,
-  doc,
-  updateDoc,
-  deleteDoc,
-  setDoc,
-  getDocs,
-  increment,
-  runTransaction
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "ここ",
-  authDomain: "ここ",
-  projectId: "ここ"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const hasFirebaseConfig = Object.values(firebaseConfig).every(value =>
-  typeof value === "string" && value.trim() !== "" && value !== "ここ"
-);
-const statsRef = doc(db, "siteStats", "main");
-
-const commentsEl = document.getElementById("comments");
-const rankingEl = document.getElementById("ranking");
-const buzzEl = document.getElementById("buzz");
-const liveLayer = document.getElementById("liveLayer");
-const bigPopup = document.getElementById("bigPopup");
-
-let allComments = [];
-let allFeedback = [];
-let remoteFeedback = [];
-let localFeedback = loadLocalFeedback();
-let feedbackLocalOnly = !hasFirebaseConfig;
-let feedbackRemoteReady = false;
-let commentsLocalOnly = !hasFirebaseConfig;
-let statsLocalOnly = !hasFirebaseConfig;
-let statsBackendReady = false;
-let statsValues = {
-  pageViews: 0,
-  sales: Number(localStorage.getItem("sold") || 0),
-  queue: Number(localStorage.getItem("lineCount") || 0)
-};
-let queueJoined = localStorage.getItem("queueJoined") === "1";
-
-function loadLocalFeedback() {
-  try {
-    const value = JSON.parse(localStorage.getItem("karaageFeedback") || "[]");
-    return Array.isArray(value) ? value : [];
-  } catch (_) {
-    return [];
-  }
-}
-
-/* 使い方モーダル制御 */
-const guideModal = document.getElementById("guideModal");
-document.getElementById("openGuideBtn").onclick = () => {
-  guideModal.style.display = "flex";
-};
-document.getElementById("closeGuideBtn").onclick = () => {
-  guideModal.style.display = "none";
-};
-guideModal.onclick = (e) => {
-  if (e.target === guideModal) guideModal.style.display = "none";
-};
-
-/* スクロールアニメーション (Intersection Observer) */
-function initScrollObserver() {
-  const elements = [...document.querySelectorAll(".tab-content.active .scroll-animate:not(.visible)")];
-  elements.forEach((el, index) => {
-    el.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 70}ms`);
-  });
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -5% 0px" });
-
-  elements.forEach(el => observer.observe(el));
-}
-
-/* タブ切り替えロジック＋スクロール方向に応じたガラスナビの退避 */
-const bottomNav = document.querySelector(".bottom-nav");
-const navItems = document.querySelectorAll(".nav-item");
-const tabContents = document.querySelectorAll(".tab-content");
-let lastNavScrollY = Math.max(0, window.scrollY);
-let navScrollFramePending = false;
-let navIdleTimer = null;
-
-function revealBottomNav() {
-  bottomNav.classList.remove("is-hidden");
-}
-
-function concealBottomNav() {
-  if (window.scrollY > 100) bottomNav.classList.add("is-hidden");
-}
-
-window.addEventListener("scroll", () => {
-  if (navScrollFramePending) return;
-  navScrollFramePending = true;
-  window.requestAnimationFrame(() => {
-    const currentY = Math.max(0, window.scrollY);
-    const deltaY = currentY - lastNavScrollY;
-
-    // 上スクロール・ページ先頭では表示。下スクロールでは視界を確保するため退避。
-    if (currentY < 36 || deltaY < -3) {
-      revealBottomNav();
-    } else if (deltaY > 4 && currentY > 100) {
-      concealBottomNav();
-    }
-
-    lastNavScrollY = currentY;
-    updatePassionScrollEffects();
-    window.clearTimeout(navIdleTimer);
-    navIdleTimer = window.setTimeout(revealBottomNav, 850);
-    navScrollFramePending = false;
-  });
-}, { passive: true });
-
-// キーボード操作でフォーカスが入ったら、隠れていてもナビを再表示する。
-bottomNav.addEventListener("focusin", revealBottomNav);
-
-navItems.forEach(item => {
-  item.onclick = () => {
-    const targetId = item.getAttribute("data-tab");
-    revealBottomNav();
-    navItems.forEach(nav => {
-      nav.classList.remove("active");
-      nav.removeAttribute("aria-current");
-    });
-    item.classList.add("active");
-    item.setAttribute("aria-current", "page");
-
-    tabContents.forEach(tab => {
-      if (tab.id === targetId) {
-        tab.classList.add("active");
-      } else {
-        tab.classList.remove("active");
-      }
-    });
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // タブ切り替え後にアニメーション要素を再チェック・トリガー
-    setTimeout(() => {
-      initScrollObserver();
-      updatePassionScrollEffects();
-    }, 50);
-  };
-});
-
-// 情熱タブのレビューCTAからコメントタブへ移動
- document.querySelectorAll("[data-jump-tab]").forEach(button => {
-  button.addEventListener("click", () => {
-    if (typeof navigator.vibrate === "function") {
-      try { navigator.vibrate(10); } catch (_) { /* ignore */ }
-    }
-    const targetTab = button.getAttribute("data-jump-tab");
-    const targetNav = document.querySelector(`.nav-item[data-tab="${targetTab}"]`);
-    if (targetNav) targetNav.click();
-  });
-});
-
-// 初期ロード時のオブザーバー起動
-window.addEventListener('DOMContentLoaded', () => {
-  initScrollObserver();
-});
-
-/* Home hero: tap to punch up the food photography */
-const homeCampaign = document.querySelector(".home-campaign");
-if (homeCampaign) {
-  homeCampaign.addEventListener("click", event => {
-    if (event.target.closest("button")) return;
-    homeCampaign.classList.toggle("is-lit");
-    if (typeof navigator.vibrate === "function") {
-      try { navigator.vibrate(12); } catch (_) { /* non-supported devices */ }
-    }
-  });
-}
-
-document.querySelectorAll(".home-page .feature-card").forEach(card => {
-  card.setAttribute("tabindex", "0");
-  card.setAttribute("role", "button");
-  card.setAttribute("aria-pressed", "false");
-  const toggleFeature = () => {
-    const willActivate = !card.classList.contains("is-active");
-    document.querySelectorAll(".home-page .feature-card").forEach(other => {
-      other.classList.remove("is-active");
-      other.setAttribute("aria-pressed", "false");
-    });
-    if (willActivate) {
-      card.classList.add("is-active");
-      card.setAttribute("aria-pressed", "true");
-      if (typeof navigator.vibrate === "function") {
-        try { navigator.vibrate(10); } catch (_) { /* ignore */ }
-      }
-    }
-  };
-  card.addEventListener("click", toggleFeature);
-  card.addEventListener("keydown", event => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      toggleFeature();
-    }
-  });
-});
-
+<script>
 /* =========================================================
-   PASSION INTERACTIONS: HAPTICS, CARD FOCUS, PARALLAX & PROGRESS
+   CULTURAL FESTIVAL KARAAGE SITE — BROWSER-LOCAL STORAGE ONLY
+   Data is stored only in this browser using IndexedDB.
    ========================================================= */
-const passionTab = document.getElementById("tab-passion");
-const passionHero = passionTab.querySelector("[data-passion-interaction='hero']");
-const passionToast = document.getElementById("passionToast");
-const passionProgressBar = document.getElementById("passionProgressBar");
-let passionToastTimer = null;
-let passionEffectFrame = false;
+(() => {
+  "use strict";
 
-function passionHaptic(pattern = [12]) {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  if (typeof navigator.vibrate === "function") {
-    try { navigator.vibrate(pattern); } catch (_) { /* ハプティクス非対応端末では何もしない */ }
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const commentsEl = $("#comments");
+  const rankingEl = $("#ranking");
+  const buzzEl = $("#buzz");
+  const liveLayer = $("#liveLayer");
+  const bigPopup = $("#bigPopup");
+
+  let allComments = [];
+  let allFeedback = [];
+  let selectedAttachments = [];
+  let dataReady = false;
+  let openReplyId = null;
+  let popupTimer = null;
+  let renderMediaUrls = [];
+  let previewUrls = [];
+
+  const voterIdKey = "karaageLocalVoterId";
+  let voterId = localStorage.getItem(voterIdKey);
+  if (!voterId) {
+    voterId = "v_" + (window.crypto && crypto.randomUUID
+      ? crypto.randomUUID()
+      : Date.now().toString(36) + Math.random().toString(36).slice(2));
+    localStorage.setItem(voterIdKey, voterId);
   }
-}
 
-function showPassionToast(message) {
-  passionToast.textContent = message;
-  passionToast.classList.add("is-visible");
-  window.clearTimeout(passionToastTimer);
-  passionToastTimer = window.setTimeout(() => {
-    passionToast.classList.remove("is-visible");
-  }, 1500);
-}
-
-function passionSparkBurst(element) {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const rect = element.getBoundingClientRect();
-  const x = rect.left + rect.width * 0.5;
-  const y = rect.top + Math.min(rect.height * 0.42, 180);
-  for (let i = 0; i < 8; i++) {
-    const spark = document.createElement("span");
-    const angle = (Math.PI * 2 * i / 8) - Math.PI / 2;
-    const distance = 24 + (i % 3) * 17;
-    spark.className = "passion-spark";
-    spark.style.left = `${x}px`;
-    spark.style.top = `${y}px`;
-    spark.style.setProperty("--spark-x", `${Math.cos(angle) * distance}px`);
-    spark.style.setProperty("--spark-y", `${Math.sin(angle) * distance}px`);
-    document.body.appendChild(spark);
-    window.setTimeout(() => spark.remove(), 750);
-  }
-}
-
-function triggerPassionHero() {
-  const lit = passionHero.classList.toggle("is-lit");
-  passionHero.setAttribute("aria-pressed", String(lit));
-  passionHaptic(lit ? [18, 22, 12] : [10]);
-  passionSparkBurst(passionHero);
-  showPassionToast(lit ? "揚げたてモード、点火！" : "熱気をチャージ中…");
-}
-
-passionHero.addEventListener("click", event => {
-  if (event.target.closest("button, a")) return;
-  triggerPassionHero();
-});
-
-passionHero.addEventListener("keydown", event => {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    triggerPassionHero();
-  }
-});
-
-passionTab.querySelectorAll("[data-passion-step]").forEach(step => {
-  const activateStep = () => {
-    const willActivate = !step.classList.contains("is-active");
-    passionTab.querySelectorAll("[data-passion-step]").forEach(other => {
-      other.classList.remove("is-active");
-      other.setAttribute("aria-pressed", "false");
+  /* IndexedDB stores structured records and attached media Blobs. */
+  const DB_NAME = "karaage-stand-local";
+  const DB_VERSION = 1;
+  let dbPromise = null;
+  function openDatabase() {
+    if (dbPromise) return dbPromise;
+    dbPromise = new Promise((resolve, reject) => {
+      if (!("indexedDB" in window)) {
+        reject(new Error("IndexedDB is unavailable"));
+        return;
+      }
+      const request = indexedDB.open(DB_NAME, DB_VERSION);
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains("state")) db.createObjectStore("state", { keyPath: "key" });
+      };
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error || new Error("Database open failed"));
+      request.onblocked = () => reject(new Error("Database upgrade is blocked"));
     });
-    if (willActivate) {
-      step.classList.add("is-active");
-      step.setAttribute("aria-pressed", "true");
-      const number = step.getAttribute("data-passion-step");
-      passionHaptic(number === "03" ? [16, 28, 16] : [12, 18, 10]);
-      passionSparkBurst(step.querySelector(".passion-step-media") || step);
-      showPassionToast(number === "01" ? "下ごしらえに、ひと手間。" : number === "02" ? "うまさは、待つ。" : "仕上げのザクッ、完成！");
-    } else {
-      passionHaptic([8]);
-      showPassionToast("工程のハイライトを解除しました");
-    }
-  };
-
-  step.addEventListener("click", activateStep);
-  step.addEventListener("keydown", event => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      activateStep();
-    }
-  });
-});
-
-function updatePassionScrollEffects() {
-  if (!passionTab || !passionTab.classList.contains("active") || passionEffectFrame) return;
-  passionEffectFrame = true;
-  window.requestAnimationFrame(() => {
-    const rect = passionTab.getBoundingClientRect();
-    const scrollableDistance = Math.max(1, passionTab.scrollHeight - window.innerHeight);
-    const tabTopInDocument = window.scrollY + rect.top;
-    const progress = Math.max(0, Math.min(1, (window.scrollY - tabTopInDocument) / scrollableDistance));
-    if (passionProgressBar) passionProgressBar.style.width = `${progress * 100}%`;
-
-    const heroImage = passionHero.querySelector("img");
-    const heroRect = passionHero.getBoundingClientRect();
-    const offset = Math.max(-18, Math.min(18, (window.innerHeight * 0.46 - heroRect.top) * -0.035));
-    heroImage.style.setProperty("--passion-parallax-y", `${offset}px`);
-    passionEffectFrame = false;
-  });
-}
-
-passionTab.querySelectorAll("img").forEach(img => {
-  img.addEventListener("pointerdown", () => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    img.classList.add("is-pressed");
-    window.setTimeout(() => img.classList.remove("is-pressed"), 260);
-  }, { passive: true });
-});
-
-window.addEventListener("resize", updatePassionScrollEffects, { passive: true });
-
-function escapeHTML(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-function renderStars(n) {
-  let starsHtml = '';
-  for (let i = 0; i < 5; i++) {
-    if (i < n) {
-      starsHtml += '<span class="material-symbols-outlined">star</span>';
-    } else {
-      starsHtml += '<span class="material-symbols-outlined" style="font-variation-settings:\'FILL\' 0;">star</span>';
-    }
-  }
-  return `<div class="star-rating">${starsHtml}</div>`;
-}
-
-function randomClass() {
-  const r = Math.random();
-  if (r < 0.08) return "gold";
-  if (r < 0.16) return "rainbow";
-  return "";
-}
-
-const NGWORDS = ["死ね", "殺す", "きもい", "バカ"];
-
-function sanitizeText(text) {
-  let t = text;
-  NGWORDS.forEach(word => {
-    const reg = new RegExp(word, "gi");
-    t = t.replace(reg, "◼◼");
-  });
-  return escapeHTML(t);
-}
-
-function flowComment(name, text) {
-  const div = document.createElement("div");
-  div.className = "flow";
-  div.style.top = (Math.random() * 180 + 10) + "px";
-  div.innerHTML = `<span class="material-symbols-outlined" style="font-size:16px;">chat_bubble</span> <b>${name}</b>: ${text}`;
-  
-  liveLayer.appendChild(div);
-
-  setTimeout(() => {
-    div.remove();
-  }, 10000);
-}
-
-function popup(text) {
-  bigPopup.style.display = "block";
-  bigPopup.innerText = text;
-
-  setTimeout(() => {
-    bigPopup.style.display = "none";
-  }, 3000);
-}
-
-function fireworks() {
-  for (let i = 0; i < 8; i++) {
-    const f = document.createElement("div");
-    f.className = "firework";
-    f.innerHTML = '<span class="material-symbols-outlined">celebration</span>';
-    f.style.left = (Math.random() * 90 + 5) + "%";
-    f.style.top = (Math.random() * 70 + 15) + "%";
-    document.body.appendChild(f);
-
-    setTimeout(() => {
-      f.remove();
-    }, 1000);
-  }
-}
-
-document.getElementById("postBtn").onclick = async () => {
-  const nameInput = document.getElementById("name").value.trim();
-  const textInput = document.getElementById("text").value.trim();
-  if (!textInput) {
-    popup("感想を入力してください");
-    return;
+    return dbPromise;
   }
 
-  const item = {
-    name: sanitizeText(nameInput || "匿名"),
-    text: sanitizeText(textInput),
-    rating: Number(document.getElementById("rating").value),
-    likes: 0,
-    style: randomClass(),
-    time: Date.now()
-  };
-
-  if (hasFirebaseConfig && !commentsLocalOnly) {
+  async function getState(key, fallback) {
     try {
-      await addDoc(collection(db, "comments"), item);
-      document.getElementById("text").value = "";
-      popup("投稿ありがとうございます！");
-      return;
+      const db = await openDatabase();
+      const result = await new Promise((resolve, reject) => {
+        const request = db.transaction("state", "readonly").objectStore("state").get(key);
+        request.onsuccess = () => resolve(request.result ? request.result.value : undefined);
+        request.onerror = () => reject(request.error);
+      });
+      if (result !== undefined) return result;
     } catch (error) {
-      console.error("レビューの共有に失敗。端末内保存へ切り替えます。", error);
-      commentsLocalOnly = true;
+      console.warn("IndexedDBを利用できないため、テキストデータは端末内の代替保存へ切り替えます。", error);
+    }
+    try {
+      const raw = localStorage.getItem("karaage:" + key);
+      return raw === null ? fallback : JSON.parse(raw);
+    } catch (_) {
+      return fallback;
     }
   }
 
-  const localItem = { ...item, id: "local_" + Date.now() + "_" + Math.random().toString(36).slice(2), remote: false };
-  allComments.unshift(localItem);
-  localStorage.setItem("karaageComments", JSON.stringify(allComments.filter(c => !c.remote)));
-  render();
-  document.getElementById("text").value = "";
-  popup("この端末にレビューを保存しました");
-};
-
-/* 購入報告は押下ごとに累計。POSの売上確定データではありません。 */
-document.getElementById("buyBtn").onclick = async () => {
-  const button = document.getElementById("buyBtn");
-  button.disabled = true;
-  try {
-    await changeCounter("sales", 1);
-    triggerCounterHaptic();
-    popup("購入報告を受け付けました！");
-    fireworks();
-  } finally {
-    window.setTimeout(() => { button.disabled = false; }, 350);
-  }
-};
-
-/* 行列は1端末につき1回参加。参加中の再タップは無効にして重複を減らします。 */
-document.getElementById("queueBtn").onclick = async () => {
-  if (queueJoined) return;
-  const button = document.getElementById("queueBtn");
-  button.disabled = true;
-  try {
-    await changeCounter("queue", 1);
-    queueJoined = true;
-    localStorage.setItem("queueJoined", "1");
-    updateQueueButtonUI();
-    triggerCounterHaptic();
-    popup("行列にカウントしました");
-  } finally {
-    updateQueueButtonUI();
-  }
-};
-
-document.getElementById("leaveQueueBtn").onclick = async () => {
-  if (!queueJoined) return;
-  const button = document.getElementById("leaveQueueBtn");
-  button.disabled = true;
-  try {
-    await changeCounter("queue", -1);
-    queueJoined = false;
-    localStorage.setItem("queueJoined", "0");
-    updateQueueButtonUI();
-    triggerCounterHaptic();
-    popup("行列カウントを解除しました");
-  } finally {
-    updateQueueButtonUI();
-  }
-};
-
-function triggerCounterHaptic() {
-  if (typeof navigator.vibrate === "function") {
-    try { navigator.vibrate([12, 24, 12]); } catch (_) { /* 端末非対応 */ }
-  }
-}
-
-/* 改善点の投稿先は共有時はFirestore、未設定・接続失敗時はこの端末の保存領域 */
-document.getElementById("badBtn").onclick = async () => {
-  const name = document.getElementById("badName").value.trim().slice(0, 40) || "匿名";
-  const text = document.getElementById("badText").value.trim().slice(0, 1500);
-  if (!text) {
-    document.getElementById("feedbackStatus").textContent = "改善点を入力してください。";
-    return;
-  }
-
-  const time = Date.now();
-  if (hasFirebaseConfig && !feedbackLocalOnly) {
+  async function saveState(key, value) {
     try {
-      await addDoc(collection(db, "feedback"), { name, text, time });
-      document.getElementById("badText").value = "";
-      document.getElementById("feedbackStatus").textContent = "改善点を共有リストに送信しました。";
-      popup("改善点を送信しました");
-      return;
-    } catch (error) {
-      console.error("改善点の共有に失敗。端末内保存へ切り替えます。", error);
-      feedbackLocalOnly = true;
-    }
-  }
-
-  localFeedback.unshift({ id: "local_" + time + "_" + Math.random().toString(36).slice(2), name, text, time, remote: false });
-  localStorage.setItem("karaageFeedback", JSON.stringify(localFeedback));
-  refreshFeedbackData();
-  document.getElementById("badText").value = "";
-  document.getElementById("feedbackStatus").textContent = "この端末に保存しました。別端末とは共有されません。";
-  popup("改善点を端末に保存しました");
-};
-
-function render() {
-  commentsEl.innerHTML = "";
-
-  allComments.forEach(c => {
-    const div = document.createElement("div");
-    div.className = `comment ${c.style || ""}`;
-
-    div.innerHTML = `
-      <div class="commentHeader">
-        <span class="fw-700" style="font-size:14px;">${c.name}</span>
-        ${renderStars(c.rating)}
-      </div>
-      <div class="fw-400" style="margin-top:6px; font-size:14px;">${c.text}</div>
-      <button class="likeBtn">
-        <span class="material-symbols-outlined" style="font-size:14px;">thumb_up</span> ${c.likes}
-      </button>
-    `;
-
-    const likeBtn = div.querySelector(".likeBtn");
-    likeBtn.onclick = async () => {
-      const nextLikes = (Number(c.likes) || 0) + 1;
-      if (c.remote && hasFirebaseConfig && !commentsLocalOnly) {
-        try {
-          await updateDoc(doc(db, "comments", c.id), { likes: nextLikes });
-        } catch (error) {
-          console.error("いいねの共有に失敗しました。", error);
-          popup("共有いいねに失敗しました");
-          return;
-        }
-      } else {
-        c.likes = nextLikes;
-        localStorage.setItem("karaageComments", JSON.stringify(allComments.filter(item => !item.remote)));
-        render();
-      }
-      if (nextLikes >= 10) {
-        popup("🏆 殿堂入り神レビュー！");
-        fireworks();
-      }
-    };
-
-    commentsEl.appendChild(div);
-  });
-
-  /* Ranking Render */
-  rankingEl.innerHTML = "";
-  const ranking = [...allComments]
-    .sort((a, b) => b.likes - a.likes)
-    .slice(0, 5);
-
-  ranking.forEach((c, i) => {
-    const div = document.createElement("div");
-    div.className = "rankItem";
-    div.innerHTML = `
-      <div style="display:flex; align-items:center; overflow:hidden;">
-        <span class="rank-badge">${i + 1}</span>
-        <div style="overflow:hidden;">
-          <div class="fw-700" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${c.name}</div>
-          <div class="fw-300" style="font-size:11px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${c.text}</div>
-        </div>
-      </div>
-      <div class="fw-800" style="color:var(--accent); display:flex; align-items:center; gap:3px; flex-shrink:0;">
-        <span class="material-symbols-outlined" style="font-size:14px;">thumb_up</span> ${c.likes}
-      </div>
-    `;
-    rankingEl.appendChild(div);
-  });
-
-  /* Buzz Render */
-  const best = ranking[0];
-  if (best) {
-    buzzEl.innerHTML = `
-      <div style="background:rgba(30,30,30,0.9); padding:10px; border-radius:var(--radius-sm); border:1px solid var(--accent);">
-        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-          <span class="fw-700">${best.name}</span>
-          <span class="fw-700" style="color:var(--accent); display:flex; align-items:center; gap:3px; font-size:13px;">
-            <span class="material-symbols-outlined" style="font-size:14px;">thumb_up</span> ${best.likes}
-          </span>
-        </div>
-        <div class="fw-400" style="font-size:13px; color:#eee;">${best.text}</div>
-      </div>
-    `;
-  } else {
-    buzzEl.innerHTML = `<span class="fw-300" style="color:var(--text-muted);">まだレビューがありません</span>`;
-  }
-
-  /* Average Rating Render */
-  if (allComments.length) {
-    const avg = allComments.reduce((a, b) => a + b.rating, 0) / allComments.length;
-    document.getElementById("avg").innerText = avg.toFixed(1);
-  } else {
-    document.getElementById("avg").innerText = "-";
-  }
-}
-
-/* =========================================================
-   FEEDBACK LIST, SLIDE-IN DRAWER & CSV EXPORT
-   ========================================================= */
-const badListEl = document.getElementById("badList");
-const feedbackDrawer = document.getElementById("feedbackDrawer");
-const feedbackBackdrop = document.getElementById("feedbackDrawerBackdrop");
-const feedbackDrawerList = document.getElementById("feedbackDrawerList");
-const feedbackDrawerStatus = document.getElementById("feedbackDrawerStatus");
-const feedbackCountBadge = document.getElementById("feedbackCountBadge");
-const feedbackDrawerCount = document.getElementById("feedbackDrawerCount");
-const openFeedbackDrawerBtn = document.getElementById("openFeedbackDrawerBtn");
-const closeFeedbackDrawerBtn = document.getElementById("closeFeedbackDrawerBtn");
-let feedbackPreviouslyFocused = null;
-
-function mergeFeedback() {
-  const byId = new Map();
-  [...localFeedback, ...remoteFeedback].forEach((item, index) => {
-    const key = item.id || `${item.time || 0}_${item.name || ""}_${index}`;
-    byId.set(key, item);
-  });
-  allFeedback = [...byId.values()].sort((a, b) => (Number(b.time) || 0) - (Number(a.time) || 0));
-}
-
-function buildFeedbackCard(item, index) {
-  const card = document.createElement("article");
-  card.className = "feedback-card";
-  card.style.animationDelay = `${Math.min(index, 8) * 35}ms`;
-
-  const head = document.createElement("div");
-  head.className = "feedback-card-head";
-  const name = document.createElement("strong");
-  name.className = "feedback-card-name";
-  name.textContent = item.name || "匿名";
-  const date = document.createElement("time");
-  date.className = "feedback-card-date";
-  const timestamp = Number(item.time) || Date.now();
-  date.dateTime = new Date(timestamp).toISOString();
-  date.textContent = new Date(timestamp).toLocaleString("ja-JP", { month:"numeric", day:"numeric", hour:"2-digit", minute:"2-digit" });
-  head.append(name, date);
-
-  const body = document.createElement("p");
-  body.className = "feedback-card-text";
-  body.textContent = item.text || "（本文なし）";
-  card.append(head, body);
-  return card;
-}
-
-function renderFeedbackTargets(target, items, emptyText) {
-  if (!target) return;
-  target.replaceChildren();
-  if (!items.length) {
-    const empty = document.createElement("div");
-    empty.className = "feedback-empty";
-    empty.textContent = emptyText;
-    target.appendChild(empty);
-    return;
-  }
-  items.forEach((item, index) => target.appendChild(buildFeedbackCard(item, index)));
-}
-
-function refreshFeedbackData() {
-  mergeFeedback();
-  renderFeedbackTargets(badListEl, allFeedback.slice(0, 5), "まだ改善点は届いていません。気づいたことを送ってください。");
-  renderFeedbackTargets(feedbackDrawerList, allFeedback, "まだダメ出し・改善点は届いていません。投稿された意見がここに表示されます。");
-  if (feedbackCountBadge) feedbackCountBadge.textContent = `${allFeedback.length}件`;
-  if (feedbackDrawerCount) feedbackDrawerCount.textContent = String(allFeedback.length);
-  if (feedbackDrawerStatus) {
-    feedbackDrawerStatus.textContent = feedbackLocalOnly
-      ? (hasFirebaseConfig ? "共有先に接続できないため、この端末に保存された意見を表示しています。" : "Firebase未設定のため、この端末に保存された意見を表示しています。")
-      : (feedbackRemoteReady ? "最新の投稿を表示中です。" : "共有リストを読み込み中です…");
-  }
-}
-
-function openFeedbackDrawer() {
-  feedbackPreviouslyFocused = document.activeElement;
-  feedbackBackdrop.hidden = false;
-  requestAnimationFrame(() => {
-    feedbackBackdrop.classList.add("is-open");
-    feedbackDrawer.classList.add("is-open");
-    feedbackDrawer.setAttribute("aria-hidden", "false");
-    openFeedbackDrawerBtn.setAttribute("aria-expanded", "true");
-    document.body.classList.add("feedback-drawer-open");
-    closeFeedbackDrawerBtn.focus({ preventScroll: true });
-  });
-  triggerCounterHaptic();
-}
-
-function closeFeedbackDrawer() {
-  feedbackBackdrop.classList.remove("is-open");
-  feedbackDrawer.classList.remove("is-open");
-  feedbackDrawer.setAttribute("aria-hidden", "true");
-  openFeedbackDrawerBtn.setAttribute("aria-expanded", "false");
-  document.body.classList.remove("feedback-drawer-open");
-  window.setTimeout(() => { feedbackBackdrop.hidden = true; }, 430);
-  if (feedbackPreviouslyFocused && typeof feedbackPreviouslyFocused.focus === "function") {
-    feedbackPreviouslyFocused.focus({ preventScroll: true });
-  }
-}
-
-openFeedbackDrawerBtn.addEventListener("click", openFeedbackDrawer);
-closeFeedbackDrawerBtn.addEventListener("click", closeFeedbackDrawer);
-feedbackBackdrop.addEventListener("click", closeFeedbackDrawer);
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && feedbackDrawer.classList.contains("is-open")) closeFeedbackDrawer();
-});
-
-function csvCell(value) {
-  let text = String(value ?? "").replace(/\r\n?/g, "\n");
-  // Excel等で数式として実行される文字列を避ける
-  if (/^[\s]*[=+\-@]/.test(text)) text = "'" + text;
-  return '"' + text.replace(/"/g, '""') + '"';
-}
-
-function exportFeedbackCsv() {
-  if (hasFirebaseConfig && !feedbackLocalOnly && !feedbackRemoteReady) {
-    popup("改善点一覧を読み込み中です。少し待って再実行してください。");
-    return;
-  }
-  const rows = [["id", "name", "text", "created_at"]];
-  allFeedback.forEach(item => {
-    rows.push([
-      item.id || "",
-      item.name || "匿名",
-      item.text || "",
-      new Date(Number(item.time) || Date.now()).toISOString()
-    ]);
-  });
-  const csv = "\uFEFF" + rows.map(row => row.map(csvCell).join(",")).join("\r\n");
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `feedback_${new Date().toISOString().slice(0, 10)}.csv`;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-  popup("改善点CSVを書き出しました");
-}
-
-document.getElementById("exportFeedbackCsvBtn").addEventListener("click", exportFeedbackCsv);
-
-if (hasFirebaseConfig) {
-  const feedbackQuery = query(collection(db, "feedback"), orderBy("time", "desc"));
-  onSnapshot(feedbackQuery, snapshot => {
-    if (feedbackLocalOnly) return;
-    remoteFeedback = snapshot.docs.map(item => ({ id: item.id, ...item.data(), remote: true }));
-    feedbackRemoteReady = true;
-    refreshFeedbackData();
-  }, error => {
-    console.error("改善点を共有リストから読み込めません。", error);
-    feedbackLocalOnly = true;
-    feedbackRemoteReady = false;
-    refreshFeedbackData();
-  });
-} else {
-  feedbackRemoteReady = true;
-}
-refreshFeedbackData();
-
-function updateStats() {
-  const accessEl = document.getElementById("visitors");
-  const soldEl = document.getElementById("sold");
-  const lineEl = document.getElementById("line");
-  const statusEl = document.getElementById("counterStatus");
-
-  if (!hasFirebaseConfig) {
-    accessEl.textContent = "未設定";
-  } else if (statsLocalOnly) {
-    accessEl.textContent = "エラー";
-  } else if (!statsBackendReady) {
-    accessEl.textContent = "…";
-  } else {
-    accessEl.textContent = `${statsValues.pageViews.toLocaleString("ja-JP")}回`;
-  }
-
-  soldEl.textContent = `${Math.max(0, statsValues.sales).toLocaleString("ja-JP")}個`;
-  lineEl.textContent = `${Math.max(0, statsValues.queue).toLocaleString("ja-JP")}人`;
-
-  if (!statusEl) return;
-  statusEl.classList.add("is-visible");
-  statusEl.classList.toggle("is-connected", hasFirebaseConfig && statsBackendReady && !statsLocalOnly);
-  if (!hasFirebaseConfig) {
-    statusEl.textContent = "共有カウント未設定：アクセス数を集計するにはFirebase設定が必要です。購入・行列ボタンはこの端末内でのみ記録します。";
-  } else if (statsLocalOnly) {
-    statusEl.textContent = "共有カウントに接続できません。購入・行列カウントはこの端末内に記録中です。Firebase設定とアクセス権限を確認してください。";
-  } else if (!statsBackendReady) {
-    statusEl.textContent = "全端末共有のカウントに接続しています…";
-  } else {
-    statusEl.textContent = "全端末共有カウント接続中 · アクセスはページ読み込み回数（ユニーク人数ではありません）です。";
-  }
-}
-
-function updateQueueButtonUI() {
-  const queueButton = document.getElementById("queueBtn");
-  const leaveButton = document.getElementById("leaveQueueBtn");
-  const label = document.getElementById("queueButtonLabel");
-  const hint = document.getElementById("queueButtonHint");
-  if (!queueButton || !leaveButton) return;
-  queueButton.disabled = queueJoined;
-  leaveButton.disabled = !queueJoined;
-  if (label) label.textContent = queueJoined ? "列に並んでいます" : "並んでる！";
-  if (hint) hint.textContent = queueJoined ? "列から抜けるときは下のボタン" : "待機人数を +1";
-}
-
-async function changeCounter(field, delta, { pageView = false } = {}) {
-  if (hasFirebaseConfig && !statsLocalOnly) {
-    try {
-      if (field === "queue") {
-        await runTransaction(db, async transaction => {
-          const snapshot = await transaction.get(statsRef);
-          const data = snapshot.exists() ? snapshot.data() : {};
-          const current = Math.max(0, Number(data.queue) || 0);
-          const next = Math.max(0, current + delta);
-          if (next !== current) {
-            transaction.set(statsRef, { queue: next, updatedAt: Date.now() }, { merge: true });
-          }
-          return next;
-        });
-      } else {
-        await setDoc(statsRef, { [field]: increment(delta), updatedAt: Date.now() }, { merge: true });
-      }
+      const db = await openDatabase();
+      await new Promise((resolve, reject) => {
+        const tx = db.transaction("state", "readwrite");
+        tx.objectStore("state").put({ key, value });
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error || new Error("Save failed"));
+        tx.onabort = () => reject(tx.error || new Error("Save aborted"));
+      });
       return true;
     } catch (error) {
-      console.error("共有カウントを更新できませんでした。", error);
-      statsLocalOnly = true;
-      statsBackendReady = false;
-      if (pageView) {
-        updateStats();
-        return false;
+      console.warn("IndexedDBへの保存に失敗しました。添付メディアを除くテキストデータを代替保存します。", error);
+      try {
+        const plain = key === "comments"
+          ? value.map(item => ({ ...item, attachments: (item.attachments || []).map(a => ({ name: a.name, type: a.type, size: a.size, unavailable: true })) }))
+          : value;
+        localStorage.setItem("karaage:" + key, JSON.stringify(plain));
+      } catch (storageError) {
+        console.error("端末内保存にも失敗しました。", storageError);
       }
+      return false;
     }
   }
 
-  // ローカルフォールバックは端末内だけ。実アクセス数としては表示しません。
-  if (!pageView) {
-    statsValues[field] = Math.max(0, (Number(statsValues[field]) || 0) + delta);
-    const storageKey = field === "sales" ? "sold" : "lineCount";
-    localStorage.setItem(storageKey, String(statsValues[field]));
-  }
-  updateStats();
-  return false;
-}
-
-updateStats();
-updateQueueButtonUI();
-
-if (hasFirebaseConfig) {
-  onSnapshot(statsRef, snapshot => {
-    if (statsLocalOnly) return;
-    const data = snapshot.exists() ? snapshot.data() : {};
-    statsValues.pageViews = Math.max(0, Number(data.pageViews) || 0);
-    statsValues.sales = Math.max(0, Number(data.sales) || 0);
-    statsValues.queue = Math.max(0, Number(data.queue) || 0);
-    statsBackendReady = true;
-    updateStats();
-  }, error => {
-    console.error("共有カウントを読み込めません。", error);
-    statsLocalOnly = true;
-    statsBackendReady = false;
-    updateStats();
-  });
-
-  // ページの読み込み回数。リロードも1アクセスとして数えます。
-  void changeCounter("pageViews", 1, { pageView: true });
-}
-
-const q = query(collection(db, "comments"), orderBy("time", "desc"));
-
-if (hasFirebaseConfig) {
-  onSnapshot(q, snapshot => {
-    if (commentsLocalOnly) return;
-    allComments = [];
-    snapshot.forEach(docSnap => allComments.push({ id: docSnap.id, ...docSnap.data(), remote: true }));
-    render();
-  }, error => {
-    console.error("共有レビューを読み込めません。", error);
-    commentsLocalOnly = true;
-    try {
-      const local = JSON.parse(localStorage.getItem("karaageComments") || "[]");
-      allComments = Array.isArray(local) ? local : [];
-    } catch (_) { allComments = []; }
-    render();
-  });
-} else {
-  try {
-    const local = JSON.parse(localStorage.getItem("karaageComments") || "[]");
-    allComments = Array.isArray(local) ? local : [];
-  } catch (_) { allComments = []; }
-  render();
-}
-
-/* 「おいしい！」投票。共有できる環境ではFirestore、接続できない場合は端末内に保存 */
-const deliciousBtn = document.getElementById("deliciousBtn");
-const deliciousLabel = document.getElementById("deliciousLabel");
-const deliciousCountEl = document.getElementById("deliciousCount");
-const deliciousScope = document.getElementById("deliciousScope");
-const deliciousStatus = document.getElementById("deliciousStatus");
-
-let deliciousVoted = false;
-let deliciousVoteReady = false;
-let deliciousRemoteMode = true;
-let deliciousCount = 0;
-let localDeliciousVoted = localStorage.getItem("localDeliciousVoted") === "1";
-let localDeliciousCount = Number(localStorage.getItem("localDeliciousCount") || 0);
-let deliciousVoterId = localStorage.getItem("deliciousVoterId");
-if (!deliciousVoterId) {
-  deliciousVoterId = "v_" + (window.crypto && crypto.randomUUID
-    ? crypto.randomUUID()
-    : Date.now().toString(36) + Math.random().toString(36).slice(2));
-  localStorage.setItem("deliciousVoterId", deliciousVoterId);
-}
-
-function updateDeliciousUI() {
-  deliciousBtn.classList.toggle("is-voted", deliciousVoted);
-  deliciousBtn.setAttribute("aria-pressed", String(deliciousVoted));
-  deliciousLabel.textContent = deliciousVoted ? "おいしいに投票済み！" : "おいしい！";
-  deliciousCountEl.textContent = String(deliciousCount);
-  deliciousScope.textContent = deliciousRemoteMode ? "みんなの「おいしい」" : "この端末での投票";
-  deliciousStatus.textContent = deliciousVoted
-    ? "投票済み · もう一度押すと取り消せます。"
-    : (deliciousRemoteMode ? "おいしいと思ったらタップ！" : "共有接続がないため、この端末内で記録します。");
-}
-
-function triggerDeliciousHaptic() {
-  // Vibration API対応ブラウザーのみ実際に振動。未対応端末では視覚・押下演出が働きます。
-  if (typeof navigator.vibrate === "function") {
-    try { navigator.vibrate([18, 28, 18]); } catch (_) { /* 非対応環境では無視 */ }
-  }
-}
-
-function animateDeliciousButton() {
-  deliciousBtn.classList.remove("is-bouncing");
-  // 同じアニメーションを連続タップでも再発火させる
-  void deliciousBtn.offsetWidth;
-  deliciousBtn.classList.add("is-bouncing");
-  setTimeout(() => deliciousBtn.classList.remove("is-bouncing"), 460);
-
-  const rect = deliciousBtn.getBoundingClientRect();
-  const cx = rect.left + rect.width / 2;
-  const cy = rect.top + rect.height / 2;
-  const icons = ["favorite", "kid_star", "favorite", "star", "favorite", "kid_star", "favorite"];
-  icons.forEach((iconName, i) => {
-    const particle = document.createElement("span");
-    particle.className = "delicious-particle";
-    particle.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">' + iconName + '</span>';
-    particle.style.left = cx + "px";
-    particle.style.top = cy + "px";
-    const angle = (Math.PI * 2 * i / icons.length) - Math.PI / 2;
-    const distance = 38 + (i % 3) * 15;
-    particle.style.setProperty("--dx", (Math.cos(angle) * distance) + "px");
-    particle.style.setProperty("--dy", (Math.sin(angle) * distance - 16) + "px");
-    particle.style.setProperty("--turn", ((i % 2 ? 1 : -1) * (18 + i * 5)) + "deg");
-    document.body.appendChild(particle);
-    setTimeout(() => particle.remove(), 900);
-  });
-}
-
-if (hasFirebaseConfig) {
-  onSnapshot(collection(db, "deliciousVotes"), (snapshot) => {
-    deliciousRemoteMode = true;
-    deliciousVoteReady = true;
-    deliciousCount = snapshot.size;
-    deliciousVoted = snapshot.docs.some((voteDoc) => voteDoc.id === deliciousVoterId);
-    updateDeliciousUI();
-  }, (error) => {
-    console.warn("共有投票を読み込めないため、端末内保存に切り替えます。", error);
-    deliciousRemoteMode = false;
-    deliciousVoteReady = true;
-    deliciousVoted = localDeliciousVoted;
-    deliciousCount = localDeliciousCount;
-    updateDeliciousUI();
-  });
-} else {
-  // 提供されたHTMLのFirebase設定が仮値のままでも、ボタン単体は端末内保存で動作させる
-  deliciousRemoteMode = false;
-  deliciousVoteReady = true;
-  deliciousVoted = localDeliciousVoted;
-  deliciousCount = localDeliciousCount;
-  updateDeliciousUI();
-}
-
-/* 共有投票へ送信できない場合は、操作を失わないよう端末内に記録 */
-deliciousBtn.addEventListener("click", async () => {
-  if (!deliciousVoteReady) {
-    popup("投票データを読み込み中です");
-    return;
+  function newId(prefix = "id") {
+    return prefix + "_" + (window.crypto && crypto.randomUUID
+      ? crypto.randomUUID()
+      : Date.now().toString(36) + Math.random().toString(36).slice(2));
   }
 
-  const nextVoted = !deliciousVoted;
-  deliciousBtn.disabled = true;
-  if (nextVoted) {
-    triggerDeliciousHaptic();
-    animateDeliciousButton();
+  function maskBadWords(text) {
+    let result = String(text || "");
+    ["死ね", "殺す", "きもい", "バカ"].forEach(word => {
+      result = result.replace(new RegExp(word, "gi"), "◼◼");
+    });
+    return result;
   }
 
-  try {
-    if (deliciousRemoteMode) {
-      const voteRef = doc(db, "deliciousVotes", deliciousVoterId);
-      if (nextVoted) {
-        await setDoc(voteRef, { votedAt: Date.now() });
+  function formatDate(value) {
+    const date = new Date(Number(value) || Date.now());
+    return date.toLocaleString("ja-JP", {
+      year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit"
+    });
+  }
+
+  function haptic(pattern = [12]) {
+    if (prefersReducedMotion.matches) return;
+    if (typeof navigator.vibrate === "function") {
+      try { navigator.vibrate(pattern); } catch (_) { /* vibration unsupported */ }
+    }
+  }
+
+  function popup(message) {
+    if (!bigPopup) return;
+    bigPopup.textContent = message;
+    bigPopup.style.display = "block";
+    window.clearTimeout(popupTimer);
+    popupTimer = window.setTimeout(() => { bigPopup.style.display = "none"; }, 2400);
+  }
+
+  /* Guide modal */
+  const guideModal = $("#guideModal");
+  $("#openGuideBtn").addEventListener("click", () => { guideModal.style.display = "flex"; });
+  $("#closeGuideBtn").addEventListener("click", () => { guideModal.style.display = "none"; });
+  guideModal.addEventListener("click", event => {
+    if (event.target === guideModal) guideModal.style.display = "none";
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && guideModal.style.display === "flex") guideModal.style.display = "none";
+  });
+
+  /* Tabs and sliding glass navigation */
+  const bottomNav = $(".bottom-nav");
+  const navItems = $$(".nav-item");
+  const tabContents = $$(".tab-content");
+  let lastNavScrollY = Math.max(0, window.scrollY);
+  let navScrollFramePending = false;
+  let navIdleTimer = null;
+  function revealBottomNav() { bottomNav.classList.remove("is-hidden"); }
+  function concealBottomNav() { if (window.scrollY > 100) bottomNav.classList.add("is-hidden"); }
+
+  window.addEventListener("scroll", () => {
+    if (navScrollFramePending) return;
+    navScrollFramePending = true;
+    window.requestAnimationFrame(() => {
+      const currentY = Math.max(0, window.scrollY);
+      const deltaY = currentY - lastNavScrollY;
+      if (currentY < 36 || deltaY < -3) revealBottomNav();
+      else if (deltaY > 4 && currentY > 100) concealBottomNav();
+      lastNavScrollY = currentY;
+      updatePassionScrollEffects();
+      window.clearTimeout(navIdleTimer);
+      navIdleTimer = window.setTimeout(revealBottomNav, 850);
+      navScrollFramePending = false;
+    });
+  }, { passive: true });
+  bottomNav.addEventListener("focusin", revealBottomNav);
+
+  function activateTab(targetId) {
+    revealBottomNav();
+    navItems.forEach(nav => {
+      const active = nav.dataset.tab === targetId;
+      nav.classList.toggle("active", active);
+      if (active) nav.setAttribute("aria-current", "page");
+      else nav.removeAttribute("aria-current");
+    });
+    tabContents.forEach(tab => tab.classList.toggle("active", tab.id === targetId));
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion.matches ? "auto" : "smooth" });
+    window.setTimeout(() => { initScrollObserver(); updatePassionScrollEffects(); }, 60);
+  }
+  navItems.forEach(item => item.addEventListener("click", () => activateTab(item.dataset.tab)));
+  $$('[data-jump-tab]').forEach(button => button.addEventListener("click", () => {
+    haptic([10]);
+    activateTab(button.dataset.jumpTab);
+  }));
+
+  /* Intersection-based reveal animation */
+  let scrollObserver = null;
+  function initScrollObserver() {
+    if (scrollObserver) scrollObserver.disconnect();
+    if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
+      $$(".scroll-animate").forEach(el => el.classList.add("visible"));
+      return;
+    }
+    scrollObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -35px 0px" });
+    $$(".tab-content.active .scroll-animate").forEach((element, index) => {
+      element.style.setProperty("--reveal-delay", `${Math.min(index, 6) * 45}ms`);
+      scrollObserver.observe(element);
+    });
+  }
+
+  /* Home campaign and feature-card interactions */
+  const homeCampaign = $(".home-campaign");
+  if (homeCampaign) {
+    homeCampaign.addEventListener("click", event => {
+      if (event.target.closest("button, a")) return;
+      homeCampaign.classList.toggle("is-lit");
+      haptic([12]);
+    });
+  }
+  $$(".home-page .feature-card").forEach(card => {
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-pressed", "false");
+    const toggle = () => {
+      const active = !card.classList.contains("is-active");
+      $$(".home-page .feature-card").forEach(other => {
+        other.classList.remove("is-active");
+        other.setAttribute("aria-pressed", "false");
+      });
+      if (active) {
+        card.classList.add("is-active");
+        card.setAttribute("aria-pressed", "true");
+        haptic([10]);
+      }
+    };
+    card.addEventListener("click", toggle);
+    card.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") { event.preventDefault(); toggle(); }
+    });
+  });
+
+  /* Passion tab micro-interactions */
+  const passionTab = $("#tab-passion");
+  const passionHero = $("[data-passion-interaction='hero']", passionTab);
+  const passionToast = $("#passionToast");
+  const passionProgressBar = $("#passionProgressBar");
+  let passionToastTimer = null;
+  let passionEffectFrame = false;
+  function showPassionToast(message) {
+    if (!passionToast) return;
+    passionToast.textContent = message;
+    passionToast.classList.add("is-visible");
+    window.clearTimeout(passionToastTimer);
+    passionToastTimer = window.setTimeout(() => passionToast.classList.remove("is-visible"), 1500);
+  }
+  function passionSparkBurst(element) {
+    if (prefersReducedMotion.matches || !element) return;
+    const rect = element.getBoundingClientRect();
+    const x = rect.left + rect.width * .5;
+    const y = rect.top + Math.min(rect.height * .42, 180);
+    for (let i = 0; i < 8; i++) {
+      const spark = document.createElement("span");
+      const angle = (Math.PI * 2 * i / 8) - Math.PI / 2;
+      const distance = 24 + (i % 3) * 17;
+      spark.className = "passion-spark";
+      spark.style.left = `${x}px`;
+      spark.style.top = `${y}px`;
+      spark.style.setProperty("--spark-x", `${Math.cos(angle) * distance}px`);
+      spark.style.setProperty("--spark-y", `${Math.sin(angle) * distance}px`);
+      document.body.appendChild(spark);
+      window.setTimeout(() => spark.remove(), 750);
+    }
+  }
+  function triggerPassionHero() {
+    const lit = passionHero.classList.toggle("is-lit");
+    passionHero.setAttribute("aria-pressed", String(lit));
+    haptic(lit ? [18, 22, 12] : [10]);
+    passionSparkBurst(passionHero);
+    showPassionToast(lit ? "揚げたてモード、点火！" : "熱気をチャージ中…");
+  }
+  passionHero.addEventListener("click", event => {
+    if (!event.target.closest("button, a")) triggerPassionHero();
+  });
+  passionHero.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") { event.preventDefault(); triggerPassionHero(); }
+  });
+  $$("[data-passion-step]", passionTab).forEach(step => {
+    step.addEventListener("click", () => {
+      const active = !step.classList.contains("is-active");
+      $$('[data-passion-step]', passionTab).forEach(other => {
+        other.classList.remove("is-active");
+        other.setAttribute("aria-pressed", "false");
+      });
+      if (active) {
+        step.classList.add("is-active");
+        step.setAttribute("aria-pressed", "true");
+        const number = step.dataset.passionStep;
+        haptic(number === "03" ? [16, 28, 16] : [12, 18, 10]);
+        passionSparkBurst($(".passion-step-media", step) || step);
+        showPassionToast(number === "01" ? "下ごしらえに、ひと手間。" : number === "02" ? "うまさは、待つ。" : "仕上げのザクッ、完成！");
       } else {
-        await deleteDoc(voteRef);
+        haptic([8]);
+        showPassionToast("工程のハイライトを解除しました");
       }
-    } else {
-      localDeliciousCount = Math.max(0, localDeliciousCount + (nextVoted ? 1 : -1));
-      localDeliciousVoted = nextVoted;
-      localStorage.setItem("localDeliciousCount", String(localDeliciousCount));
-      localStorage.setItem("localDeliciousVoted", localDeliciousVoted ? "1" : "0");
-      deliciousVoted = nextVoted;
-      deliciousCount = localDeliciousCount;
-      updateDeliciousUI();
+    });
+    step.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") { event.preventDefault(); step.click(); }
+    });
+  });
+  function updatePassionScrollEffects() {
+    if (!passionTab || !passionTab.classList.contains("active") || passionEffectFrame) return;
+    passionEffectFrame = true;
+    window.requestAnimationFrame(() => {
+      const rect = passionTab.getBoundingClientRect();
+      const distance = Math.max(1, passionTab.scrollHeight - window.innerHeight);
+      const progress = Math.max(0, Math.min(1, -rect.top / distance));
+      if (passionProgressBar) passionProgressBar.style.width = `${progress * 100}%`;
+      const image = $("img", passionHero);
+      const heroRect = passionHero.getBoundingClientRect();
+      const offset = Math.max(-18, Math.min(18, (window.innerHeight * .46 - heroRect.top) * -.035));
+      if (image) image.style.setProperty("--passion-parallax-y", `${offset}px`);
+      passionEffectFrame = false;
+    });
+  }
+  $$('img', passionTab).forEach(img => img.addEventListener("pointerdown", () => {
+    if (prefersReducedMotion.matches) return;
+    img.classList.add("is-pressed");
+    window.setTimeout(() => img.classList.remove("is-pressed"), 260);
+  }, { passive: true }));
+  window.addEventListener("resize", updatePassionScrollEffects, { passive: true });
+
+  /* Small visual helpers */
+  function renderStars(number) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "star-rating";
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement("span");
+      star.className = "material-symbols-outlined";
+      star.textContent = "star";
+      star.style.fontVariationSettings = i <= Number(number) ? "'FILL' 1" : "'FILL' 0";
+      wrapper.appendChild(star);
     }
-  } catch (error) {
-    console.error("おいしい投票の送信に失敗しました。", error);
-    // Firestore側の書き込み権限等で失敗した場合は端末内のカウントへ切り替える
-    deliciousRemoteMode = false;
-    deliciousVoteReady = true;
-    localDeliciousCount = Math.max(0, localDeliciousCount + (nextVoted === deliciousVoted ? 0 : (nextVoted ? 1 : -1)));
-    localDeliciousVoted = nextVoted;
-    localStorage.setItem("localDeliciousCount", String(localDeliciousCount));
-    localStorage.setItem("localDeliciousVoted", localDeliciousVoted ? "1" : "0");
-    deliciousVoted = nextVoted;
-    deliciousCount = localDeliciousCount;
+    return wrapper;
+  }
+  function renderCommentMedia(attachments, destination) {
+    const usable = (attachments || []).filter(item => item && item.blob instanceof Blob);
+    if (!usable.length) return;
+    const grid = document.createElement("div");
+    grid.className = "comment-media-grid";
+    usable.forEach(item => {
+      const url = URL.createObjectURL(item.blob);
+      renderMediaUrls.push(url);
+      let media;
+      if (String(item.type || item.blob.type).startsWith("video/")) {
+        media = document.createElement("video");
+        media.controls = true;
+        media.preload = "metadata";
+        media.playsInline = true;
+        media.className = "comment-media-item video";
+      } else {
+        media = document.createElement("img");
+        media.loading = "lazy";
+        media.alt = item.name || "コメントの添付画像";
+        media.className = "comment-media-item image";
+        media.addEventListener("click", () => window.open(url, "_blank", "noopener,noreferrer"));
+      }
+      media.src = url;
+      grid.appendChild(media);
+    });
+    destination.appendChild(grid);
+  }
+
+  async function saveComments() {
+    await saveState("comments", allComments);
+    updateStats();
+  }
+  async function saveFeedback() {
+    await saveState("feedback", allFeedback);
+    refreshFeedbackData();
+  }
+
+  function createReactionButton(kind, count, selected, commentId) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `comment-reaction-btn ${kind === "like" ? "like" : "dislike"}${selected ? " is-selected" : ""}`;
+    button.setAttribute("aria-pressed", String(selected));
+    const icon = document.createElement("span");
+    icon.className = "material-symbols-outlined";
+    icon.textContent = kind === "like" ? "thumb_up" : "thumb_down";
+    const label = document.createElement("span");
+    label.textContent = kind === "like" ? "いいね" : "わるいね";
+    const number = document.createElement("strong");
+    number.textContent = String(count || 0);
+    button.append(icon, label, number);
+    button.addEventListener("click", async () => {
+      if (!dataReady) return;
+      const comment = allComments.find(item => item.id === commentId);
+      if (!comment) return;
+      if (!comment.reactions || typeof comment.reactions !== "object") comment.reactions = {};
+      const previous = comment.reactions[voterId] || null;
+      const next = previous === kind ? null : kind;
+      if (previous === "like") comment.likes = Math.max(0, (Number(comment.likes) || 0) - 1);
+      if (previous === "dislike") comment.dislikes = Math.max(0, (Number(comment.dislikes) || 0) - 1);
+      if (next === "like") comment.likes = (Number(comment.likes) || 0) + 1;
+      if (next === "dislike") comment.dislikes = (Number(comment.dislikes) || 0) + 1;
+      if (next) comment.reactions[voterId] = next;
+      else delete comment.reactions[voterId];
+      haptic([8]);
+      await saveComments();
+      renderComments();
+    });
+    return button;
+  }
+
+  function renderReply(comment, reply) {
+    const item = document.createElement("div");
+    item.className = "reply-item";
+    const head = document.createElement("div");
+    head.className = "reply-head";
+    const name = document.createElement("span");
+    name.className = "reply-name";
+    name.textContent = reply.name || "匿名";
+    const date = document.createElement("time");
+    date.className = "reply-date";
+    date.textContent = formatDate(reply.time);
+    head.append(name, date);
+    const text = document.createElement("p");
+    text.className = "reply-text";
+    text.textContent = reply.text || "";
+    item.append(head, text);
+    return item;
+  }
+
+  function renderComments() {
+    if (!commentsEl) return;
+    renderMediaUrls.forEach(url => URL.revokeObjectURL(url));
+    renderMediaUrls = [];
+    commentsEl.replaceChildren();
+    if (!allComments.length) {
+      const empty = document.createElement("div");
+      empty.className = "comment-empty";
+      empty.textContent = "まだレビューがありません。最初の感想を書いてみてください。";
+      commentsEl.appendChild(empty);
+    }
+
+    const sorted = [...allComments].sort((a, b) => (Number(b.time) || 0) - (Number(a.time) || 0));
+    sorted.forEach(comment => {
+      const card = document.createElement("article");
+      card.className = `comment ${comment.style || ""}`;
+
+      const header = document.createElement("div");
+      header.className = "commentHeader";
+      const author = document.createElement("strong");
+      author.className = "fw-700";
+      author.style.fontSize = "14px";
+      author.textContent = comment.name || "匿名";
+      header.append(author, renderStars(comment.rating));
+
+      const content = document.createElement("p");
+      content.className = "comment-content";
+      content.textContent = comment.text || "";
+
+      const meta = document.createElement("p");
+      meta.className = "comment-meta-line";
+      meta.textContent = formatDate(comment.time);
+
+      card.append(header, content, meta);
+      renderCommentMedia(comment.attachments, card);
+
+      const actions = document.createElement("div");
+      actions.className = "comment-actions";
+      const reactions = comment.reactions || {};
+      actions.append(
+        createReactionButton("like", comment.likes, reactions[voterId] === "like", comment.id),
+        createReactionButton("dislike", comment.dislikes, reactions[voterId] === "dislike", comment.id)
+      );
+      const replyToggle = document.createElement("button");
+      replyToggle.type = "button";
+      replyToggle.className = "comment-reply-toggle";
+      const replyIcon = document.createElement("span");
+      replyIcon.className = "material-symbols-outlined";
+      replyIcon.textContent = "reply";
+      const replyLabel = document.createElement("span");
+      replyLabel.textContent = `返信 ${(comment.replies || []).length}`;
+      replyToggle.append(replyIcon, replyLabel);
+      actions.appendChild(replyToggle);
+      card.appendChild(actions);
+
+      const replyPanel = document.createElement("section");
+      replyPanel.className = "reply-panel";
+      replyPanel.hidden = openReplyId !== comment.id;
+      const replyList = document.createElement("div");
+      replyList.className = "reply-list";
+      (comment.replies || []).forEach(reply => replyList.appendChild(renderReply(comment, reply)));
+      if (!(comment.replies || []).length) {
+        const noReplies = document.createElement("p");
+        noReplies.className = "attachment-help";
+        noReplies.textContent = "まだ返信はありません。";
+        replyList.appendChild(noReplies);
+      }
+      const compose = document.createElement("form");
+      compose.className = "reply-compose";
+      const replyInput = document.createElement("textarea");
+      replyInput.maxLength = 600;
+      replyInput.placeholder = "このコメントに返信…";
+      replyInput.setAttribute("aria-label", "返信本文");
+      replyInput.required = true;
+      const replySubmit = document.createElement("button");
+      replySubmit.type = "submit";
+      replySubmit.className = "btn-secondary";
+      replySubmit.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">send</span>返信する';
+      compose.append(replyInput, replySubmit);
+      compose.addEventListener("submit", async event => {
+        event.preventDefault();
+        const text = maskBadWords(replyInput.value.trim());
+        if (!text) return;
+        const userName = $("#name").value.trim().slice(0, 15) || "匿名";
+        comment.replies = Array.isArray(comment.replies) ? comment.replies : [];
+        comment.replies.push({ id: newId("reply"), name: userName, text, time: Date.now() });
+        openReplyId = comment.id;
+        haptic([10]);
+        await saveComments();
+        renderComments();
+      });
+      replyToggle.addEventListener("click", () => {
+        openReplyId = openReplyId === comment.id ? null : comment.id;
+        haptic([7]);
+        renderComments();
+        if (openReplyId === comment.id) {
+          const activePanel = $(`#comments .comment[data-comment-id="${CSS.escape(comment.id)}"] .reply-compose textarea`);
+          if (activePanel) activePanel.focus({ preventScroll: true });
+        }
+      });
+      replyPanel.append(replyList, compose);
+      card.dataset.commentId = comment.id;
+      card.appendChild(replyPanel);
+      commentsEl.appendChild(card);
+    });
+
+    const ranking = [...allComments].sort((a, b) => (Number(b.likes) || 0) - (Number(a.likes) || 0)).slice(0, 5);
+    rankingEl.replaceChildren();
+    ranking.forEach((comment, index) => {
+      const row = document.createElement("div");
+      row.className = "rankItem";
+      const left = document.createElement("div");
+      left.style.cssText = "display:flex;align-items:center;overflow:hidden;min-width:0;";
+      const badge = document.createElement("span");
+      badge.className = "rank-badge";
+      badge.textContent = String(index + 1);
+      const textBox = document.createElement("div");
+      textBox.style.cssText = "overflow:hidden;min-width:0;";
+      const name = document.createElement("div");
+      name.className = "fw-700";
+      name.style.cssText = "white-space:nowrap;overflow:hidden;text-overflow:ellipsis;";
+      name.textContent = comment.name || "匿名";
+      const preview = document.createElement("div");
+      preview.style.cssText = "font-size:11px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;";
+      preview.textContent = comment.text || "";
+      textBox.append(name, preview);
+      left.append(badge, textBox);
+      const likes = document.createElement("strong");
+      likes.style.cssText = "color:var(--accent);font-size:12px;flex-shrink:0;margin-left:8px;";
+      likes.textContent = `♥ ${Number(comment.likes) || 0}`;
+      row.append(left, likes);
+      rankingEl.appendChild(row);
+    });
+
+    const best = ranking[0];
+    buzzEl.replaceChildren();
+    if (best) {
+      const wrap = document.createElement("div");
+      wrap.style.cssText = "background:rgba(30,30,30,.9);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--accent);";
+      const top = document.createElement("div");
+      top.style.cssText = "display:flex;justify-content:space-between;gap:8px;margin-bottom:4px;";
+      const name = document.createElement("strong");
+      name.textContent = best.name || "匿名";
+      const likes = document.createElement("strong");
+      likes.style.color = "var(--accent)";
+      likes.textContent = `♥ ${Number(best.likes) || 0}`;
+      const text = document.createElement("p");
+      text.style.cssText = "font-size:13px;color:#eee;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;";
+      text.textContent = best.text || "";
+      top.append(name, likes);
+      wrap.append(top, text);
+      buzzEl.appendChild(wrap);
+    } else {
+      buzzEl.textContent = "まだレビューがありません";
+    }
+    if (allComments.length) {
+      const average = allComments.reduce((sum, item) => sum + (Number(item.rating) || 0), 0) / allComments.length;
+      $("#avg").textContent = average.toFixed(1);
+    } else {
+      $("#avg").textContent = "-";
+    }
+    updateStats();
+  }
+
+  /* Comment attachment selection / preview */
+  const commentAttachmentsInput = $("#commentAttachments");
+  const commentAttachmentPreview = $("#commentAttachmentPreview");
+  function clearPreviewUrls() {
+    previewUrls.forEach(url => URL.revokeObjectURL(url));
+    previewUrls = [];
+  }
+  function previewSelectedAttachments() {
+    clearPreviewUrls();
+    commentAttachmentPreview.replaceChildren();
+    selectedAttachments.forEach((item, index) => {
+      const card = document.createElement("div");
+      card.className = "attachment-preview-item";
+      const url = URL.createObjectURL(item.blob);
+      previewUrls.push(url);
+      const media = item.type.startsWith("video/") ? document.createElement("video") : document.createElement("img");
+      media.src = url;
+      if (media.tagName === "VIDEO") { media.controls = true; media.muted = true; }
+      else media.alt = item.name;
+      const name = document.createElement("span");
+      name.textContent = item.name;
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "btn-secondary";
+      remove.style.cssText = "width:100%;min-height:30px;padding:4px;font-size:10px;border-radius:0;";
+      remove.textContent = "取り除く";
+      remove.addEventListener("click", () => {
+        selectedAttachments.splice(index, 1);
+        previewSelectedAttachments();
+      });
+      card.append(media, name, remove);
+      commentAttachmentPreview.appendChild(card);
+    });
+  }
+  commentAttachmentsInput.addEventListener("change", () => {
+    const chosen = Array.from(commentAttachmentsInput.files || []);
+    commentAttachmentsInput.value = "";
+    const combined = [...selectedAttachments];
+    for (const file of chosen) {
+      if (!(file.type.startsWith("image/") || file.type.startsWith("video/"))) {
+        popup("画像または動画を選んでください");
+        continue;
+      }
+      const limit = file.type.startsWith("video/") ? 24 * 1024 * 1024 : 8 * 1024 * 1024;
+      if (file.size > limit) {
+        popup(file.type.startsWith("video/") ? "動画は24MB以内にしてください" : "画像は8MB以内にしてください");
+        continue;
+      }
+      if (combined.length >= 3) { popup("添付は最大3ファイルです"); break; }
+      if (combined.reduce((sum, item) => sum + item.size, 0) + file.size > 25 * 1024 * 1024) {
+        popup("添付ファイルの合計は25MB以内です");
+        break;
+      }
+      combined.push({ name: file.name, type: file.type, size: file.size, blob: file.slice(0, file.size, file.type) });
+    }
+    selectedAttachments = combined;
+    previewSelectedAttachments();
+  });
+
+  /* Main review submit */
+  $("#postBtn").addEventListener("click", async () => {
+    if (!dataReady) { popup("保存データを準備しています。少し待ってください"); return; }
+    const text = maskBadWords($("#text").value.trim());
+    if (!text && !selectedAttachments.length) { popup("感想か画像・動画を追加してください"); return; }
+    const name = maskBadWords($("#name").value.trim().slice(0, 15)) || "匿名";
+    const comment = {
+      id: newId("comment"), name, text,
+      rating: Number($("#rating").value) || 5,
+      likes: 0, dislikes: 0, reactions: {}, replies: [],
+      style: Math.random() < .08 ? "gold" : "",
+      attachments: selectedAttachments.map(item => ({ ...item })),
+      time: Date.now()
+    };
+    allComments.unshift(comment);
+    selectedAttachments = [];
+    previewSelectedAttachments();
+    $("#text").value = "";
+    await saveComments();
+    renderComments();
+    popup("レビューをこの端末に保存しました");
+    haptic([12, 18, 12]);
+  });
+
+  /* Local operations counters: explicitly not shared between browsers. */
+  let sold = Math.max(0, Number(localStorage.getItem("sold") || 0));
+  let lineCount = Math.max(0, Number(localStorage.getItem("lineCount") || 0));
+  let queueJoined = localStorage.getItem("queueJoined") === "1";
+  function updateStats() {
+    $("#commentCount").textContent = `${allComments.length}件`;
+    $("#sold").textContent = `${sold.toLocaleString("ja-JP")}個`;
+    $("#line").textContent = `${lineCount.toLocaleString("ja-JP")}人`;
+    const status = $("#counterStatus");
+    status.classList.add("is-visible");
+    status.classList.remove("is-connected");
+    status.textContent = "コメント・購入報告・行列カウントはこのブラウザー内のみの記録です。別端末の数字とは合算されません。購入報告はレジの実売上ではありません。";
+  }
+  function updateQueueButtonUI() {
+    const queueButton = $("#queueBtn");
+    const leaveButton = $("#leaveQueueBtn");
+    queueButton.disabled = queueJoined;
+    leaveButton.disabled = !queueJoined;
+    $("#queueButtonLabel").textContent = queueJoined ? "列に並んでいます" : "並んでる！";
+    $("#queueButtonHint").textContent = queueJoined ? "列から抜けるときは下のボタン" : "待機人数を +1";
+  }
+  $("#buyBtn").addEventListener("click", () => {
+    sold += 1;
+    localStorage.setItem("sold", String(sold));
+    updateStats();
+    haptic([12, 24, 12]);
+    popup("購入報告を記録しました！");
+    fireworks();
+  });
+  $("#queueBtn").addEventListener("click", () => {
+    if (queueJoined) return;
+    queueJoined = true;
+    lineCount += 1;
+    localStorage.setItem("queueJoined", "1");
+    localStorage.setItem("lineCount", String(lineCount));
+    updateQueueButtonUI();
+    updateStats();
+    haptic([12, 24, 12]);
+    popup("行列カウントを +1 しました");
+  });
+  $("#leaveQueueBtn").addEventListener("click", () => {
+    if (!queueJoined) return;
+    queueJoined = false;
+    lineCount = Math.max(0, lineCount - 1);
+    localStorage.setItem("queueJoined", "0");
+    localStorage.setItem("lineCount", String(lineCount));
+    updateQueueButtonUI();
+    updateStats();
+    haptic([8]);
+    popup("行列カウントを解除しました");
+  });
+
+  /* Feedback and slide-in drawer */
+  const badListEl = $("#badList");
+  const feedbackDrawer = $("#feedbackDrawer");
+  const feedbackBackdrop = $("#feedbackDrawerBackdrop");
+  const feedbackDrawerList = $("#feedbackDrawerList");
+  const feedbackDrawerStatus = $("#feedbackDrawerStatus");
+  const feedbackCountBadge = $("#feedbackCountBadge");
+  const feedbackDrawerCount = $("#feedbackDrawerCount");
+  const openFeedbackDrawerBtn = $("#openFeedbackDrawerBtn");
+  const closeFeedbackDrawerBtn = $("#closeFeedbackDrawerBtn");
+  let feedbackPreviouslyFocused = null;
+  function buildFeedbackCard(item, index) {
+    const card = document.createElement("article");
+    card.className = "feedback-card";
+    card.style.animationDelay = `${Math.min(index, 8) * 35}ms`;
+    const head = document.createElement("div");
+    head.className = "feedback-card-head";
+    const name = document.createElement("strong");
+    name.className = "feedback-card-name";
+    name.textContent = item.name || "匿名";
+    const date = document.createElement("time");
+    date.className = "feedback-card-date";
+    date.textContent = formatDate(item.time);
+    head.append(name, date);
+    const body = document.createElement("p");
+    body.className = "feedback-card-text";
+    body.textContent = item.text || "（本文なし）";
+    card.append(head, body);
+    return card;
+  }
+  function renderFeedbackTarget(target, items, emptyText) {
+    target.replaceChildren();
+    if (!items.length) {
+      const empty = document.createElement("div");
+      empty.className = "feedback-empty";
+      empty.textContent = emptyText;
+      target.appendChild(empty);
+      return;
+    }
+    items.forEach((item, index) => target.appendChild(buildFeedbackCard(item, index)));
+  }
+  function refreshFeedbackData() {
+    allFeedback.sort((a, b) => (Number(b.time) || 0) - (Number(a.time) || 0));
+    renderFeedbackTarget(badListEl, allFeedback.slice(0, 5), "まだ改善点は届いていません。気づいたことを送ってください。");
+    renderFeedbackTarget(feedbackDrawerList, allFeedback, "まだダメ出し・改善点は届いていません。投稿された意見がここに表示されます。");
+    feedbackCountBadge.textContent = `${allFeedback.length}件`;
+    feedbackDrawerCount.textContent = String(allFeedback.length);
+    feedbackDrawerStatus.textContent = "このブラウザーに保存された改善点を表示しています。";
+  }
+  function openFeedbackDrawer() {
+    feedbackPreviouslyFocused = document.activeElement;
+    feedbackBackdrop.hidden = false;
+    requestAnimationFrame(() => {
+      feedbackBackdrop.classList.add("is-open");
+      feedbackDrawer.classList.add("is-open");
+      feedbackDrawer.setAttribute("aria-hidden", "false");
+      openFeedbackDrawerBtn.setAttribute("aria-expanded", "true");
+      document.body.classList.add("feedback-drawer-open");
+      closeFeedbackDrawerBtn.focus({ preventScroll: true });
+    });
+    haptic([12]);
+  }
+  function closeFeedbackDrawer() {
+    feedbackBackdrop.classList.remove("is-open");
+    feedbackDrawer.classList.remove("is-open");
+    feedbackDrawer.setAttribute("aria-hidden", "true");
+    openFeedbackDrawerBtn.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("feedback-drawer-open");
+    window.setTimeout(() => { feedbackBackdrop.hidden = true; }, 430);
+    if (feedbackPreviouslyFocused && typeof feedbackPreviouslyFocused.focus === "function") feedbackPreviouslyFocused.focus({ preventScroll: true });
+  }
+  openFeedbackDrawerBtn.addEventListener("click", openFeedbackDrawer);
+  closeFeedbackDrawerBtn.addEventListener("click", closeFeedbackDrawer);
+  feedbackBackdrop.addEventListener("click", closeFeedbackDrawer);
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && feedbackDrawer.classList.contains("is-open")) closeFeedbackDrawer();
+  });
+
+  $("#badBtn").addEventListener("click", async () => {
+    if (!dataReady) { popup("保存領域を準備しています。少し待ってください"); return; }
+    const name = maskBadWords($("#badName").value.trim().slice(0, 40)) || "匿名";
+    const text = maskBadWords($("#badText").value.trim().slice(0, 1500));
+    if (!text) { $("#feedbackStatus").textContent = "改善点を入力してください。"; return; }
+    allFeedback.unshift({ id: newId("feedback"), name, text, time: Date.now() });
+    await saveFeedback();
+    $("#badText").value = "";
+    $("#feedbackStatus").textContent = "改善点をこのブラウザーに保存しました。";
+    popup("改善点を保存しました");
+  });
+
+  function csvCell(value) {
+    let text = String(value ?? "").replace(/\r\n?/g, "\n");
+    if (/^[\s]*[=+\-@]/.test(text)) text = "'" + text;
+    return '"' + text.replace(/"/g, '""') + '"';
+  }
+  function downloadCsv(filename, rows) {
+    const csv = "\uFEFF" + rows.map(row => row.map(csvCell).join(",")).join("\r\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1200);
+  }
+  $("#exportFeedbackCsvBtn").addEventListener("click", () => {
+    const rows = [["id", "name", "text", "created_at"]];
+    allFeedback.forEach(item => rows.push([item.id, item.name || "匿名", item.text || "", new Date(Number(item.time) || Date.now()).toISOString()]));
+    downloadCsv(`feedback_${new Date().toISOString().slice(0, 10)}.csv`, rows);
+    popup("改善点CSVを書き出しました");
+  });
+
+  /* Flow messages and fireworks */
+  function flowComment(name, text) {
+    const div = document.createElement("div");
+    div.className = "flow";
+    div.style.top = (Math.random() * 180 + 10) + "px";
+    const icon = document.createElement("span");
+    icon.className = "material-symbols-outlined";
+    icon.style.fontSize = "16px";
+    icon.textContent = "chat_bubble";
+    const author = document.createElement("b");
+    author.textContent = name;
+    const message = document.createElement("span");
+    message.textContent = text;
+    div.append(icon, author, document.createTextNode(": "), message);
+    liveLayer.appendChild(div);
+    window.setTimeout(() => div.remove(), 10000);
+  }
+  function fireworks() {
+    if (prefersReducedMotion.matches) return;
+    for (let i = 0; i < 8; i++) {
+      const firework = document.createElement("div");
+      firework.className = "firework";
+      const icon = document.createElement("span");
+      icon.className = "material-symbols-outlined";
+      icon.textContent = "celebration";
+      firework.appendChild(icon);
+      firework.style.left = (Math.random() * 90 + 5) + "%";
+      firework.style.top = (Math.random() * 70 + 15) + "%";
+      document.body.appendChild(firework);
+      window.setTimeout(() => firework.remove(), 1000);
+    }
+  }
+  $("#fireBtn").addEventListener("click", fireworks);
+  $("#godBtn").addEventListener("click", () => { popup("殿堂入り神レビュー演出"); fireworks(); });
+  $("#staffBtn").addEventListener("click", () => {
+    const messages = ["揚げたて出来上がりました！", "ただいまアツアツを提供中！", "秘伝ダレ仕込みの自信作！", "行列へのご協力ありがとうございます！"];
+    flowComment("店員", messages[Math.floor(Math.random() * messages.length)]);
+  });
+  window.setInterval(() => {
+    const messages = ["揚げたてアツアツ提供中！", "ヤケドにご注意ください！", "文化祭限定の特製唐揚げ！", "コメント募集中です！"];
+    flowComment("店員", messages[Math.floor(Math.random() * messages.length)]);
+  }, 20000);
+
+  /* Admin panel: client-side convenience only, not secure authentication. */
+  const ADMIN_PASS = "karaage";
+  $("#loginBtn").addEventListener("click", () => {
+    if ($("#adminPass").value === ADMIN_PASS) {
+      $("#adminPanel").style.display = "block";
+      popup("管理者モードを開きました");
+    } else popup("パスワードが違います");
+  });
+  $("#clearBtn").addEventListener("click", async () => {
+    if (!window.confirm("このブラウザーに保存されたすべてのコメントと返信を削除します。よろしいですか？")) return;
+    allComments = [];
+    await saveComments();
+    renderComments();
+    popup("この端末のコメントを削除しました");
+  });
+
+  /* Delicious votes are also local-only. */
+  const deliciousBtn = $("#deliciousBtn");
+  const deliciousLabel = $("#deliciousLabel");
+  const deliciousCountEl = $("#deliciousCount");
+  const deliciousScope = $("#deliciousScope");
+  const deliciousStatus = $("#deliciousStatus");
+  let deliciousVoted = localStorage.getItem("localDeliciousVoted") === "1";
+  let deliciousCount = Math.max(0, Number(localStorage.getItem("localDeliciousCount") || 0));
+  function updateDeliciousUI() {
+    deliciousBtn.classList.toggle("is-voted", deliciousVoted);
+    deliciousBtn.setAttribute("aria-pressed", String(deliciousVoted));
+    deliciousLabel.textContent = deliciousVoted ? "おいしいに投票済み！" : "おいしい！";
+    deliciousCountEl.textContent = String(deliciousCount);
+    deliciousScope.textContent = "この端末内の投票";
+    deliciousStatus.textContent = deliciousVoted ? "投票済み · もう一度押すと取り消せます。" : "おいしいと思ったらタップ！";
+  }
+  function animateDeliciousButton() {
+    deliciousBtn.classList.remove("is-bouncing");
+    void deliciousBtn.offsetWidth;
+    deliciousBtn.classList.add("is-bouncing");
+    window.setTimeout(() => deliciousBtn.classList.remove("is-bouncing"), 460);
+    const rect = deliciousBtn.getBoundingClientRect();
+    ["favorite", "kid_star", "favorite", "star", "favorite", "kid_star", "favorite"].forEach((symbol, index, all) => {
+      const particle = document.createElement("span");
+      particle.className = "delicious-particle";
+      const icon = document.createElement("span");
+      icon.className = "material-symbols-outlined";
+      icon.textContent = symbol;
+      particle.appendChild(icon);
+      particle.style.left = (rect.left + rect.width / 2) + "px";
+      particle.style.top = (rect.top + rect.height / 2) + "px";
+      const angle = Math.PI * 2 * index / all.length - Math.PI / 2;
+      const distance = 38 + (index % 3) * 15;
+      particle.style.setProperty("--dx", `${Math.cos(angle) * distance}px`);
+      particle.style.setProperty("--dy", `${Math.sin(angle) * distance - 16}px`);
+      particle.style.setProperty("--turn", `${(index % 2 ? 1 : -1) * (18 + index * 5)}deg`);
+      document.body.appendChild(particle);
+      window.setTimeout(() => particle.remove(), 900);
+    });
+  }
+  deliciousBtn.addEventListener("click", () => {
+    deliciousVoted = !deliciousVoted;
+    deliciousCount = Math.max(0, deliciousCount + (deliciousVoted ? 1 : -1));
+    localStorage.setItem("localDeliciousVoted", deliciousVoted ? "1" : "0");
+    localStorage.setItem("localDeliciousCount", String(deliciousCount));
     updateDeliciousUI();
-    popup("共有できないため、この端末に投票を記録しました");
-  } finally {
-    deliciousBtn.disabled = false;
-  }
-});
+    haptic([18, 28, 18]);
+    if (deliciousVoted) animateDeliciousButton();
+  });
 
-updateDeliciousUI();
-
-const ADMIN_PASS = "karaage";
-
-document.getElementById("loginBtn").onclick = () => {
-  const input = document.getElementById("adminPass").value;
-  if (input === ADMIN_PASS) {
-    document.getElementById("adminPanel").style.display = "block";
-    popup("管理者ログイン成功");
-  } else {
-    popup("パスワードが違います");
-  }
-};
-
-document.getElementById("clearBtn").onclick = async () => {
-  if (!window.confirm("すべてのレビューを削除します。この操作は取り消せません。続行しますか？")) return;
-  try {
-    if (hasFirebaseConfig && !commentsLocalOnly) {
-      const snap = await getDocs(collection(db, "comments"));
-      for (const d of snap.docs) await deleteDoc(doc(db, "comments", d.id));
-    } else {
-      allComments = [];
-      localStorage.removeItem("karaageComments");
-      render();
+  /* Load existing records (including migration from old localStorage records). */
+  async function initializeData() {
+    const legacyCommentsRaw = localStorage.getItem("karaageComments");
+    let loadedComments = await getState("comments", null);
+    let loadedFeedback = await getState("feedback", null);
+    if (!Array.isArray(loadedComments)) {
+      try {
+        const legacy = legacyCommentsRaw ? JSON.parse(legacyCommentsRaw) : [];
+        loadedComments = Array.isArray(legacy) ? legacy.map(item => ({
+          id: item.id || newId("comment"),
+          name: String(item.name || "匿名"),
+          text: String(item.text || ""),
+          rating: Number(item.rating) || 5,
+          likes: Number(item.likes) || 0,
+          dislikes: Number(item.dislikes) || 0,
+          reactions: {}, replies: [], attachments: [], time: Number(item.time) || Date.now(), style: item.style || ""
+        })) : [];
+      } catch (_) { loadedComments = []; }
     }
-    popup("レビューを削除しました");
-  } catch (error) {
-    console.error("レビューを削除できません。", error);
-    popup("削除できません。Firebaseの権限を確認してください");
+    allComments = loadedComments.map(item => ({
+      ...item,
+      id: item.id || newId("comment"),
+      name: String(item.name || "匿名"),
+      text: String(item.text || ""),
+      rating: Number(item.rating) || 5,
+      likes: Number(item.likes) || 0,
+      dislikes: Number(item.dislikes) || 0,
+      reactions: item.reactions && typeof item.reactions === "object" ? item.reactions : {},
+      replies: Array.isArray(item.replies) ? item.replies : [],
+      attachments: Array.isArray(item.attachments) ? item.attachments : [],
+      time: Number(item.time) || Date.now()
+    }));
+    if (!Array.isArray(loadedFeedback)) {
+      try {
+        const legacyFeedback = JSON.parse(localStorage.getItem("karaageFeedback") || "[]");
+        loadedFeedback = Array.isArray(legacyFeedback) ? legacyFeedback : [];
+      } catch (_) { loadedFeedback = []; }
+    }
+    allFeedback = loadedFeedback;
+    dataReady = true;
+    await saveState("comments", allComments);
+    await saveState("feedback", allFeedback);
+    renderComments();
+    refreshFeedbackData();
+    updateStats();
+    updateQueueButtonUI();
+    updateDeliciousUI();
+    initScrollObserver();
   }
-};
 
-document.getElementById("fireBtn").onclick = () => {
-  fireworks();
-};
-
-document.getElementById("godBtn").onclick = () => {
-  popup("🏆 殿堂入り神レビュー演出");
-  fireworks();
-};
-
-document.getElementById("staffBtn").onclick = () => {
-  const msgs = [
-    "揚げたて出来上がりました！",
-    "ただいまアツアツを提供中！",
-    "秘伝ダレ仕込みの自信作！",
-    "行列へのご協力ありがとうございます！"
-  ];
-  const msg = msgs[Math.floor(Math.random() * msgs.length)];
-  flowComment("店員", msg);
-};
-
-setInterval(() => {
-  const msgs = [
-    "🍗 揚げたてアツアツ提供中！",
-    "🔥 ヤケドにご注意ください！",
-    "🏮 文化祭限定の特製唐揚げ！",
-    "✨ コメント募集中です！"
-  ];
-  const msg = msgs[Math.floor(Math.random() * msgs.length)];
-  flowComment("店員", msg);
-}, 15000);
-
+  updateStats();
+  updateQueueButtonUI();
+  updateDeliciousUI();
+  refreshFeedbackData();
+  initScrollObserver();
+  initializeData().catch(error => {
+    console.error("端末内データの読み込みに失敗しました。", error);
+    dataReady = true;
+    allComments = [];
+    allFeedback = [];
+    renderComments();
+    refreshFeedbackData();
+    updateStats();
+  });
+})();
 </script>
 </body>
 </html>
