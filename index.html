@@ -2268,6 +2268,186 @@ body.feedback-drawer-open { overflow:hidden; }
   .comment-media-grid { grid-template-columns:1fr; }
 }
 
+
+
+/* =========================================================
+   COMMENT TAB — APRIL DISPLAY, EXPANDABLE COMPOSER & MOTION
+   ========================================================= */
+.modal-overlay { padding: clamp(14px, 3vw, 24px); }
+.modal-box {
+  max-height: min(88dvh, 900px);
+  overflow-y: auto;
+  padding: clamp(20px, 4vw, 30px);
+  gap: 18px;
+  scroll-padding-block: 20px;
+}
+.modal-header { padding-bottom: 14px; margin-bottom: 2px; }
+.modal-header > .fw-800 { font-size: 17px; line-height: 1.4; }
+.modal-box .guide-content { display:flex; flex-direction:column; gap:12px; }
+.modal-box .guide-step-item {
+  gap:12px; padding:13px 14px; border:1px solid rgba(255,255,255,.075);
+  border-radius:11px; line-height:1.8; background:rgba(0,0,0,.28);
+}
+.modal-box .guide-step-item > .material-symbols-outlined { flex:0 0 22px; margin-top:1px; }
+.guide-notices { display:flex; flex-direction:column; gap:12px; margin-top:4px; }
+.guide-notice {
+  padding:15px 15px 16px; border-radius:12px;
+  border:1px solid rgba(255,161,74,.2); background:linear-gradient(135deg,rgba(255,121,0,.075),rgba(255,255,255,.025));
+}
+.guide-notice h3 { display:flex; align-items:center; gap:8px; margin-bottom:7px; color:#ffd0a2; font-size:13px; font-weight:900; }
+.guide-notice h3 .material-symbols-outlined { font-size:18px; color:var(--accent); }
+.guide-notice p,.guide-notice li { color:#c9c0b7; font-size:11px; line-height:1.9; }
+.guide-notice ul { padding-left:18px; display:flex; flex-direction:column; gap:4px; }
+.guide-local-note { padding:12px 13px; border-radius:10px; background:rgba(255,255,255,.045); color:#aaa; font-size:10px; line-height:1.8; }
+
+.buzz-feature-box {
+  position:relative; isolation:isolate; overflow:hidden;
+  padding:clamp(18px,4vw,28px);
+  color:var(--passion-paper, #fff7f4);
+  background:linear-gradient(135deg,rgba(255,121,0,.17),rgba(17,16,20,.98) 48%,rgba(38,25,14,.98));
+  border:1px solid rgba(255,153,43,.42);
+  box-shadow:5px 6px 0 rgba(255,121,0,.62),0 16px 34px rgba(0,0,0,.22);
+  transition:transform 520ms cubic-bezier(.16,1,.3,1),box-shadow 500ms ease,border-color 350ms ease;
+}
+.buzz-feature-box::before {
+  content:""; position:absolute; z-index:-1; width:210px; height:210px; right:-82px; top:-78px;
+  border-radius:50%; background:radial-gradient(circle,rgba(255,154,47,.22),rgba(255,121,0,0) 68%);
+  transition:transform 720ms cubic-bezier(.16,1,.3,1),opacity 400ms ease;
+}
+.buzz-feature-box.is-spotlit { transform:translateY(-3px); border-color:rgba(255,190,92,.85); box-shadow:7px 10px 0 var(--primary),0 0 36px rgba(255,121,0,.2); }
+.buzz-feature-box.is-spotlit::before { transform:scale(1.5); }
+.buzz-eyebrow { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; color:#ffbd7b; font-size:9px; font-weight:900; letter-spacing:.14em; }
+.buzz-heading { margin-bottom:16px; font:400 clamp(30px,7vw,54px)/1.02 var(--passion-display); letter-spacing:-.035em; }
+.buzz-heading em { color:var(--primary); font-style:normal; text-shadow:2px 2px 0 rgba(0,0,0,.6); }
+.buzz-feature-review {
+  position:relative; padding:clamp(15px,3vw,22px); overflow:hidden;
+  border:1px solid rgba(255,255,255,.15); border-left:4px solid var(--primary); border-radius:12px;
+  background:linear-gradient(125deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+  animation:buzzReviewIn 680ms cubic-bezier(.16,1,.3,1) both;
+}
+.buzz-feature-review::after { content:"“”"; position:absolute; right:7px; top:-27px; color:rgba(255,153,43,.1); font:400 120px/1 var(--passion-display); pointer-events:none; }
+.buzz-review-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; position:relative; z-index:1; }
+.buzz-review-person { display:flex; align-items:center; gap:9px; min-width:0; }
+.buzz-review-avatar { width:36px; height:36px; display:grid; place-items:center; flex:0 0 36px; border-radius:50%; color:#201207; background:var(--primary); box-shadow:0 0 0 4px rgba(255,121,0,.12); }
+.buzz-review-avatar .material-symbols-outlined { font-size:21px; }
+.buzz-review-name { font-size:12px; font-weight:900; overflow-wrap:anywhere; }
+.buzz-review-rating { color:#ffc85c; display:flex; align-items:center; gap:1px; font-size:14px; }
+.buzz-review-rating .material-symbols-outlined { font-size:15px; font-variation-settings:'FILL' 1; }
+.buzz-review-like { flex:0 0 auto; display:flex; align-items:center; gap:5px; color:#ffd08e; font-size:12px; font-weight:900; }
+.buzz-review-text { position:relative; z-index:1; white-space:pre-wrap; overflow-wrap:anywhere; font-size:clamp(14px,2.6vw,17px); font-weight:700; line-height:1.95; color:#fff8ef; }
+.buzz-review-bottom { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:15px; padding-top:11px; border-top:1px solid rgba(255,255,255,.1); color:#a9a097; font-size:9px; letter-spacing:.08em; }
+.buzz-spotlight-btn { width:100%; min-height:44px; margin-top:14px; padding:10px 13px; border:1px solid rgba(255,162,64,.36); border-radius:10px; background:rgba(255,121,0,.11); color:#ffddb7; box-shadow:none; font-size:12px; transition:transform 250ms cubic-bezier(.16,1,.3,1),background 300ms ease,border-color 300ms ease; }
+.buzz-spotlight-btn:hover { transform:translateY(-2px); background:rgba(255,121,0,.2); }
+.buzz-spotlight-btn:active { transform:scale(.985); }
+.buzz-spotlight-btn:disabled { opacity:.45; cursor:not-allowed; }
+.buzz-spotlight-btn .material-symbols-outlined { font-size:18px; }
+.buzz-empty { padding:20px 14px; color:#c8b9a9; border:1px dashed rgba(255,255,255,.17); border-radius:11px; font-size:12px; line-height:1.9; }
+@keyframes buzzReviewIn { from { opacity:0; transform:translateY(14px) scale(.985); filter:blur(4px); } to { opacity:1; transform:translateY(0) scale(1); filter:blur(0); } }
+
+.comment-composer {
+  padding:clamp(17px,4vw,25px);
+  background:linear-gradient(155deg,rgba(255,121,0,.11),rgba(18,18,18,.96) 42%);
+  border-color:rgba(255,153,43,.33);
+}
+.composer-header { margin-bottom:14px; }
+.composer-kicker { margin-bottom:6px; color:#ffb36b; font-size:9px; font-weight:900; letter-spacing:.16em; }
+.composer-title { font:400 clamp(24px,5.4vw,38px)/1.1 var(--passion-display); letter-spacing:-.025em; color:#fff7ed; }
+.composer-lead { margin-top:8px; color:var(--text-muted); font-size:11px; line-height:1.8; }
+#text.comment-textarea {
+  display:block; width:100%; min-height:132px; margin:0; padding:16px 15px; resize:vertical;
+  border-radius:14px; border:1px solid rgba(255,167,83,.3);
+  background:rgba(5,5,5,.5); color:#fff7ed; font-size:14px; line-height:1.9;
+  box-shadow:inset 0 2px 10px rgba(0,0,0,.2);
+  transition:border-color 280ms ease,box-shadow 350ms ease,background 280ms ease;
+}
+#text.comment-textarea::placeholder { color:#9d9185; }
+#text.comment-textarea:focus { border-color:var(--accent); background:rgba(7,6,5,.75); box-shadow:0 0 0 3px rgba(255,152,0,.12),inset 0 2px 10px rgba(0,0,0,.2); }
+.composer-toolbar { display:flex; align-items:center; gap:9px; margin-top:11px; }
+.composer-tool {
+  position:relative; flex:0 0 44px; width:44px; min-height:44px; height:44px; padding:0;
+  display:grid; place-items:center; border-radius:13px; border:1px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.055); color:#ded5ca; box-shadow:none;
+  transition:transform 360ms cubic-bezier(.16,1,.3,1),background 280ms ease,border-color 280ms ease,color 280ms ease;
+}
+.composer-tool > .material-symbols-outlined { font-size:21px; }
+.composer-tool:hover { transform:translateY(-3px); border-color:rgba(255,159,53,.5); background:rgba(255,121,0,.12); color:#fff1dd; }
+.composer-tool:active { transform:scale(.91); }
+.composer-tool.is-open,.composer-tool[aria-expanded="true"] { color:#211207; border-color:var(--accent); background:linear-gradient(145deg,#ffc266,#ff7900); box-shadow:0 4px 12px rgba(255,121,0,.18); }
+.composer-tool .tool-dot { position:absolute; right:4px; top:4px; width:6px; height:6px; border-radius:50%; background:#ffe080; box-shadow:0 0 0 2px #1b1712; }
+.composer-toolbar-spacer { flex:1; }
+.composer-post-btn { flex:0 0 48px; width:48px; min-height:48px; height:48px; border-radius:15px; color:#1b1005; background:linear-gradient(145deg,#ffd07a,#ff7900 75%); box-shadow:0 4px 0 #8c3900,0 8px 18px rgba(255,121,0,.18); transition:transform 240ms cubic-bezier(.16,1,.3,1),box-shadow 240ms ease; }
+.composer-post-btn .material-symbols-outlined { font-size:23px; }
+.composer-post-btn:hover { transform:translateY(-2px); }
+.composer-post-btn:active { transform:translateY(3px) scale(.97); box-shadow:0 1px 0 #8c3900; }
+.composer-status { min-height:16px; margin-top:8px; color:#aa9e91; font-size:10px; line-height:1.6; }
+.comment-composer.is-posted { animation:composerPosted 680ms cubic-bezier(.16,1,.3,1); }
+@keyframes composerPosted { 0% { box-shadow:0 0 0 0 rgba(255,121,0,0); } 38% { box-shadow:0 0 0 5px rgba(255,121,0,.13),0 10px 36px rgba(255,121,0,.13); } 100% { box-shadow:0 0 0 0 rgba(255,121,0,0); } }
+.composer-tool.is-tapped { animation:toolTap 380ms cubic-bezier(.16,1,.3,1); }
+@keyframes toolTap { 0% { transform:scale(1); } 42% { transform:scale(.88) rotate(-4deg); } 100% { transform:scale(1); } }
+.composer-panels { display:flex; flex-direction:column; gap:0; }
+.composer-panel { display:grid; grid-template-rows:0fr; opacity:0; transform:translateY(-8px) scale(.99); margin-top:0; visibility:hidden; pointer-events:none; transition:grid-template-rows 560ms cubic-bezier(.16,1,.3,1),opacity 380ms ease,transform 560ms cubic-bezier(.16,1,.3,1),margin-top 420ms ease,visibility 560ms; }
+.composer-panel.is-open { grid-template-rows:1fr; opacity:1; transform:translateY(0) scale(1); margin-top:12px; visibility:visible; pointer-events:auto; }
+.composer-panel-inner { min-height:0; overflow:hidden; padding:0 1px; }
+.composer-panel-content { padding:13px; border-radius:12px; border:1px solid rgba(255,155,56,.23); background:rgba(255,255,255,.035); }
+.composer-panel-title { display:flex; align-items:center; gap:7px; margin-bottom:8px; color:#ffcf9c; font-size:12px; font-weight:900; }
+.composer-panel-content input,.composer-panel-content select { margin:0; }
+.composer-panel-content .attachment-picker { margin-top:0; padding:0; border:0; background:transparent; }
+.composer-panel-content .attachment-picker-label { margin-bottom:7px; }
+.composer-panel-content #commentAttachments { margin-top:5px; }
+.composer-panel-content .attachment-help { font-size:10px; }
+.composer-panel[aria-hidden="true"] { user-select:none; }
+
+.comment-list { gap:13px; }
+.comment {
+  position:relative; overflow:hidden; padding:15px 14px 14px;
+  border:1px solid rgba(255,255,255,.085); border-left:3px solid var(--accent);
+  background:linear-gradient(145deg,rgba(34,30,26,.92),rgba(19,19,19,.94));
+  box-shadow:0 7px 20px rgba(0,0,0,.17);
+  transition:transform 420ms cubic-bezier(.16,1,.3,1),border-color 320ms ease,box-shadow 380ms ease,background 320ms ease;
+  animation:commentCardIn 650ms cubic-bezier(.16,1,.3,1) both;
+  animation-delay:var(--comment-delay,0ms);
+}
+.comment::before { content:""; position:absolute; top:0; left:0; width:3px; height:100%; background:linear-gradient(var(--accent),rgba(255,121,0,0)); opacity:.75; pointer-events:none; }
+.comment:hover { transform:translateY(-2px); border-color:rgba(255,153,43,.28); box-shadow:0 12px 28px rgba(0,0,0,.24); }
+.comment.is-reacting { border-color:rgba(255,184,75,.7); box-shadow:0 0 0 3px rgba(255,153,43,.09),0 12px 28px rgba(0,0,0,.24); }
+.comment:focus-within { border-color:rgba(255,153,43,.45); }
+.commentHeader { gap:11px; margin-bottom:7px; }
+.comment-content { margin-top:9px; line-height:1.95; }
+.comment-meta-line { display:flex; align-items:center; gap:6px; margin-top:8px; font-size:10px; opacity:.85; }
+.comment-media-grid { margin-top:14px; }
+.comment-media-item { transition:transform 480ms cubic-bezier(.16,1,.3,1),border-color 300ms ease; }
+.comment-media-item.image:hover { transform:scale(1.015); border-color:rgba(255,153,43,.55); }
+.comment-actions { padding-top:11px; border-top:1px solid rgba(255,255,255,.07); gap:8px; }
+.comment-reaction-btn,.comment-reply-toggle { min-height:38px; padding:7px 12px; }
+.comment-reaction-btn.is-selected { animation:reactionSelect 460ms cubic-bezier(.16,1,.3,1); }
+.comment-reaction-btn.like.is-selected { box-shadow:0 0 0 3px rgba(255,163,52,.075); }
+.comment-reaction-btn.dislike.is-selected { box-shadow:0 0 0 3px rgba(255,120,100,.06); }
+.comment-reaction-btn .material-symbols-outlined { transition:transform 360ms cubic-bezier(.16,1,.3,1); }
+.comment-reaction-btn.is-selected .material-symbols-outlined { transform:scale(1.16) rotate(-6deg); font-variation-settings:'FILL' 1; }
+.reply-panel:not([hidden]) { animation:replyPanelIn 480ms cubic-bezier(.16,1,.3,1) both; }
+.reply-item { animation:replyItemIn 420ms cubic-bezier(.16,1,.3,1) both; }
+.comment-empty { padding:34px 17px; line-height:1.9; background:rgba(255,255,255,.025); }
+.rankItem { animation:commentCardIn 480ms cubic-bezier(.16,1,.3,1) both; }
+@keyframes commentCardIn { from { opacity:0; transform:translateY(13px) scale(.99); filter:blur(3px); } to { opacity:1; transform:translateY(0) scale(1); filter:blur(0); } }
+@keyframes reactionSelect { 0% { transform:scale(1); } 38% { transform:scale(1.09); } 70% { transform:scale(.975); } 100% { transform:scale(1); } }
+@keyframes replyPanelIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes replyItemIn { from { opacity:0; transform:translateX(-7px); } to { opacity:1; transform:translateX(0); } }
+
+@media (max-width:480px) {
+  .composer-toolbar { gap:7px; }
+  .composer-tool { flex-basis:42px; width:42px; height:42px; min-height:42px; border-radius:12px; }
+  .composer-post-btn { flex-basis:46px; width:46px; height:46px; min-height:46px; }
+  .buzz-review-top { align-items:flex-start; }
+  .buzz-review-rating { gap:0; }
+  .comment { padding:13px 11px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .buzz-feature-box,.buzz-feature-box::before,.buzz-feature-review,.composer-tool,.composer-post-btn,.composer-panel,.comment,.comment-reaction-btn,.comment-media-item,.reply-panel:not([hidden]),.reply-item,.rankItem {
+    animation:none !important; transition:none !important; filter:none !important;
+  }
+}
+
 </style>
 </head>
 
@@ -2316,36 +2496,59 @@ body.feedback-drawer-open { overflow:hidden; }
 
 <!-- 使い方ポップアップモーダル -->
 <div class="modal-overlay" id="guideModal">
-  <div class="modal-box">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
     <div class="modal-header">
-      <div class="fw-800" style="color:var(--accent); display:flex; align-items:center; gap:6px;">
+      <div id="guideTitle" class="fw-800" style="color:var(--accent);display:flex;align-items:center;gap:8px;">
         <span class="material-symbols-outlined">info</span> サイトの使い方ガイド
       </div>
-      <button class="modal-close-btn" id="closeGuideBtn">
+      <button class="modal-close-btn" id="closeGuideBtn" type="button" aria-label="ガイドを閉じる">
         <span class="material-symbols-outlined">close</span>
       </button>
     </div>
-    <div style="display:flex; flex-direction:column; gap:8px;">
+    <div class="guide-content">
       <div class="guide-step-item">
         <span class="material-symbols-outlined" style="color:var(--accent);">favorite</span>
-        <div><strong class="fw-700">1. 「おいしい！」ボタンで応援</strong><br><span class="fw-300" style="color:var(--text-muted);">唐揚げをおいしいと思ったら、ホームのボタンをタップ。アニメーションと対応端末の振動で楽しく応援できます。</span></div>
+        <div><strong class="fw-700">1. 「おいしい！」で応援</strong><br><span class="fw-300" style="color:var(--text-muted);">ホーム画面でボタンを押すと応援投票を記録します。振動は対応端末・ブラウザーでのみ動作します。</span></div>
       </div>
       <div class="guide-step-item">
         <span class="material-symbols-outlined" style="color:var(--accent);">rate_review</span>
-        <div><strong class="fw-700">2. 感想・コメントを投稿</strong><br><span class="fw-300" style="color:var(--text-muted);">コメントタブから5段階評価と感想を投稿！いいね数が集まるとランキング上位や注目レビューに掲載されます。</span></div>
+        <div><strong class="fw-700">2. 感想を投稿</strong><br><span class="fw-300" style="color:var(--text-muted);">コメント欄に感想を書き、必要に応じてユーザー名・星評価・画像・動画を追加できます。投稿はこのブラウザー内に保存されます。</span></div>
+      </div>
+      <div class="guide-step-item">
+        <span class="material-symbols-outlined" style="color:var(--accent);">thumb_up</span>
+        <div><strong class="fw-700">3. コメントに反応・返信</strong><br><span class="fw-300" style="color:var(--text-muted);">コメントの「いいね」「わるいね」で反応し、返信ボタンから会話を追加できます。</span></div>
       </div>
       <div class="guide-step-item">
         <span class="material-symbols-outlined" style="color:var(--accent);">local_fire_department</span>
-        <div><strong class="fw-700">3. 売上カウンター＆演出</strong><br><span class="fw-300" style="color:var(--text-muted);">唐揚げが売れるごとにボタンを押すと、お祝いの花火とジュワァァ演出が発生します。</span></div>
+        <div><strong class="fw-700">4. 屋台のこだわりを知る</strong><br><span class="fw-300" style="color:var(--text-muted);">「情熱」タブでは、仕込みや揚げ方へのこだわりを写真とインタラクションで楽しめます。</span></div>
       </div>
-      <div class="guide-step-item">
-        <span class="material-symbols-outlined" style="color:var(--accent);">local_dining</span>
-        <div><strong class="fw-700">4. 屋台のこだわりを知る</strong><br><span class="fw-300" style="color:var(--text-muted);">「情熱」タブでは、私たちが仕込んだ秘伝のタレや二度揚げの秘密を写真と共にお楽しみいただけます。</span></div>
-      </div>
+    </div>
+    <div class="guide-notices" aria-label="ご利用にあたっての注意事項">
+      <section class="guide-notice">
+        <h3><span class="material-symbols-outlined">info</span>ご利用にあたって</h3>
+        <p>このページは文化祭の模擬店紹介・感想共有を目的としたものです。カウントやリアクションは参考値であり、会計・在庫・公式な来場者数の記録には使用しないでください。</p>
+      </section>
+      <section class="guide-notice">
+        <h3><span class="material-symbols-outlined">shield</span>投稿時の注意事項</h3>
+        <ul>
+          <li>氏名、住所、電話番号、学校の個人情報など、他人や自分を特定できる情報を書き込まないでください。</li>
+          <li>人物が写った写真・動画は、写っている人の許可を得てから添付してください。</li>
+          <li>誹謗中傷、脅迫、差別的な内容、他人の権利を侵害する素材の投稿は禁止します。</li>
+          <li>添付できるファイルは画像・動画のみです。内容とファイルサイズを確認してから投稿してください。</li>
+        </ul>
+      </section>
+      <section class="guide-notice">
+        <h3><span class="material-symbols-outlined">database</span>保存・プライバシー</h3>
+        <p>コメント、返信、リアクション、添付データは、原則として現在のブラウザー内に保存されます。別端末への自動共有はありません。ブラウザーのデータ消去、端末の故障、空き容量不足などでデータが失われることがあります。必要な記録は各自で保存してください。</p>
+      </section>
+      <section class="guide-notice">
+        <h3><span class="material-symbols-outlined">gavel</span>免責事項</h3>
+        <p>主催者は投稿内容の完全性・正確性や、サービスの常時利用可能性を保証しません。端末・ブラウザーの不具合、投稿データの消失、利用者間のトラブル等について、主催者に故意または重大な過失がある場合を除き責任を負いかねます。問題のある投稿を見つけた場合は、運営担当者へ知らせてください。</p>
+      </section>
+      <p class="guide-local-note">このページのコメント・添付ファイルは端末内保存方式です。共用端末では個人情報を書き込まず、利用後は必要に応じて管理者にデータの整理を依頼してください。</p>
     </div>
   </div>
 </div>
-
 <div class="container">
 
   <!-- TAB 1: HOME / ORANGE EDITORIAL -->
@@ -2545,51 +2748,89 @@ body.feedback-drawer-open { overflow:hidden; }
       </button>
     </div>
 
-    <!-- Buzz Box -->
-    <div class="box">
-      <div class="box-header">
-        <span class="material-symbols-outlined" style="color:var(--gold);">trending_up</span>
-        <span class="fw-800">今バズってるレビュー</span>
+    <!-- Buzz / featured review -->
+    <section class="buzz-feature-box scroll-animate" id="buzzFeatureBox" aria-labelledby="buzzFeatureTitle">
+      <div class="buzz-eyebrow"><span>THE REVIEW THAT HITS</span><span>FEATURED / 01</span></div>
+      <h2 class="buzz-heading" id="buzzFeatureTitle">いま、<em>刺さってる。</em></h2>
+      <div id="buzz" class="buzz-content" role="status" aria-live="polite">
+        <div class="buzz-empty">まだレビューがありません。最初のひとことが、ここに載るかもしれません。</div>
       </div>
-      <div id="buzz" class="fw-300" style="font-size:14px; color:var(--text-muted);">まだレビューがありません</div>
-    </div>
+      <button id="buzzSpotlightBtn" class="buzz-spotlight-btn" type="button" disabled>
+        <span class="material-symbols-outlined" aria-hidden="true">flare</span>
+        このレビューを照らす
+      </button>
+    </section>
 
-    <!-- Post Comment Box -->
-    <div class="box">
-      <div class="box-header">
-        <span class="material-symbols-outlined">rate_review</span>
-        <span class="fw-800">感想を書く</span>
-      </div>
-
-      <div class="form-grid">
-        <input id="name" placeholder="ユーザー名" maxlength="15" class="fw-500">
-        <select id="rating" class="fw-500">
-          <option value="5">★★★★★ (5)</option>
-          <option value="4">★★★★☆ (4)</option>
-          <option value="3">★★★☆☆ (3)</option>
-          <option value="2">★★☆☆☆ (2)</option>
-          <option value="1">★☆☆☆☆ (1)</option>
-        </select>
+    <!-- Minimal first-state comment composer -->
+    <section class="comment-composer box scroll-animate" aria-labelledby="composerTitle">
+      <div class="composer-header">
+        <p class="composer-kicker">YOUR WORDS / YOUR TAKE</p>
+        <h2 class="composer-title" id="composerTitle">ひとこと、どうぞ。</h2>
+        <p class="composer-lead">気に入ったところも、気になったところも。あなたの言葉で教えてください。</p>
       </div>
 
-      <textarea id="text" placeholder="唐揚げの感想を書いてください！" class="fw-400" maxlength="2000" aria-label="レビュー本文"></textarea>
+      <textarea id="text" class="comment-textarea fw-400" placeholder="コメントする、、、、、" maxlength="2000" aria-label="コメント本文"></textarea>
 
-      <div class="attachment-picker">
-        <label for="commentAttachments" class="attachment-picker-label">
-          <span class="material-symbols-outlined" aria-hidden="true">attach_file</span>
-          画像・動画を添付
-        </label>
-        <input id="commentAttachments" type="file" accept="image/*,video/*" multiple aria-describedby="attachmentHelp">
-        <p id="attachmentHelp" class="attachment-help">画像は1ファイル8MBまで、動画は24MBまで。合計3ファイル・25MB以内。保存容量はブラウザーに依存します。</p>
-        <div id="commentAttachmentPreview" class="attachment-preview" aria-live="polite"></div>
-      </div>
-
-      <div class="btn-group">
-        <button id="postBtn" class="fw-800">
-          <span class="material-symbols-outlined">send</span> 投稿する
+      <div class="composer-toolbar" role="group" aria-label="コメントの追加設定">
+        <button class="composer-tool" type="button" data-composer-toggle="composerNamePanel" aria-controls="composerNamePanel" aria-expanded="false" aria-label="ユーザー名を設定" title="ユーザー名を設定">
+          <span class="material-symbols-outlined" aria-hidden="true">person</span>
+        </button>
+        <button class="composer-tool" type="button" data-composer-toggle="composerRatingPanel" aria-controls="composerRatingPanel" aria-expanded="false" aria-label="星評価を選ぶ" title="星評価を選ぶ">
+          <span class="material-symbols-outlined" aria-hidden="true">star</span>
+        </button>
+        <button class="composer-tool" type="button" data-composer-toggle="composerMediaPanel" aria-controls="composerMediaPanel" aria-expanded="false" aria-label="画像・動画を追加" title="画像・動画を追加">
+          <span class="material-symbols-outlined" aria-hidden="true">add_photo_alternate</span>
+        </button>
+        <span class="composer-toolbar-spacer"></span>
+        <button id="postBtn" class="composer-post-btn" type="button" aria-label="コメントを投稿する" title="コメントを投稿する">
+          <span class="material-symbols-outlined" aria-hidden="true">send</span>
         </button>
       </div>
-    </div>
+
+      <div class="composer-panels">
+        <section class="composer-panel" id="composerNamePanel" aria-hidden="true" inert>
+          <div class="composer-panel-inner">
+            <div class="composer-panel-content">
+              <label class="composer-panel-title" for="name"><span class="material-symbols-outlined" aria-hidden="true">person</span>ユーザー名</label>
+              <input id="name" placeholder="匿名のままでも投稿できます" maxlength="15" class="fw-500" autocomplete="nickname">
+              <p class="attachment-help">空欄の場合は「匿名」で投稿されます。個人を特定できる名前は使わないでください。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="composer-panel" id="composerRatingPanel" aria-hidden="true" inert>
+          <div class="composer-panel-inner">
+            <div class="composer-panel-content">
+              <label class="composer-panel-title" for="rating"><span class="material-symbols-outlined" aria-hidden="true">star</span>唐揚げの評価</label>
+              <select id="rating" class="fw-500" aria-label="唐揚げの星評価">
+                <option value="5">★★★★★　最高！ (5)</option>
+                <option value="4">★★★★☆　おいしい (4)</option>
+                <option value="3">★★★☆☆　ふつう (3)</option>
+                <option value="2">★★☆☆☆　もう少し (2)</option>
+                <option value="1">★☆☆☆☆　改善希望 (1)</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="composer-panel" id="composerMediaPanel" aria-hidden="true" inert>
+          <div class="composer-panel-inner">
+            <div class="composer-panel-content">
+              <div class="attachment-picker">
+                <label for="commentAttachments" class="attachment-picker-label">
+                  <span class="material-symbols-outlined" aria-hidden="true">attach_file</span>
+                  画像・動画を添付
+                </label>
+                <input id="commentAttachments" type="file" accept="image/*,video/*" multiple aria-describedby="attachmentHelp">
+                <p id="attachmentHelp" class="attachment-help">画像は1ファイル8MBまで、動画は24MBまで。合計3ファイル・25MB以内。保存容量はブラウザーに依存します。</p>
+                <div id="commentAttachmentPreview" class="attachment-preview" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <p id="composerStatus" class="composer-status" role="status" aria-live="polite">設定は必要なものだけ開けます。投稿内容はこのブラウザー内に保存されます。</p>
+    </section>
 
     <!-- Ranking Box -->
     <div class="box">
@@ -3133,9 +3374,16 @@ body.feedback-drawer-open { overflow:hidden; }
       if (next === "dislike") comment.dislikes = (Number(comment.dislikes) || 0) + 1;
       if (next) comment.reactions[voterId] = next;
       else delete comment.reactions[voterId];
-      haptic([8]);
+      haptic(next === "like" ? [12, 18, 8] : next === "dislike" ? [8, 22, 8] : [7]);
       await saveComments();
       renderComments();
+      requestAnimationFrame(() => {
+        const refreshed = $(`#comments .comment[data-comment-id="${CSS.escape(commentId)}"]`);
+        if (refreshed) {
+          refreshed.classList.add("is-reacting");
+          window.setTimeout(() => refreshed.classList.remove("is-reacting"), 520);
+        }
+      });
     });
     return button;
   }
@@ -3172,9 +3420,10 @@ body.feedback-drawer-open { overflow:hidden; }
     }
 
     const sorted = [...allComments].sort((a, b) => (Number(b.time) || 0) - (Number(a.time) || 0));
-    sorted.forEach(comment => {
+    sorted.forEach((comment, commentIndex) => {
       const card = document.createElement("article");
       card.className = `comment ${comment.style || ""}`;
+      card.style.setProperty("--comment-delay", `${Math.min(commentIndex, 10) * 42}ms`);
 
       const header = document.createElement("div");
       header.className = "commentHeader";
@@ -3270,6 +3519,7 @@ body.feedback-drawer-open { overflow:hidden; }
     ranking.forEach((comment, index) => {
       const row = document.createElement("div");
       row.className = "rankItem";
+      row.style.animationDelay = `${index * 45}ms`;
       const left = document.createElement("div");
       left.style.cssText = "display:flex;align-items:center;overflow:hidden;min-width:0;";
       const badge = document.createElement("span");
@@ -3295,24 +3545,70 @@ body.feedback-drawer-open { overflow:hidden; }
 
     const best = ranking[0];
     buzzEl.replaceChildren();
+    const buzzSpotlightBtn = $("#buzzSpotlightBtn");
     if (best) {
-      const wrap = document.createElement("div");
-      wrap.style.cssText = "background:rgba(30,30,30,.9);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--accent);";
+      const wrap = document.createElement("article");
+      wrap.className = "buzz-feature-review";
       const top = document.createElement("div");
-      top.style.cssText = "display:flex;justify-content:space-between;gap:8px;margin-bottom:4px;";
+      top.className = "buzz-review-top";
+      const person = document.createElement("div");
+      person.className = "buzz-review-person";
+      const avatar = document.createElement("span");
+      avatar.className = "buzz-review-avatar";
+      const avatarIcon = document.createElement("span");
+      avatarIcon.className = "material-symbols-outlined";
+      avatarIcon.textContent = "format_quote";
+      avatar.appendChild(avatarIcon);
+      const personMeta = document.createElement("div");
       const name = document.createElement("strong");
+      name.className = "buzz-review-name";
       name.textContent = best.name || "匿名";
+      const rating = document.createElement("div");
+      rating.className = "buzz-review-rating";
+      for (let starIndex = 0; starIndex < 5; starIndex++) {
+        const star = document.createElement("span");
+        star.className = "material-symbols-outlined";
+        star.textContent = "star";
+        star.style.fontVariationSettings = starIndex < Number(best.rating || 0) ? "'FILL' 1" : "'FILL' 0";
+        rating.appendChild(star);
+      }
+      personMeta.append(name, rating);
+      person.append(avatar, personMeta);
       const likes = document.createElement("strong");
-      likes.style.color = "var(--accent)";
-      likes.textContent = `♥ ${Number(best.likes) || 0}`;
+      likes.className = "buzz-review-like";
+      const likesIcon = document.createElement("span");
+      likesIcon.className = "material-symbols-outlined";
+      likesIcon.textContent = "thumb_up";
+      const likesCount = document.createElement("span");
+      likesCount.textContent = String(Number(best.likes) || 0);
+      likes.append(likesIcon, likesCount);
+      top.append(person, likes);
       const text = document.createElement("p");
-      text.style.cssText = "font-size:13px;color:#eee;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;";
-      text.textContent = best.text || "";
-      top.append(name, likes);
-      wrap.append(top, text);
+      text.className = "buzz-review-text";
+      text.textContent = best.text || (best.attachments && best.attachments.length ? "写真・動画付きのレビュー" : "（本文なし）");
+      const bottom = document.createElement("div");
+      bottom.className = "buzz-review-bottom";
+      const date = document.createElement("time");
+      date.textContent = formatDate(best.time);
+      const label = document.createElement("span");
+      label.textContent = "MOST LIKED REVIEW";
+      bottom.append(date, label);
+      wrap.append(top, text, bottom);
+      if (best.attachments && best.attachments.some(item => item && item.blob instanceof Blob)) renderCommentMedia(best.attachments, wrap);
       buzzEl.appendChild(wrap);
+      if (buzzSpotlightBtn) buzzSpotlightBtn.disabled = false;
     } else {
-      buzzEl.textContent = "まだレビューがありません";
+      const empty = document.createElement("div");
+      empty.className = "buzz-empty";
+      empty.textContent = "まだレビューがありません。最初のひとことが、ここに載るかもしれません。";
+      buzzEl.appendChild(empty);
+      if (buzzSpotlightBtn) {
+        buzzSpotlightBtn.disabled = true;
+        buzzSpotlightBtn.setAttribute("aria-pressed", "false");
+        buzzSpotlightBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">flare</span>このレビューを照らす';
+      }
+      const featureBox = $("#buzzFeatureBox");
+      if (featureBox) featureBox.classList.remove("is-spotlit");
     }
     if (allComments.length) {
       const average = allComments.reduce((sum, item) => sum + (Number(item.rating) || 0), 0) / allComments.length;
@@ -3321,6 +3617,75 @@ body.feedback-drawer-open { overflow:hidden; }
       $("#avg").textContent = "-";
     }
     updateStats();
+  }
+
+  /* Expandable composer settings: name, rating, media. */
+  const composerToggleButtons = $$('[data-composer-toggle]');
+  const composerPanels = $$(".composer-panel");
+  function setComposerPanel(panelId, shouldOpen, focusField = false) {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    const button = $(`[data-composer-toggle="${panelId}"]`);
+    const open = Boolean(shouldOpen);
+    panel.classList.toggle("is-open", open);
+    panel.setAttribute("aria-hidden", String(!open));
+    if ("inert" in panel) panel.inert = !open;
+    if (button) {
+      button.classList.toggle("is-open", open);
+      button.setAttribute("aria-expanded", String(open));
+    }
+    if (open && focusField) {
+      window.setTimeout(() => {
+        const field = $("input, select, textarea, label[for='commentAttachments']", panel);
+        if (field && typeof field.focus === "function" && field.tagName !== "LABEL") field.focus({ preventScroll: true });
+      }, 430);
+    }
+  }
+  composerToggleButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const panelId = button.dataset.composerToggle;
+      const isCurrentlyOpen = document.getElementById(panelId).classList.contains("is-open");
+      composerPanels.forEach(panel => setComposerPanel(panel.id, false));
+      if (!isCurrentlyOpen) setComposerPanel(panelId, true, panelId !== "composerMediaPanel");
+      const label = button.getAttribute("aria-label") || "設定";
+      $("#composerStatus").textContent = isCurrentlyOpen ? `${label}パネルを閉じました。` : `${label}パネルを開きました。`;
+      haptic(isCurrentlyOpen ? [7] : [10, 14, 8]);
+      if (!prefersReducedMotion.matches && !isCurrentlyOpen) {
+        button.classList.remove("is-tapped");
+        void button.offsetWidth;
+        button.classList.add("is-tapped");
+        window.setTimeout(() => button.classList.remove("is-tapped"), 400);
+      }
+    });
+  });
+
+  const savedComposerName = localStorage.getItem("karaageComposerName");
+  if (savedComposerName) $("#name").value = savedComposerName;
+  $("#name").addEventListener("change", () => {
+    localStorage.setItem("karaageComposerName", $("#name").value.trim().slice(0, 15));
+  });
+  $("#rating").addEventListener("change", () => {
+    $("#composerStatus").textContent = `評価を ${$("#rating").value} つ星に設定しました。`;
+    haptic([7]);
+  });
+
+  /* Featured review spotlight interaction. */
+  const buzzFeatureBox = $("#buzzFeatureBox");
+  const buzzSpotlightBtn = $("#buzzSpotlightBtn");
+  if (buzzSpotlightBtn && buzzFeatureBox) {
+    buzzSpotlightBtn.addEventListener("click", () => {
+      if (buzzSpotlightBtn.disabled) return;
+      const lit = buzzFeatureBox.classList.toggle("is-spotlit");
+      buzzSpotlightBtn.setAttribute("aria-pressed", String(lit));
+      buzzSpotlightBtn.innerHTML = lit
+        ? '<span class="material-symbols-outlined" aria-hidden="true">flare</span>ハイライトを解除'
+        : '<span class="material-symbols-outlined" aria-hidden="true">flare</span>このレビューを照らす';
+      haptic(lit ? [16, 24, 10] : [8]);
+      if (lit) {
+        buzzFeatureBox.scrollIntoView({ behavior: prefersReducedMotion.matches ? "auto" : "smooth", block: "center" });
+        popup("注目レビューをハイライト！");
+      }
+    });
   }
 
   /* Comment attachment selection / preview */
@@ -3352,6 +3717,17 @@ body.feedback-drawer-open { overflow:hidden; }
       remove.addEventListener("click", () => {
         selectedAttachments.splice(index, 1);
         previewSelectedAttachments();
+        const mediaTool = $('[data-composer-toggle="composerMediaPanel"]');
+        const dot = mediaTool ? $(".tool-dot", mediaTool) : null;
+        if (mediaTool && !selectedAttachments.length) {
+          if (dot) dot.remove();
+          mediaTool.classList.remove("is-open");
+          mediaTool.setAttribute("aria-expanded", String($("#composerMediaPanel").classList.contains("is-open")));
+        }
+        $("#composerStatus").textContent = selectedAttachments.length
+          ? `${selectedAttachments.length}個の添付を準備しました。`
+          : "添付ファイルは選択されていません。";
+        haptic([6]);
       });
       card.append(media, name, remove);
       commentAttachmentPreview.appendChild(card);
@@ -3380,6 +3756,16 @@ body.feedback-drawer-open { overflow:hidden; }
     }
     selectedAttachments = combined;
     previewSelectedAttachments();
+    const mediaButton = $('[data-composer-toggle="composerMediaPanel"]');
+    if (selectedAttachments.length && mediaButton) {
+      mediaButton.classList.add("is-open");
+      mediaButton.setAttribute("aria-expanded", "true");
+      if (!$(".tool-dot", mediaButton)) mediaButton.insertAdjacentHTML("beforeend", '<span class="tool-dot" aria-hidden="true"></span>');
+    }
+    $("#composerStatus").textContent = selectedAttachments.length
+      ? `${selectedAttachments.length}個の添付を準備しました。`
+      : "添付ファイルは選択されていません。";
+    if (chosen.length) haptic([9]);
   });
 
   /* Main review submit */
@@ -3400,10 +3786,21 @@ body.feedback-drawer-open { overflow:hidden; }
     selectedAttachments = [];
     previewSelectedAttachments();
     $("#text").value = "";
+    const mediaTool = $('[data-composer-toggle="composerMediaPanel"]');
+    if (mediaTool) {
+      mediaTool.classList.remove("is-open");
+      mediaTool.setAttribute("aria-expanded", "false");
+      const dot = $(".tool-dot", mediaTool);
+      if (dot) dot.remove();
+    }
+    composerPanels.forEach(panel => setComposerPanel(panel.id, false));
+    $("#composerStatus").textContent = "投稿しました。感想をありがとう！";
     await saveComments();
     renderComments();
     popup("レビューをこの端末に保存しました");
-    haptic([12, 18, 12]);
+    haptic([14, 22, 14]);
+    $(".comment-composer").classList.add("is-posted");
+    window.setTimeout(() => $(".comment-composer").classList.remove("is-posted"), 700);
   });
 
   /* Local operations counters: explicitly not shared between browsers. */
