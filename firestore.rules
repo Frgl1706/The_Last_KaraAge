@@ -8,7 +8,7 @@ service cloud.firestore {
     // Replace this value with the UID of the administrator account.
     // This UID is not a password. The real login is Firebase Authentication.
     function isAdmin() {
-      return signedIn() && request.auth.uid == 'U3lXzDRwojVXffXlhmeMTrMDciE3';
+      return signedIn() && request.auth.uid == 'sJcpa1hSjphlty6ejqGxpjrEl7o2';
     }
 
     function validAttachmentList(items) {
