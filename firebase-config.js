@@ -17,7 +17,6 @@ window.KARAAGE_FIREBASE_CONFIG = {
   storageBucket: "karaage-vmechanics.firebasestorage.app",
   messagingSenderId: "970062988622",
   appId: "1:970062988622:web:7b09d38359ea783ea54a1f"
-  measurementId: "G-FF9V7E5NRF"
 };
 
 /* Public UI hint only. The real admin restriction is in firestore.rules. */
