@@ -5,18 +5,18 @@
  * JSON, private keys, or admin passwords in this file.
  */
 window.KARAAGE_FIREBASE_CONFIG = {
-  apiKey: "YOUR_FIREBASE_WEB_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
+  apiKey: "AIzaSyBlI-3UJBvYo9FVPAsycXyyaVNtbHCJLFE",
+  authDomain: "karaage-vmechanics.firebaseapp.com",
+  projectId: "karaage-vmechanics",
   /*
    * Leave this empty to use Firestore/Auth only on Spark.
    * To enable visitor image/video uploads, enable Blaze billing, create the
    * default Storage bucket, then copy its exact bucket name here, commonly:
    * YOUR_PROJECT_ID.firebasestorage.app
    */
-  storageBucket: "",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_FIREBASE_APP_ID"
+  storageBucket: "karaage-vmechanics.firebasestorage.app",
+  messagingSenderId: "970062988622",
+  appId: "1:970062988622:web:7b09d38359ea783ea54a1f"
 };
 
 /* Public UI hint only. The real admin restriction is in firestore.rules. */
