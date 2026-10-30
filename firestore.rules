@@ -1,0 +1,151 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Replace this value with the UID of the administrator account.
+    // This UID is not a password. The real login is Firebase Authentication.
+    function isAdmin() {
+      return signedIn() && request.auth.uid == 'REPLACE_WITH_ADMIN_USER_UID';
+    }
+
+    function validAttachmentList(items) {
+      return items is list && items.size() <= 3;
+    }
+
+    function validNewComment(commentId) {
+      let d = request.resource.data;
+      return d.keys().hasOnly([
+          'id', 'authorUid', 'name', 'text', 'rating', 'likes', 'dislikes',
+          'reactions', 'replies', 'style', 'attachments', 'time'
+        ])
+        && d.keys().hasAll([
+          'id', 'authorUid', 'name', 'text', 'rating', 'likes', 'dislikes',
+          'reactions', 'replies', 'style', 'attachments', 'time'
+        ])
+        && d.id == commentId
+        && d.authorUid == request.auth.uid
+        && d.name is string && d.name.size() >= 1 && d.name.size() <= 15
+        && d.text is string && d.text.size() <= 2000
+        && d.rating is int && d.rating >= 1 && d.rating <= 5
+        && d.likes == 0 && d.dislikes == 0
+        && d.reactions is map
+        && d.replies is list && d.replies.size() == 0
+        && d.style is string && d.style.size() <= 20
+        && validAttachmentList(d.attachments)
+        && d.time is int;
+    }
+
+    function validReactionUpdate() {
+      let oldReactions = resource.data.get('reactions', {});
+      let newReactions = request.resource.data.get('reactions', {});
+      let oldValue = oldReactions.get(request.auth.uid, '');
+      let newValue = newReactions.get(request.auth.uid, '');
+      let oldLikes = resource.data.get('likes', 0);
+      let oldDislikes = resource.data.get('dislikes', 0);
+      let expectedLikes = oldLikes + (newValue == 'like' ? 1 : 0) - (oldValue == 'like' ? 1 : 0);
+      let expectedDislikes = oldDislikes + (newValue == 'dislike' ? 1 : 0) - (oldValue == 'dislike' ? 1 : 0);
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes', 'dislikes', 'reactions'])
+        && newReactions is map
+        && newReactions.diff(oldReactions).affectedKeys().hasOnly([request.auth.uid])
+        && (newValue == '' || newValue == 'like' || newValue == 'dislike')
+        && newValue != oldValue
+        && request.resource.data.likes == expectedLikes
+        && request.resource.data.dislikes == expectedDislikes
+        && request.resource.data.likes is int && request.resource.data.likes >= 0
+        && request.resource.data.dislikes is int && request.resource.data.dislikes >= 0;
+    }
+
+    function validReplyUpdate() {
+      let oldReplies = resource.data.get('replies', []);
+      let newReplies = request.resource.data.get('replies', []);
+      let lastReply = newReplies[newReplies.size() - 1];
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['replies'])
+        && oldReplies is list && newReplies is list
+        && newReplies.size() == oldReplies.size() + 1
+        && newReplies.hasAll(oldReplies)
+        && lastReply is map
+        && lastReply.keys().hasOnly(['id', 'authorUid', 'name', 'text', 'time'])
+        && lastReply.authorUid == request.auth.uid
+        && lastReply.name is string && lastReply.name.size() >= 1 && lastReply.name.size() <= 15
+        && lastReply.text is string && lastReply.text.size() >= 1 && lastReply.text.size() <= 600
+        && lastReply.time is int;
+    }
+
+    match /comments/{commentId} {
+      allow read: if signedIn();
+      allow create: if signedIn() && validNewComment(commentId);
+      allow update: if signedIn() && (validReactionUpdate() || validReplyUpdate());
+      allow delete: if isAdmin();
+    }
+
+    match /feedback/{feedbackId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['id', 'authorUid', 'name', 'text', 'time'])
+        && request.resource.data.keys().hasAll(['id', 'authorUid', 'name', 'text', 'time'])
+        && request.resource.data.id == feedbackId
+        && request.resource.data.authorUid == request.auth.uid
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 1
+        && request.resource.data.name.size() <= 40
+        && request.resource.data.text is string
+        && request.resource.data.text.size() >= 1
+        && request.resource.data.text.size() <= 1500
+        && request.resource.data.time is int;
+      allow update, delete: if isAdmin();
+    }
+
+    match /siteState/{stateId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && stateId == 'counters'
+        && request.resource.data.keys().hasOnly(['sold', 'lineCount', 'updatedAt'])
+        && request.resource.data.sold == 0
+        && request.resource.data.lineCount == 0
+        && request.resource.data.updatedAt is int;
+
+      allow update: if signedIn() && stateId == 'counters' && (
+        // Purchase reports: one increment per button press.
+        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['sold', 'updatedAt'])
+          && request.resource.data.sold == resource.data.get('sold', 0) + 1
+          && request.resource.data.updatedAt is int)
+        ||
+        // Delicious votes: a visitor can only change their own UID's value.
+        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['deliciousCount', 'deliciousVoters', 'updatedAt'])
+          && request.resource.data.deliciousVoters is map
+          && request.resource.data.deliciousVoters.diff(resource.data.get('deliciousVoters', {})).affectedKeys().hasOnly([request.auth.uid])
+          && request.resource.data.deliciousVoters.get(request.auth.uid, false) is bool
+          && request.resource.data.deliciousVoters.get(request.auth.uid, false) != resource.data.get('deliciousVoters', {}).get(request.auth.uid, false)
+          && request.resource.data.deliciousCount == resource.data.get('deliciousCount', 0)
+            + (request.resource.data.deliciousVoters.get(request.auth.uid, false) ? 1 : -1)
+          && request.resource.data.deliciousCount >= 0
+          && request.resource.data.updatedAt is int)
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /queueUsers/{userId} {
+      // The active-queue query reads all short-lived queue-presence documents.
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.keys().hasOnly(['joined', 'updatedAt', 'expiresAt'])
+        && request.resource.data.joined == true
+        && request.resource.data.updatedAt is int
+        && request.resource.data.expiresAt is int
+        && request.resource.data.expiresAt > 0;
+      allow update: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['joined', 'updatedAt', 'expiresAt'])
+        && request.resource.data.joined is bool
+        && request.resource.data.updatedAt is int
+        && request.resource.data.expiresAt is int
+        && ((request.resource.data.joined == true && request.resource.data.expiresAt > 0)
+          || (request.resource.data.joined == false && request.resource.data.expiresAt == 0));
+      allow delete: if isAdmin();
+    }
+  }
+}

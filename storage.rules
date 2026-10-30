@@ -1,0 +1,27 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() && request.auth.uid == 'REPLACE_WITH_ADMIN_USER_UID';
+    }
+
+    // Publicly viewable comment media; only the uploading account can create it.
+    // Images: max 8 MB. Videos: max 24 MB.
+    match /comment-media/{userId}/{commentId}/{fileName} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && (
+          (request.resource.contentType.matches('image/.*') && request.resource.size <= 8 * 1024 * 1024)
+          ||
+          (request.resource.contentType.matches('video/.*') && request.resource.size <= 24 * 1024 * 1024)
+        );
+      allow update: if false;
+      allow delete: if signedIn() && (request.auth.uid == userId || isAdmin());
+    }
+  }
+}
