@@ -2512,7 +2512,7 @@ body.feedback-drawer-open { overflow:hidden; }
       </div>
       <div class="guide-step-item">
         <span class="material-symbols-outlined" style="color:var(--accent);">rate_review</span>
-        <div><strong class="fw-700">2. 感想を投稿</strong><br><span class="fw-300" style="color:var(--text-muted);">コメント欄に感想を書き、必要に応じてユーザー名・星評価・画像・動画を追加できます。投稿はこのブラウザー内に保存されます。</span></div>
+        <div><strong class="fw-700">2. 感想を投稿</strong><br><span class="fw-300" style="color:var(--text-muted);">コメント欄に感想を書き、必要に応じてユーザー名・星評価・画像・動画を追加できます。投稿はFirebaseに保存され、他の端末にも共有されます。</span></div>
       </div>
       <div class="guide-step-item">
         <span class="material-symbols-outlined" style="color:var(--accent);">thumb_up</span>
@@ -2539,13 +2539,13 @@ body.feedback-drawer-open { overflow:hidden; }
       </section>
       <section class="guide-notice">
         <h3><span class="material-symbols-outlined">database</span>保存・プライバシー</h3>
-        <p>コメント、返信、リアクション、添付データは、原則として現在のブラウザー内に保存されます。別端末への自動共有はありません。ブラウザーのデータ消去、端末の故障、空き容量不足などでデータが失われることがあります。必要な記録は各自で保存してください。</p>
+        <p>コメント・返信・リアクション・改善点・待機列カウントはFirebaseを通じて共有されます。画像・動画の保存にはFirebase Storageを利用します。添付ファイルを投稿する場合は、プロジェクトの料金条件を必ず確認してください。</p>
       </section>
       <section class="guide-notice">
         <h3><span class="material-symbols-outlined">gavel</span>免責事項</h3>
         <p>主催者は投稿内容の完全性・正確性や、サービスの常時利用可能性を保証しません。端末・ブラウザーの不具合、投稿データの消失、利用者間のトラブル等について、主催者に故意または重大な過失がある場合を除き責任を負いかねます。問題のある投稿を見つけた場合は、運営担当者へ知らせてください。</p>
       </section>
-      <p class="guide-local-note">このページのコメント・添付ファイルは端末内保存方式です。共用端末では個人情報を書き込まず、利用後は必要に応じて管理者にデータの整理を依頼してください。</p>
+      <p class="guide-local-note">投稿内容はオンラインで共有されます。個人情報や第三者の写真・動画を投稿しないでください。</p>
     </div>
   </div>
 </div>
@@ -2584,7 +2584,7 @@ body.feedback-drawer-open { overflow:hidden; }
         </button>
         <button id="queueBtn" class="counter-action counter-action-queue" type="button">
           <span class="material-symbols-outlined" aria-hidden="true">groups</span>
-          <span><strong id="queueButtonLabel">並んでる！</strong><small id="queueButtonHint">待機人数を +1</small></span>
+          <span><strong id="queueButtonLabel">並んでる！</strong><small id="queueButtonHint">待機列に参加</small></span>
         </button>
       </div>
       <div class="queue-leave-row">
@@ -2593,7 +2593,7 @@ body.feedback-drawer-open { overflow:hidden; }
           列から抜けた（−1）
         </button>
       </div>
-      <p class="counter-note">購入はボタンを押した回数の累計です。行列はこの端末で「並んでる！」を押した人の申告人数で、列から抜けると減ります。</p>
+      <p class="counter-note">購入はボタンを押した回数の累計です。行列はこの端末で「並んでる！」を押した人の申告人数で、「列から抜けた」で退出できます。操作できずに閉じた場合も、一定時間更新がなければ自動で人数から除外されます。</p>
     </div>
 
     <section class="home-manifesto scroll-animate" aria-labelledby="homeManifestoTitle">
@@ -2822,14 +2822,14 @@ body.feedback-drawer-open { overflow:hidden; }
                   画像・動画を添付
                 </label>
                 <input id="commentAttachments" type="file" accept="image/*,video/*" multiple aria-describedby="attachmentHelp">
-                <p id="attachmentHelp" class="attachment-help">画像は1ファイル8MBまで、動画は24MBまで。合計3ファイル・25MB以内。保存容量はブラウザーに依存します。</p>
+                <p id="attachmentHelp" class="attachment-help">画像は1ファイル8MBまで、動画は24MBまで。合計3ファイル・25MB以内。共有アップロードにはFirebase Storage（Blazeプラン）が必要です。</p>
                 <div id="commentAttachmentPreview" class="attachment-preview" aria-live="polite"></div>
               </div>
             </div>
           </div>
         </section>
       </div>
-      <p id="composerStatus" class="composer-status" role="status" aria-live="polite">設定は必要なものだけ開けます。投稿内容はこのブラウザー内に保存されます。</p>
+      <p id="composerStatus" class="composer-status" role="status" aria-live="polite">設定は必要なものだけ開けます。投稿内容はFirebaseに保存されます。</p>
     </section>
 
     <!-- Ranking Box -->
@@ -2882,7 +2882,8 @@ body.feedback-drawer-open { overflow:hidden; }
         <span class="fw-800">管理者モード</span>
       </div>
 
-      <input id="adminPass" type="password" placeholder="パスワードを入力" class="fw-500">
+      <input id="adminEmail" type="email" placeholder="管理者メールアドレス" class="fw-500" autocomplete="username">
+      <input id="adminPass" type="password" placeholder="管理者パスワード" class="fw-500" autocomplete="current-password">
       <div class="btn-group">
         <button id="loginBtn" class="btn-secondary fw-700">
           <span class="material-symbols-outlined">lock_open</span> ログイン
@@ -2935,7 +2936,7 @@ body.feedback-drawer-open { overflow:hidden; }
   </div>
   <p id="feedbackDrawerStatus" class="feedback-status" role="status" aria-live="polite">読み込み中…</p>
   <div id="feedbackDrawerList" class="feedback-drawer-list"></div>
-  <div class="feedback-drawer-foot">この一覧はこのブラウザー内の保存データから更新されます。CSV出力は「その他」→「管理者モード」から行えます。</div>
+  <div class="feedback-drawer-foot">この一覧はFirebaseの共有データから更新されます。CSV出力は管理者モードから行えます。</div>
 </aside>
 <div id="passionToast" class="passion-toast" role="status" aria-live="polite"></div>
 
@@ -2959,10 +2960,15 @@ body.feedback-drawer-open { overflow:hidden; }
   </button>
 </nav>
 
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script>
 /* =========================================================
-   CULTURAL FESTIVAL KARAAGE SITE — BROWSER-LOCAL STORAGE ONLY
-   Data is stored only in this browser using IndexedDB.
+   KARAAGE STAND — FIREBASE SHARED DATA
+   Configure firebase-config.js before publishing.
    ========================================================= */
 (() => {
   "use strict";
@@ -2970,6 +2976,33 @@ body.feedback-drawer-open { overflow:hidden; }
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const firebaseConfig = window.KARAAGE_FIREBASE_CONFIG || {};
+  const firebaseConfigured = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId && !String(firebaseConfig.apiKey).includes("YOUR_"));
+  let firebaseApp = null, firestore = null, firebaseAuth = null, firebaseStorage = null;
+  if (firebaseConfigured && window.firebase) {
+    try {
+      firebaseApp = firebase.initializeApp(firebaseConfig);
+      firestore = firebase.firestore();
+      firebaseAuth = firebase.auth();
+      firebaseStorage = firebaseConfig.storageBucket ? firebase.storage() : null;
+    } catch (error) { console.error("Firebase initialization failed", error); }
+  }
+  const serverMode = Boolean(firestore);
+  let unsubscribeComments = null, unsubscribeFeedback = null, unsubscribeCounters = null, unsubscribeQueue = null;
+  let remoteQueueJoined = false;
+  function firebaseStatus(message, isConnected = false) {
+    const el = document.getElementById("counterStatus");
+    if (!el) return;
+    el.classList.add("is-visible");
+    el.classList.toggle("is-connected", isConnected);
+    el.textContent = message;
+  }
+  function firestoreSafeRecord(record) {
+    const copy = { ...record };
+    delete copy.blob;
+    if (Array.isArray(copy.attachments)) copy.attachments = copy.attachments.map(a => ({ name: a.name || "attachment", type: a.type || "application/octet-stream", size: Number(a.size) || 0, url: a.url || "", path: a.path || "" }));
+    return copy;
+  }
 
   const commentsEl = $("#comments");
   const rankingEl = $("#ranking");
@@ -3312,15 +3345,15 @@ body.feedback-drawer-open { overflow:hidden; }
     return wrapper;
   }
   function renderCommentMedia(attachments, destination) {
-    const usable = (attachments || []).filter(item => item && item.blob instanceof Blob);
+    const usable = (attachments || []).filter(item => item && (item.blob instanceof Blob || item.url));
     if (!usable.length) return;
     const grid = document.createElement("div");
     grid.className = "comment-media-grid";
     usable.forEach(item => {
-      const url = URL.createObjectURL(item.blob);
-      renderMediaUrls.push(url);
+      const url = item.url || URL.createObjectURL(item.blob);
+      if (!item.url) renderMediaUrls.push(url);
       let media;
-      if (String(item.type || item.blob.type).startsWith("video/")) {
+      if (String(item.type || (item.blob && item.blob.type) || "").startsWith("video/")) {
         media = document.createElement("video");
         media.controls = true;
         media.preload = "metadata";
@@ -3339,13 +3372,38 @@ body.feedback-drawer-open { overflow:hidden; }
     destination.appendChild(grid);
   }
 
-  async function saveComments() {
-    await saveState("comments", allComments);
+  async function saveComments(comment = null) {
+    if (serverMode) {
+      if (!comment || !comment.id) throw new Error("保存するコメントが指定されていません。");
+      await firestore.collection("comments").doc(comment.id).set(firestoreSafeRecord(comment), { merge: true });
+    } else {
+      await saveState("comments", allComments);
+    }
     updateStats();
   }
-  async function saveFeedback() {
-    await saveState("feedback", allFeedback);
+  async function saveFeedback(item = null) {
+    if (serverMode) {
+      if (!item || !item.id) throw new Error("保存する改善点が指定されていません。");
+      await firestore.collection("feedback").doc(item.id).set(item, { merge: false });
+    } else {
+      await saveState("feedback", allFeedback);
+    }
     refreshFeedbackData();
+  }
+  async function uploadSelectedAttachments(commentId, attachments) {
+    if (!attachments.length) return [];
+    if (!serverMode || !firebaseStorage) throw new Error("画像・動画の共有にはFirebase Storageが必要です。StorageはBlazeプランの有効化が必要なため、READMEの注意事項を確認してください。");
+    const uploaded = [];
+    for (let i = 0; i < attachments.length; i++) {
+      const item = attachments[i];
+      const safeName = String(item.name || `file-${i}`).replace(/[^a-zA-Z0-9._-]/g, "_").slice(-90);
+      const ownerUid = firebaseAuth && firebaseAuth.currentUser ? firebaseAuth.currentUser.uid : voterId;
+      const path = `comment-media/${ownerUid}/${commentId}/${Date.now()}_${i}_${safeName}`;
+      const ref = firebaseStorage.ref().child(path);
+      await ref.put(item.blob, { contentType: item.type || item.blob.type });
+      uploaded.push({ name: item.name, type: item.type, size: item.size, path, url: await ref.getDownloadURL() });
+    }
+    return uploaded;
   }
 
   function createReactionButton(kind, count, selected, commentId) {
@@ -3375,7 +3433,7 @@ body.feedback-drawer-open { overflow:hidden; }
       if (next) comment.reactions[voterId] = next;
       else delete comment.reactions[voterId];
       haptic(next === "like" ? [12, 18, 8] : next === "dislike" ? [8, 22, 8] : [7]);
-      await saveComments();
+      await saveComments(comment);
       renderComments();
       requestAnimationFrame(() => {
         const refreshed = $(`#comments .comment[data-comment-id="${CSS.escape(commentId)}"]`);
@@ -3493,10 +3551,10 @@ body.feedback-drawer-open { overflow:hidden; }
         if (!text) return;
         const userName = $("#name").value.trim().slice(0, 15) || "匿名";
         comment.replies = Array.isArray(comment.replies) ? comment.replies : [];
-        comment.replies.push({ id: newId("reply"), name: userName, text, time: Date.now() });
+        comment.replies.push({ id: newId("reply"), authorUid: firebaseAuth && firebaseAuth.currentUser ? firebaseAuth.currentUser.uid : voterId, name: userName, text, time: Date.now() });
         openReplyId = comment.id;
         haptic([10]);
-        await saveComments();
+        await saveComments(comment);
         renderComments();
       });
       replyToggle.addEventListener("click", () => {
@@ -3775,13 +3833,20 @@ body.feedback-drawer-open { overflow:hidden; }
     if (!text && !selectedAttachments.length) { popup("感想か画像・動画を追加してください"); return; }
     const name = maskBadWords($("#name").value.trim().slice(0, 15)) || "匿名";
     const comment = {
-      id: newId("comment"), name, text,
+      id: newId("comment"), authorUid: firebaseAuth && firebaseAuth.currentUser ? firebaseAuth.currentUser.uid : voterId, name, text,
       rating: Number($("#rating").value) || 5,
       likes: 0, dislikes: 0, reactions: {}, replies: [],
       style: Math.random() < .08 ? "gold" : "",
-      attachments: selectedAttachments.map(item => ({ ...item })),
+      attachments: [],
       time: Date.now()
     };
+    try {
+      comment.attachments = await uploadSelectedAttachments(comment.id, selectedAttachments);
+    } catch (error) {
+      console.error(error);
+      popup(error.message || "添付ファイルをアップロードできませんでした");
+      return;
+    }
     allComments.unshift(comment);
     selectedAttachments = [];
     previewSelectedAttachments();
@@ -3795,9 +3860,9 @@ body.feedback-drawer-open { overflow:hidden; }
     }
     composerPanels.forEach(panel => setComposerPanel(panel.id, false));
     $("#composerStatus").textContent = "投稿しました。感想をありがとう！";
-    await saveComments();
+    await saveComments(comment);
     renderComments();
-    popup("レビューをこの端末に保存しました");
+    popup("レビューを共有しました");
     haptic([14, 22, 14]);
     $(".comment-composer").classList.add("is-posted");
     window.setTimeout(() => $(".comment-composer").classList.remove("is-posted"), 700);
@@ -3807,14 +3872,34 @@ body.feedback-drawer-open { overflow:hidden; }
   let sold = Math.max(0, Number(localStorage.getItem("sold") || 0));
   let lineCount = Math.max(0, Number(localStorage.getItem("lineCount") || 0));
   let queueJoined = localStorage.getItem("queueJoined") === "1";
+  let activeQueueRecords = [];
+  let ownQueueExpiresAt = 0;
+  const QUEUE_LEASE_MS = 6 * 60 * 1000;
+  const queueUserRef = () => firestore && firestore.collection("queueUsers").doc(voterId);
+  function updateQueueCountFromLease() {
+    if (!serverMode) return;
+    const now = Date.now();
+    lineCount = activeQueueRecords.filter(item => item.joined === true && Number(item.expiresAt) > now).length;
+    if (queueJoined && ownQueueExpiresAt && ownQueueExpiresAt <= now) {
+      queueJoined = false;
+      ownQueueExpiresAt = 0;
+      updateQueueButtonUI();
+    }
+    updateStats();
+  }
+  async function ensureCounterDoc() {
+    if (!serverMode) return;
+    const ref = firestore.collection("siteState").doc("counters");
+    await firestore.runTransaction(async tx => { const snap = await tx.get(ref); if (!snap.exists) tx.set(ref, { sold: 0, lineCount: 0, updatedAt: Date.now() }); });
+  }
   function updateStats() {
     $("#commentCount").textContent = `${allComments.length}件`;
     $("#sold").textContent = `${sold.toLocaleString("ja-JP")}個`;
     $("#line").textContent = `${lineCount.toLocaleString("ja-JP")}人`;
     const status = $("#counterStatus");
     status.classList.add("is-visible");
-    status.classList.remove("is-connected");
-    status.textContent = "コメント・購入報告・行列カウントはこのブラウザー内のみの記録です。別端末の数字とは合算されません。購入報告はレジの実売上ではありません。";
+    status.classList.toggle("is-connected", serverMode);
+    status.textContent = serverMode ? "Firebase共有に接続しています。購入報告はレジの実売上ではありません。" : "Firebase未設定：現在はこの端末内のみで動作しています。公開前に firebase-config.js を設定してください。";
   }
   function updateQueueButtonUI() {
     const queueButton = $("#queueBtn");
@@ -3824,35 +3909,38 @@ body.feedback-drawer-open { overflow:hidden; }
     $("#queueButtonLabel").textContent = queueJoined ? "列に並んでいます" : "並んでる！";
     $("#queueButtonHint").textContent = queueJoined ? "列から抜けるときは下のボタン" : "待機人数を +1";
   }
-  $("#buyBtn").addEventListener("click", () => {
-    sold += 1;
-    localStorage.setItem("sold", String(sold));
-    updateStats();
-    haptic([12, 24, 12]);
-    popup("購入報告を記録しました！");
-    fireworks();
+  $("#buyBtn").addEventListener("click", async () => {
+    try {
+      if (serverMode) {
+        const ref = firestore.collection("siteState").doc("counters");
+        await firestore.runTransaction(async tx => { const snap = await tx.get(ref); const current = snap.exists ? Number(snap.data().sold || 0) : 0; tx.set(ref, { sold: current + 1, updatedAt: Date.now() }, { merge: true }); });
+      } else { sold += 1; localStorage.setItem("sold", String(sold)); }
+      updateStats(); haptic([12, 24, 12]); popup("購入報告を記録しました！"); fireworks();
+    } catch (error) { console.error(error); popup("記録できませんでした。接続とFirestoreルールを確認してください。"); }
   });
-  $("#queueBtn").addEventListener("click", () => {
+  $("#queueBtn").addEventListener("click", async () => {
     if (queueJoined) return;
-    queueJoined = true;
-    lineCount += 1;
-    localStorage.setItem("queueJoined", "1");
-    localStorage.setItem("lineCount", String(lineCount));
-    updateQueueButtonUI();
-    updateStats();
-    haptic([12, 24, 12]);
-    popup("行列カウントを +1 しました");
+    try {
+      if (serverMode) {
+        const now = Date.now();
+        ownQueueExpiresAt = now + QUEUE_LEASE_MS;
+        await queueUserRef().set({ joined: true, updatedAt: now, expiresAt: ownQueueExpiresAt }, { merge: true });
+        queueJoined = true;
+      } else { queueJoined = true; lineCount += 1; localStorage.setItem("queueJoined", "1"); localStorage.setItem("lineCount", String(lineCount)); }
+      updateQueueButtonUI(); updateStats(); haptic([12, 24, 12]); popup("行列カウントを +1 しました");
+    } catch (error) { console.error(error); popup("行列を更新できませんでした。設定を確認してください。"); }
   });
-  $("#leaveQueueBtn").addEventListener("click", () => {
+  $("#leaveQueueBtn").addEventListener("click", async () => {
     if (!queueJoined) return;
-    queueJoined = false;
-    lineCount = Math.max(0, lineCount - 1);
-    localStorage.setItem("queueJoined", "0");
-    localStorage.setItem("lineCount", String(lineCount));
-    updateQueueButtonUI();
-    updateStats();
-    haptic([8]);
-    popup("行列カウントを解除しました");
+    try {
+      if (serverMode) {
+        const now = Date.now();
+        await queueUserRef().set({ joined: false, updatedAt: now, expiresAt: 0 }, { merge: true });
+        queueJoined = false;
+        ownQueueExpiresAt = 0;
+      } else { queueJoined = false; lineCount = Math.max(0, lineCount - 1); localStorage.setItem("queueJoined", "0"); localStorage.setItem("lineCount", String(lineCount)); }
+      updateQueueButtonUI(); updateStats(); haptic([8]); popup("行列カウントを解除しました");
+    } catch (error) { console.error(error); popup("行列を更新できませんでした。設定を確認してください。"); }
   });
 
   /* Feedback and slide-in drawer */
@@ -3902,7 +3990,7 @@ body.feedback-drawer-open { overflow:hidden; }
     renderFeedbackTarget(feedbackDrawerList, allFeedback, "まだダメ出し・改善点は届いていません。投稿された意見がここに表示されます。");
     feedbackCountBadge.textContent = `${allFeedback.length}件`;
     feedbackDrawerCount.textContent = String(allFeedback.length);
-    feedbackDrawerStatus.textContent = "このブラウザーに保存された改善点を表示しています。";
+    feedbackDrawerStatus.textContent = serverMode ? "Firebaseで共有されている改善点を表示しています。" : "この端末に保存された改善点を表示しています。";
   }
   function openFeedbackDrawer() {
     feedbackPreviouslyFocused = document.activeElement;
@@ -3938,10 +4026,11 @@ body.feedback-drawer-open { overflow:hidden; }
     const name = maskBadWords($("#badName").value.trim().slice(0, 40)) || "匿名";
     const text = maskBadWords($("#badText").value.trim().slice(0, 1500));
     if (!text) { $("#feedbackStatus").textContent = "改善点を入力してください。"; return; }
-    allFeedback.unshift({ id: newId("feedback"), name, text, time: Date.now() });
-    await saveFeedback();
+    const feedbackItem = { id: newId("feedback"), authorUid: firebaseAuth && firebaseAuth.currentUser ? firebaseAuth.currentUser.uid : voterId, name, text, time: Date.now() };
+    allFeedback.unshift(feedbackItem);
+    await saveFeedback(feedbackItem);
     $("#badText").value = "";
-    $("#feedbackStatus").textContent = "改善点をこのブラウザーに保存しました。";
+    $("#feedbackStatus").textContent = "改善点を共有しました。";
     popup("改善点を保存しました");
   });
 
@@ -4012,23 +4101,40 @@ body.feedback-drawer-open { overflow:hidden; }
     flowComment("店員", messages[Math.floor(Math.random() * messages.length)]);
   }, 20000);
 
-  /* Admin panel: client-side convenience only, not secure authentication. */
-  const ADMIN_PASS = "karaage";
-  $("#loginBtn").addEventListener("click", () => {
-    if ($("#adminPass").value === ADMIN_PASS) {
-      $("#adminPanel").style.display = "block";
-      popup("管理者モードを開きました");
-    } else popup("パスワードが違います");
+  /* Admin uses Firebase Authentication; no hard-coded password. */
+  $("#loginBtn").addEventListener("click", async () => {
+    if (!serverMode || !firebaseAuth) { popup("先に firebase-config.js を設定してください"); return; }
+    try {
+      await firebaseAuth.signInWithEmailAndPassword($("#adminEmail").value.trim(), $("#adminPass").value);
+      const user = firebaseAuth.currentUser;
+      voterId = user.uid;
+      localStorage.setItem(voterIdKey, voterId);
+      if (user.uid === String(window.KARAAGE_ADMIN_UID || "")) {
+        $("#adminPanel").style.display = "block";
+        popup("管理者としてログインしました");
+      } else {
+        await firebaseAuth.signOut();
+        popup("このアカウントに管理者権限がありません。firebase-config.js の管理者UIDを確認してください。");
+      }
+    } catch (error) { console.error(error); popup("ログインできません。認証設定とメールアドレスを確認してください。"); }
+  });
+  if (firebaseAuth) firebaseAuth.onAuthStateChanged(async user => {
+    if (user) { voterId = user.uid; localStorage.setItem(voterIdKey, voterId); }
+    if (!user) { $("#adminPanel").style.display = "none"; return; }
+    $("#adminPanel").style.display = user.uid === String(window.KARAAGE_ADMIN_UID || "") ? "block" : "none";
   });
   $("#clearBtn").addEventListener("click", async () => {
-    if (!window.confirm("このブラウザーに保存されたすべてのコメントと返信を削除します。よろしいですか？")) return;
-    allComments = [];
-    await saveComments();
-    renderComments();
-    popup("この端末のコメントを削除しました");
+    if (!firebaseAuth || !firebaseAuth.currentUser) { popup("管理者ログインが必要です"); return; }
+    if (!window.confirm("Firestore内のすべてのコメントと返信を削除します。よろしいですか？")) return;
+    try {
+      const snap = await firestore.collection("comments").get();
+      const chunks = []; for (let i = 0; i < snap.docs.length; i += 400) chunks.push(snap.docs.slice(i, i + 400));
+      for (const docs of chunks) { const batch = firestore.batch(); docs.forEach(doc => batch.delete(doc.ref)); await batch.commit(); }
+      allComments = []; renderComments(); updateStats(); popup("コメントを削除しました");
+    } catch (error) { console.error(error); popup("削除に失敗しました。管理者権限を確認してください。"); }
   });
 
-  /* Delicious votes are also local-only. */
+  /* Delicious votes are synchronized through the Firestore counters document. */
   const deliciousBtn = $("#deliciousBtn");
   const deliciousLabel = $("#deliciousLabel");
   const deliciousCountEl = $("#deliciousCount");
@@ -4041,7 +4147,7 @@ body.feedback-drawer-open { overflow:hidden; }
     deliciousBtn.setAttribute("aria-pressed", String(deliciousVoted));
     deliciousLabel.textContent = deliciousVoted ? "おいしいに投票済み！" : "おいしい！";
     deliciousCountEl.textContent = String(deliciousCount);
-    deliciousScope.textContent = "この端末内の投票";
+    deliciousScope.textContent = serverMode ? "みんなの投票" : "この端末内の投票";
     deliciousStatus.textContent = deliciousVoted ? "投票済み · もう一度押すと取り消せます。" : "おいしいと思ったらタップ！";
   }
   function animateDeliciousButton() {
@@ -4068,64 +4174,73 @@ body.feedback-drawer-open { overflow:hidden; }
       window.setTimeout(() => particle.remove(), 900);
     });
   }
-  deliciousBtn.addEventListener("click", () => {
-    deliciousVoted = !deliciousVoted;
-    deliciousCount = Math.max(0, deliciousCount + (deliciousVoted ? 1 : -1));
-    localStorage.setItem("localDeliciousVoted", deliciousVoted ? "1" : "0");
-    localStorage.setItem("localDeliciousCount", String(deliciousCount));
-    updateDeliciousUI();
-    haptic([18, 28, 18]);
-    if (deliciousVoted) animateDeliciousButton();
+  deliciousBtn.addEventListener("click", async () => {
+    const nextVoted = !deliciousVoted;
+    try {
+      if (serverMode) {
+        const ref = firestore.collection("siteState").doc("counters");
+        await firestore.runTransaction(async tx => { const snap = await tx.get(ref); const data = snap.exists ? snap.data() : {}; const voters = data.deliciousVoters || {}; if (Boolean(voters[voterId]) === nextVoted) return; voters[voterId] = nextVoted; const count = Math.max(0, Number(data.deliciousCount || 0) + (nextVoted ? 1 : -1)); tx.set(ref, { deliciousCount: count, deliciousVoters: voters, updatedAt: Date.now() }, { merge: true }); });
+        deliciousVoted = nextVoted;
+      } else { deliciousVoted = nextVoted; deliciousCount = Math.max(0, deliciousCount + (deliciousVoted ? 1 : -1)); localStorage.setItem("localDeliciousVoted", deliciousVoted ? "1" : "0"); localStorage.setItem("localDeliciousCount", String(deliciousCount)); }
+      updateDeliciousUI(); haptic([18, 28, 18]); if (deliciousVoted) animateDeliciousButton();
+    } catch (error) { console.error(error); popup("投票を保存できませんでした"); }
   });
 
-  /* Load existing records (including migration from old localStorage records). */
+  /* Realtime Firestore listeners; local IndexedDB fallback only when config is absent. */
   async function initializeData() {
+    if (serverMode) {
+      await ensureCounterDoc();
+      unsubscribeComments = firestore.collection("comments").orderBy("time", "desc").onSnapshot(snapshot => {
+        allComments = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id, attachments: Array.isArray(doc.data().attachments) ? doc.data().attachments : [], replies: Array.isArray(doc.data().replies) ? doc.data().replies : [], reactions: doc.data().reactions || {} }));
+        dataReady = true; renderComments(); updateStats();
+      }, error => { console.error(error); firebaseStatus("Firestoreの読み込みに失敗しました。Security Rulesとプロジェクト設定を確認してください。"); });
+      unsubscribeFeedback = firestore.collection("feedback").orderBy("time", "desc").limit(500).onSnapshot(snapshot => {
+        allFeedback = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })); refreshFeedbackData();
+      }, error => { console.error(error); $("#feedbackStatus").textContent = "改善点を読み込めません。Firestoreルールを確認してください。"; });
+      unsubscribeCounters = firestore.collection("siteState").doc("counters").onSnapshot(snapshot => {
+        if (snapshot.exists) { const data = snapshot.data(); sold = Math.max(0, Number(data.sold || 0)); deliciousCount = Math.max(0, Number(data.deliciousCount || 0)); deliciousVoted = Boolean((data.deliciousVoters || {})[voterId]); updateDeliciousUI(); updateStats(); }
+      }, error => console.error("Counter listener failed", error));
+      unsubscribeQueue = firestore.collection("queueUsers").where("expiresAt", ">", Date.now()).onSnapshot(snapshot => {
+        activeQueueRecords = snapshot.docs.map(docSnap => ({ ...docSnap.data(), uid: docSnap.id }));
+        const own = activeQueueRecords.find(item => item.uid === voterId && item.joined === true);
+        queueJoined = Boolean(own && Number(own.expiresAt) > Date.now());
+        ownQueueExpiresAt = own ? Number(own.expiresAt) : 0;
+        updateQueueButtonUI();
+        updateQueueCountFromLease();
+      }, error => { console.error("Queue listener failed", error); firebaseStatus("待機列の共有に失敗しました。Firestoreルールを確認してください。"); });
+      window.setInterval(async () => {
+        updateQueueCountFromLease();
+        if (!serverMode || !queueJoined || !firebaseAuth || !firebaseAuth.currentUser) return;
+        const now = Date.now();
+        ownQueueExpiresAt = now + QUEUE_LEASE_MS;
+        try {
+          await queueUserRef().set({ joined: true, updatedAt: now, expiresAt: ownQueueExpiresAt }, { merge: true });
+        } catch (error) {
+          console.warn("待機列の更新に失敗しました。", error);
+        }
+      }, 90 * 1000);
+      try {
+        const queueSnap = await queueUserRef().get();
+        const queueData = queueSnap.exists ? queueSnap.data() : {};
+        queueJoined = Boolean(queueData.joined && Number(queueData.expiresAt) > Date.now());
+        ownQueueExpiresAt = queueJoined ? Number(queueData.expiresAt) : 0;
+        if (queueSnap.exists && queueData.joined && !queueJoined) {
+          await queueUserRef().set({ joined: false, updatedAt: Date.now(), expiresAt: 0 }, { merge: true });
+        }
+        updateQueueButtonUI();
+      } catch (_) {}
+      firebaseStatus(firebaseStorage ? "Firebase共有に接続しました。投稿・改善点・カウンターが同期されます。" : "Firestore共有に接続しました。画像・動画の共有にはStorage（Blazeプラン）が別途必要です。", true);
+      dataReady = true; initScrollObserver(); return;
+    }
+    firebaseStatus("Firebase未設定です。firebase-config.js を設定すると共有機能が有効になります。", false);
     const legacyCommentsRaw = localStorage.getItem("karaageComments");
     let loadedComments = await getState("comments", null);
     let loadedFeedback = await getState("feedback", null);
-    if (!Array.isArray(loadedComments)) {
-      try {
-        const legacy = legacyCommentsRaw ? JSON.parse(legacyCommentsRaw) : [];
-        loadedComments = Array.isArray(legacy) ? legacy.map(item => ({
-          id: item.id || newId("comment"),
-          name: String(item.name || "匿名"),
-          text: String(item.text || ""),
-          rating: Number(item.rating) || 5,
-          likes: Number(item.likes) || 0,
-          dislikes: Number(item.dislikes) || 0,
-          reactions: {}, replies: [], attachments: [], time: Number(item.time) || Date.now(), style: item.style || ""
-        })) : [];
-      } catch (_) { loadedComments = []; }
-    }
-    allComments = loadedComments.map(item => ({
-      ...item,
-      id: item.id || newId("comment"),
-      name: String(item.name || "匿名"),
-      text: String(item.text || ""),
-      rating: Number(item.rating) || 5,
-      likes: Number(item.likes) || 0,
-      dislikes: Number(item.dislikes) || 0,
-      reactions: item.reactions && typeof item.reactions === "object" ? item.reactions : {},
-      replies: Array.isArray(item.replies) ? item.replies : [],
-      attachments: Array.isArray(item.attachments) ? item.attachments : [],
-      time: Number(item.time) || Date.now()
-    }));
-    if (!Array.isArray(loadedFeedback)) {
-      try {
-        const legacyFeedback = JSON.parse(localStorage.getItem("karaageFeedback") || "[]");
-        loadedFeedback = Array.isArray(legacyFeedback) ? legacyFeedback : [];
-      } catch (_) { loadedFeedback = []; }
-    }
-    allFeedback = loadedFeedback;
-    dataReady = true;
-    await saveState("comments", allComments);
-    await saveState("feedback", allFeedback);
-    renderComments();
-    refreshFeedbackData();
-    updateStats();
-    updateQueueButtonUI();
-    updateDeliciousUI();
-    initScrollObserver();
+    if (!Array.isArray(loadedComments)) { try { const legacy = legacyCommentsRaw ? JSON.parse(legacyCommentsRaw) : []; loadedComments = Array.isArray(legacy) ? legacy.map(item => ({ ...item, id: item.id || newId("comment"), reactions: item.reactions || {}, replies: item.replies || [], attachments: [], time: Number(item.time) || Date.now() })) : []; } catch (_) { loadedComments = []; } }
+    allComments = loadedComments.map(item => ({ ...item, id: item.id || newId("comment"), attachments: Array.isArray(item.attachments) ? item.attachments : [], reactions: item.reactions || {}, replies: item.replies || [], time: Number(item.time) || Date.now() }));
+    if (!Array.isArray(loadedFeedback)) { try { loadedFeedback = JSON.parse(localStorage.getItem("karaageFeedback") || "[]"); } catch (_) { loadedFeedback = []; } }
+    allFeedback = Array.isArray(loadedFeedback) ? loadedFeedback : [];
+    dataReady = true; renderComments(); refreshFeedbackData(); updateStats(); updateQueueButtonUI(); updateDeliciousUI(); initScrollObserver();
   }
 
   updateStats();
@@ -4133,14 +4248,34 @@ body.feedback-drawer-open { overflow:hidden; }
   updateDeliciousUI();
   refreshFeedbackData();
   initScrollObserver();
-  initializeData().catch(error => {
-    console.error("端末内データの読み込みに失敗しました。", error);
-    dataReady = true;
-    allComments = [];
-    allFeedback = [];
-    renderComments();
-    refreshFeedbackData();
-    updateStats();
+  async function startApplication() {
+    if (serverMode && firebaseAuth) {
+      await firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+      if (!firebaseAuth.currentUser) await firebaseAuth.signInAnonymously();
+      if (!firebaseAuth.currentUser) throw new Error("Firebase Authenticationの匿名ログインに失敗しました。");
+      voterId = firebaseAuth.currentUser.uid;
+      localStorage.setItem(voterIdKey, voterId);
+      if (!firebaseStorage) {
+        const mediaInput = $("#commentAttachments");
+        const mediaButton = $('[data-composer-toggle="composerMediaPanel"]');
+        if (mediaInput) mediaInput.disabled = true;
+        if (mediaButton) {
+          mediaButton.disabled = true;
+          mediaButton.title = "画像・動画の共有にはFirebase StorageとBlazeプランが必要です";
+          mediaButton.setAttribute("aria-label", "画像・動画の追加（Storage未設定）");
+        }
+        const help = $("#attachmentHelp");
+        if (help) help.textContent = "現在は画像・動画の共有添付が無効です。Firebase Storageを有効化するにはBlazeプラン（従量課金）の登録が必要です。詳細はREADMEを確認してください。";
+      }
+    }
+    await initializeData();
+  }
+
+  startApplication().catch(error => {
+    console.error("アプリケーションの初期化に失敗しました。", error);
+    dataReady = false;
+    firebaseStatus("Firebaseへの接続に失敗しました。Authentication・Firestore設定とルールを確認してください。", false);
+    popup("接続できません。設定を確認してください。");
   });
 })();
 </script>
