@@ -20,4 +20,4 @@ window.KARAAGE_FIREBASE_CONFIG = {
 };
 
 /* Public UI hint only. The real admin restriction is in firestore.rules. */
-window.KARAAGE_ADMIN_UID = "REPLACE_WITH_ADMIN_USER_UID";
+window.KARAAGE_ADMIN_UID = "U3lXzDRwojVXffXlhmeMTrMDciE3";
