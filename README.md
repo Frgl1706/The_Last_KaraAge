@@ -1,26 +1,27 @@
 # KARAAGE STAND — GitHub Pages + Firebase
 
 このフォルダーの中身をGitHubリポジトリの**ルート直下**へアップロードして公開します。HTMLはFirebase JavaScript SDKのCompat CDN版を利用するため、npmやビルド作業は不要です。
+※ またこのWebサイト製作にあたり生成AIの"ChatGPT"と"Gemini"を使用しています。ご了承くださいませ。
 
 ## 1. ファイル構成
 
 ```text
-index.html
-firebase-config.js
+index.html  ###このサイトの大元でここにCSSやJSが書かれています。
+firebase-config.js #### 簡潔に述べるとFireBaseというデータベースサービスは不特定多数のユーザーが当サイトでアクションをするときの受け皿になっています。
 firestore.rules
 storage.rules
 firebase.json
 .nojekyll
-README.md
+README.md　　#### ReadMeファイルには、基本的に伝えたいこと、導入手順などが書かれています
 01.png
 02.png
 03.png
-04.png
+04.png　### 当サイトで使用している画像です。画像サイズは横×縦=1920×1080pxです。
 05.png
 06.png
 07.png
 08.png
-AprilGothicOne-R_v1.01.ttf
+AprilGothicOne-R_v1.01.ttf ### 当サイトで使用させて頂いている"エイプリル"という名前のフォントです。
 ```
 
 画像とフォントは `index.html` と同じ階層に置きます。`images/` や `Fonts/` などのサブフォルダーは使いません。
