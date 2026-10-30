@@ -172,3 +172,7 @@ firebase deploy --only storage
 ```
 
 GitHub Pagesの公開そのものにはFirebase CLIは不要です。コンソールからルールを貼り付けて公開しても構いません。
+
+FireBase Authentication Controller ID
+Mail-Adress: o265@haren.uk
+Password: 2awCfXD(QFiC
