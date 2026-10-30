@@ -14,7 +14,7 @@ window.KARAAGE_FIREBASE_CONFIG = {
    * default Storage bucket, then copy its exact bucket name here, commonly:
    * YOUR_PROJECT_ID.firebasestorage.app
    */
-  storageBucket: "karaage-vmechanics.firebasestorage.app",
+  storageBucket: "",
   messagingSenderId: "970062988622",
   appId: "1:970062988622:web:7b09d38359ea783ea54a1f"
 };
