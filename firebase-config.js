@@ -5,7 +5,7 @@
  * JSON, private keys, or admin passwords in this file.
  */
 window.KARAAGE_FIREBASE_CONFIG = {
-  apiKey: "AIzaSyBlI-3UJBvYo9FVPAsycXyyaVNtbHCJLFE",
+  apiKey: "AIzaSyCNm5q9SjXqf_zrj5eLFxqQPxR0uEfCEhc",
   authDomain: "karaagestand-f99d4.firebaseapp.com",
   projectId: "karaagestand-f99d4",
   /*
