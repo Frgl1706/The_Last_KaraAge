@@ -6,7 +6,7 @@ service firebase.storage {
     }
 
     function isAdmin() {
-      return signedIn() && request.auth.uid == 'U3lXzDRwojVXffXlhmeMTrMDciE3';
+      return signedIn() && request.auth.uid == 'sJcpa1hSjphlty6ejqGxpjrEl7o2';
     }
 
     // Publicly viewable comment media; only the uploading account can create it.
