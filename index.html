@@ -2659,6 +2659,48 @@ button:hover { filter: brightness(1.1); }
   .home-campaign-image,.passion-hero > img,.passion-ticker-track { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
+
+
+/* =========================================================
+   ADMIN CONTROL ROOM / PUBLIC DISPLAY SETTINGS
+   ========================================================= */
+.site-announcement{max-width:900px;margin:10px auto 0;padding:10px 14px;display:flex;align-items:center;gap:9px;border:1px solid rgba(103,226,231,.28);border-radius:10px;background:linear-gradient(100deg,rgba(18,111,132,.22),rgba(7,27,43,.88));color:#dffeff;font-size:12px;line-height:1.65;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.site-announcement[hidden]{display:none!important}.site-announcement .material-symbols-outlined{color:#9ff3ef;flex:0 0 auto}.site-announcement strong{white-space:nowrap;color:#aaf4f2}.site-announcement span:last-child{overflow-wrap:anywhere}
+.home-subcopy{white-space:pre-line}
+.admin-login-note,.admin-help,.admin-security-note{color:#9eb7c3;font-size:11px;line-height:1.8;margin:8px 0}
+.admin-auth-status,.admin-module-status{color:#9de6e8;font-size:11px;line-height:1.65;margin-top:8px;overflow-wrap:anywhere}
+.admin-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid rgba(119,226,232,.19)}
+.admin-eyebrow{font-size:9px;font-weight:900;letter-spacing:.16em;color:#7edee5}.admin-panel-heading h3{font-size:19px;color:#eaffff}.admin-online-mark{padding:5px 9px;border:1px solid rgba(130,237,224,.4);border-radius:7px;color:#9af3df;font-size:10px;font-weight:900;letter-spacing:.1em}
+.admin-identity-line{font-size:10px;color:#9eb7c3;margin-bottom:12px;overflow-wrap:anywhere}.admin-identity-line code{color:#d2ffff;user-select:all}
+.admin-module{padding:13px;margin-top:12px;border:1px solid rgba(112,218,226,.17);border-radius:12px;background:rgba(7,26,41,.62)}
+.admin-module-title{display:flex;align-items:center;gap:7px;margin-bottom:8px;color:#aaf4f2;font-size:13px;font-weight:900}.admin-module-title>.material-symbols-outlined{font-size:19px}.admin-count{margin-left:auto;min-width:25px;padding:2px 7px;border-radius:99px;background:rgba(89,221,223,.13);color:#c8ffff;text-align:center;font-size:10px}
+.admin-field-label{display:block;margin:10px 0 2px;color:#bcd4dc;font-size:11px;font-weight:800}
+.admin-toggle-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}.admin-toggle-grid label{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid rgba(125,214,222,.13);border-radius:8px;background:rgba(255,255,255,.025);color:#c9dfe6;font-size:11px;line-height:1.45}.admin-toggle-grid input{width:17px;min-height:17px;margin:0;flex:0 0 auto;accent-color:#38c6cf}
+.admin-primary-btn{margin-top:10px;background:linear-gradient(130deg,#e8f17b,#35c5d0);color:#061923;box-shadow:0 4px 0 #07566e;font-weight:900}
+.admin-record-list{display:flex;flex-direction:column;gap:9px}.admin-record{padding:11px;border:1px solid rgba(139,215,222,.16);border-radius:10px;background:rgba(2,15,27,.76)}
+.admin-record.is-hidden-record{border-style:dashed;opacity:.78}.admin-record-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:7px}.admin-record-name{color:#e8fcff;font-size:12px;font-weight:900;overflow-wrap:anywhere}.admin-record-meta{color:#829eaa;font-size:9px;text-align:right;flex:0 0 auto}.admin-record-body{white-space:pre-wrap;overflow-wrap:anywhere;color:#d3e4e9;font-size:12px;line-height:1.75}.admin-record-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.admin-record-actions button{width:auto;min-height:34px;padding:6px 9px;font-size:10px;border-radius:7px;box-shadow:none}.admin-record-actions .admin-danger-btn{background:#792c38;color:#ffe8eb;border:1px solid rgba(255,130,145,.3)}.admin-empty{padding:16px;border:1px dashed rgba(139,215,222,.15);border-radius:9px;color:#839eaa;font-size:11px;text-align:center;line-height:1.7}
+.admin-feedback-reply{margin-top:9px;padding:9px;border-left:3px solid #6bd2ce;background:rgba(68,193,184,.08);color:#c7f4f0;font-size:11px;white-space:pre-wrap;line-height:1.7}.admin-record select,.admin-record textarea{margin-top:7px;font-size:11px;min-height:36px}.admin-record textarea{min-height:64px}
+.admin-tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.admin-tool-grid button{font-size:11px;padding:8px;min-height:38px}.admin-security-note{display:flex;gap:7px;margin-top:14px;padding:10px;border:1px solid rgba(255,207,102,.18);border-radius:9px;background:rgba(255,191,71,.055);color:#d2c7a7}.admin-security-note .material-symbols-outlined{color:#e7d08a;flex:0 0 auto}
+.comment-moderation-note{margin:8px 0;padding:9px 11px;border-left:3px solid #e8cf68;border-radius:7px;background:rgba(232,207,104,.09);color:#f3e8b9;font-size:11px;line-height:1.7}.reply-item.is-admin-reply{border-left:3px solid #59d5d0;background:rgba(47,174,176,.08)}.reply-admin-badge{display:inline-block;margin-left:6px;padding:2px 6px;border-radius:4px;background:rgba(77,213,205,.16);color:#a5f6ef;font-size:9px;font-weight:900}
+body.theme-graphite{--primary:#a8b5bd;--primary-hover:#7e8d96;--accent:#e1e8eb;--border-color:rgba(194,211,220,.27);--bg-card:rgba(17,24,29,.96);--bg-input:rgba(26,34,40,.94);--gold:#e4e7c8}
+body.theme-graphite header{background:linear-gradient(135deg,rgba(15,25,33,.97),rgba(35,47,56,.97));border-bottom-color:#9eafb8}
+body.theme-amber{--primary:#e6a33a;--primary-hover:#ba751f;--accent:#ffd27b;--border-color:rgba(243,184,91,.32);--bg-card:rgba(29,23,16,.96);--bg-input:rgba(40,31,20,.94);--gold:#ffe3a1}
+body.theme-amber header{background:linear-gradient(135deg,rgba(45,30,13,.97),rgba(73,47,18,.97));border-bottom-color:#e6a33a}
+
+body.theme-graphite .home-campaign,body.theme-graphite .passion-hero{background:#52616b!important}
+body.theme-graphite .home-campaign h1 em,body.theme-graphite .home-campaign-topline span:first-child,body.theme-graphite .passion-hero h1 em{background:#d5e0e5!important;color:#15232c!important}
+body.theme-graphite .home-manifesto,body.theme-graphite .passion-manifesto{background:linear-gradient(135deg,#bdcbd0,#687982)!important;color:#15232c!important}
+body.theme-graphite .passion-final{background:#dce5e8!important;box-shadow:7px 7px 0 #71818a!important}
+body.theme-graphite .passion-step{box-shadow:5px 5px 0 #7e929a!important}
+body.theme-amber .home-campaign,body.theme-amber .passion-hero{background:#986025!important}
+body.theme-amber .home-campaign h1 em,body.theme-amber .home-campaign-topline span:first-child,body.theme-amber .passion-hero h1 em{background:#ffd27b!important;color:#2b1c0b!important}
+body.theme-amber .home-manifesto,body.theme-amber .passion-manifesto{background:linear-gradient(135deg,#e8b45d,#a36b2c)!important;color:#2b1c0b!important}
+body.theme-amber .passion-final{background:#f0d18b!important;box-shadow:7px 7px 0 #a86f2d!important}
+body.theme-amber .passion-step{box-shadow:5px 5px 0 #bd843d!important}
+
+#loginBtn[hidden],#logoutBtn[hidden]{display:none!important}
+@media(max-width:560px){.site-announcement{margin:8px 10px 0;font-size:11px}.admin-toggle-grid,.admin-tool-grid{grid-template-columns:1fr}.admin-panel-heading h3{font-size:17px}.admin-record-head{display:block}.admin-record-meta{text-align:left;margin-top:3px}}
+
 </style>
 </head>
 
@@ -2701,6 +2743,12 @@ button:hover { filter: brightness(1.1); }
     <div id="counterStatus" class="counter-status" role="status" aria-live="polite"></div>
   </div>
 </header>
+
+<div id="siteAnnouncement" class="site-announcement" hidden role="status" aria-live="polite">
+  <span class="material-symbols-outlined" aria-hidden="true">campaign</span>
+  <strong id="siteAnnouncementLabel">運営からのお知らせ</strong>
+  <span id="siteAnnouncementText"></span>
+</div>
 
 <div class="liveLayer" id="liveLayer"></div>
 <div class="bigPopup" id="bigPopup"></div>
@@ -2774,7 +2822,7 @@ button:hover { filter: brightness(1.1); }
       <div class="home-campaign-content">
         <p class="home-kicker">MECHANISM LAB / KAGAWA</p>
         <h1 id="homeCampaignTitle">動くって、<br><em>おもしろい。</em></h1>
-        <p class="home-subcopy">回して、止めて、動かして。<br>機械のしくみを、手で確かめよう。</p>
+        <p class="home-subcopy" id="homeCampaignLead">回して、止めて、動かして。<br>機械のしくみを、手で確かめよう。</p>
         <button class="home-passion-cta" type="button" data-jump-tab="tab-passion">
           3つの機構を見に行く <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
         </button>
@@ -2783,7 +2831,7 @@ button:hover { filter: brightness(1.1); }
       <div class="home-campaign-bottom"><span>ROTATION. MOTION. MECHANISM.</span><span>触って、発見。</span></div>
     </section>
 
-    <div class="box scroll-animate home-action-box">
+    <div class="box scroll-animate home-action-box" id="homeActionBox">
       <div class="box-header">
         <span class="material-symbols-outlined">bolt</span>
         <span class="fw-800">体験カウンター</span>
@@ -3067,7 +3115,7 @@ button:hover { filter: brightness(1.1); }
   <div id="tab-info" class="tab-content">
     
     <!-- Improvement Corner -->
-    <div class="box">
+    <div class="box" id="feedbackSubmitBox">
       <div class="box-header">
         <span class="material-symbols-outlined">report_problem</span>
         <span class="fw-800">質問・気づき・改善メモ</span>
@@ -3093,32 +3141,77 @@ button:hover { filter: brightness(1.1); }
         <span class="fw-800">管理者モード</span>
       </div>
 
+      <p class="admin-login-note">管理者アカウントはFirebase Authenticationで作成します。ログイン用メールアドレスとパスワードは、Firebase Consoleで登録したものを使用してください。</p>
       <input id="adminEmail" type="email" placeholder="管理者メールアドレス" class="fw-500" autocomplete="username">
       <input id="adminPass" type="password" placeholder="管理者パスワード" class="fw-500" autocomplete="current-password">
       <div class="btn-group">
-        <button id="loginBtn" class="btn-secondary fw-700">
+        <button id="loginBtn" class="btn-secondary fw-700" type="button">
           <span class="material-symbols-outlined">lock_open</span> ログイン
         </button>
+        <button id="logoutBtn" class="btn-secondary fw-700" type="button" hidden>
+          <span class="material-symbols-outlined">logout</span> ログアウト
+        </button>
       </div>
+      <p id="adminAuthStatus" class="admin-auth-status" role="status" aria-live="polite">未ログイン</p>
 
       <div class="adminPanel" id="adminPanel">
-        <div class="btn-group" style="flex-direction:column; gap:6px;">
-          <button id="clearBtn" class="btn-secondary fw-700" style="background:var(--danger); border:none;">
-            <span class="material-symbols-outlined">delete_forever</span> 全コメント削除
-          </button>
-          <button id="fireBtn" class="btn-secondary fw-700">
-            <span class="material-symbols-outlined">celebration</span> 花火演出
-          </button>
-          <button id="godBtn" class="btn-secondary fw-700">
-            <span class="material-symbols-outlined">workspace_premium</span> 注目メモ演出
-          </button>
-          <button id="staffBtn" class="btn-secondary fw-700" type="button">
-            <span class="material-symbols-outlined">record_voice_over</span> 展示アナウンス送信
-          </button>
-          <button id="exportFeedbackCsvBtn" class="btn-secondary fw-700" type="button">
-            <span class="material-symbols-outlined">download</span> 改善メモをCSVに書き出す
-          </button>
+        <div class="admin-panel-heading">
+          <div>
+            <p class="admin-eyebrow">MECHANISM LAB / CONTROL ROOM</p>
+            <h3>システム管理コンソール</h3>
+          </div>
+          <span class="admin-online-mark">ADMIN</span>
         </div>
+        <p class="admin-identity-line">認証中のUID：<code id="adminUidValue">未取得</code></p>
+
+        <section class="admin-module">
+          <div class="admin-module-title"><span class="material-symbols-outlined">web</span>画面・公開設定</div>
+          <label class="admin-field-label" for="adminHeroLead">トップページの説明文</label>
+          <textarea id="adminHeroLead" maxlength="180" rows="2" placeholder="回して、止めて、動かして。\n機械のしくみを、手で確かめよう。"></textarea>
+          <label class="admin-field-label" for="adminAnnouncementText">お知らせ文</label>
+          <textarea id="adminAnnouncementText" maxlength="240" rows="2" placeholder="例：ただいまカム機構の実演を行っています"></textarea>
+          <div class="admin-toggle-grid">
+            <label><input id="adminAnnouncementEnabled" type="checkbox"> お知らせを表示</label>
+            <label><input id="adminMaintenance" type="checkbox"> メンテナンス表示・受付停止</label>
+            <label><input id="adminPauseComments" type="checkbox"> コメント投稿を停止</label>
+            <label><input id="adminPauseFeedback" type="checkbox"> 質問・改善メモを停止</label>
+            <label><input id="adminShowCounters" type="checkbox"> 体験カウンターを表示</label>
+            <label><input id="adminShowFeedback" type="checkbox"> 質問・改善メモ導線を表示</label>
+          </div>
+          <label class="admin-field-label" for="adminTheme">アクセントテーマ</label>
+          <select id="adminTheme">
+            <option value="blueprint">Blueprint / シアン</option>
+            <option value="graphite">Graphite / モノクロ</option>
+            <option value="amber">Workshop / アンバー</option>
+          </select>
+          <button id="saveSiteSettingsBtn" class="admin-primary-btn" type="button"><span class="material-symbols-outlined">save</span>表示設定を保存・全端末へ反映</button>
+          <p id="adminSettingStatus" class="admin-module-status" role="status" aria-live="polite">設定を読み込み中…</p>
+        </section>
+
+        <section class="admin-module">
+          <div class="admin-module-title"><span class="material-symbols-outlined">forum</span>コメント管理 <span class="admin-count" id="adminCommentCount">0</span></div>
+          <p class="admin-help">個別削除・一時非表示・注意文の表示・運営名義の返信ができます。非表示の投稿は一般画面から隠れ、管理画面には残ります。</p>
+          <div id="adminCommentList" class="admin-record-list"><p class="admin-empty">コメントを読み込み中…</p></div>
+        </section>
+
+        <section class="admin-module">
+          <div class="admin-module-title"><span class="material-symbols-outlined">feedback</span>質問・ダメ出し対応 <span class="admin-count" id="adminFeedbackCount">0</span></div>
+          <p class="admin-help">投稿への運営返信、対応状況の変更、不要なメモの削除ができます。返信は投稿者にも見える形で表示されます。</p>
+          <div id="adminFeedbackList" class="admin-record-list"><p class="admin-empty">メモを読み込み中…</p></div>
+        </section>
+
+        <section class="admin-module">
+          <div class="admin-module-title"><span class="material-symbols-outlined">build</span>運営ツール</div>
+          <div class="admin-tool-grid">
+            <button id="clearBtn" class="btn-secondary admin-danger-btn" type="button"><span class="material-symbols-outlined">delete_forever</span>全コメント削除</button>
+            <button id="fireBtn" class="btn-secondary" type="button"><span class="material-symbols-outlined">celebration</span>演出テスト</button>
+            <button id="godBtn" class="btn-secondary" type="button"><span class="material-symbols-outlined">workspace_premium</span>注目演出</button>
+            <button id="staffBtn" class="btn-secondary" type="button"><span class="material-symbols-outlined">record_voice_over</span>展示アナウンス</button>
+            <button id="exportFeedbackCsvBtn" class="btn-secondary" type="button"><span class="material-symbols-outlined">download</span>質問・改善メモをCSV出力</button>
+            <button id="exportCommentsCsvBtn" class="btn-secondary" type="button"><span class="material-symbols-outlined">download</span>コメントをCSV出力</button>
+          </div>
+        </section>
+        <p class="admin-security-note"><span class="material-symbols-outlined">security</span>この画面のログイン判定だけではデータを保護できません。Firestore Security Rulesにも管理者UIDによる更新・削除制限を設定してください。別紙の追記例を利用できます。</p>
       </div>
     </div>
 
@@ -3199,7 +3292,90 @@ button:hover { filter: brightness(1.1); }
     } catch (error) { console.error("Firebase initialization failed", error); }
   }
   const serverMode = Boolean(firestore);
-  let unsubscribeComments = null, unsubscribeFeedback = null, unsubscribeCounters = null, unsubscribeQueue = null;
+  const DEFAULT_PUBLIC_SETTINGS = {
+    announcementEnabled: false,
+    announcementText: "",
+    heroLead: "回して、止めて、動かして。\n機械のしくみを、手で確かめよう。",
+    maintenanceMode: false,
+    pauseComments: false,
+    pauseFeedback: false,
+    showCounters: true,
+    showFeedback: true,
+    theme: "blueprint"
+  };
+  let publicSettings = { ...DEFAULT_PUBLIC_SETTINGS };
+  let lastAdminUiState = false;
+  let unsubscribeComments = null, unsubscribeFeedback = null, unsubscribeCounters = null, unsubscribeQueue = null, unsubscribeSettings = null;
+  function isAdminUser() {
+    const expectedUid = String(window.KARAAGE_ADMIN_UID || "").trim();
+    return Boolean(firebaseAuth && firebaseAuth.currentUser && expectedUid && firebaseAuth.currentUser.uid === expectedUid);
+  }
+  function requireAdmin() {
+    if (!isAdminUser()) { popup("管理者ログインが必要です。"); return false; }
+    return true;
+  }
+  function applyPublicSettings(nextSettings = {}) {
+    publicSettings = { ...DEFAULT_PUBLIC_SETTINGS, ...(nextSettings || {}) };
+    const announcement = $("#siteAnnouncement");
+    const announcementText = $("#siteAnnouncementText");
+    const announcementVisible = publicSettings.maintenanceMode || (publicSettings.announcementEnabled && String(publicSettings.announcementText || "").trim());
+    if (announcement && announcementText) {
+      announcement.hidden = !announcementVisible;
+      $("#siteAnnouncementLabel").textContent = publicSettings.maintenanceMode ? "メンテナンス中" : "運営からのお知らせ";
+      announcementText.textContent = publicSettings.maintenanceMode ? "現在、一部の投稿・体験受付を停止しています。展示スタッフへお声がけください。" : String(publicSettings.announcementText || "");
+    }
+    const heroLead = $("#homeCampaignLead");
+    if (heroLead) heroLead.textContent = String(publicSettings.heroLead || DEFAULT_PUBLIC_SETTINGS.heroLead);
+    document.body.classList.remove("theme-blueprint", "theme-graphite", "theme-amber");
+    const theme = ["blueprint", "graphite", "amber"].includes(publicSettings.theme) ? publicSettings.theme : "blueprint";
+    document.body.classList.add(`theme-${theme}`);
+    const commentsOpen = !publicSettings.maintenanceMode && !publicSettings.pauseComments;
+    const feedbackOpen = !publicSettings.maintenanceMode && !publicSettings.pauseFeedback;
+    const countersOpen = !publicSettings.maintenanceMode;
+    const postButton = $("#postBtn"), commentText = $("#text");
+    if (postButton) postButton.disabled = !commentsOpen;
+    if (commentText) { commentText.disabled = !commentsOpen; commentText.placeholder = commentsOpen ? "感想や質問を書いてください" : "現在コメント投稿を停止しています"; }
+    const badButton = $("#badBtn"), badText = $("#badText"), badName = $("#badName");
+    if (badButton) badButton.disabled = !feedbackOpen;
+    if (badText) { badText.disabled = !feedbackOpen; badText.placeholder = feedbackOpen ? "質問・気づき・改善案を教えてください" : "現在、質問・改善メモの受付を停止しています"; }
+    if (badName) badName.disabled = !feedbackOpen;
+    ["#buyBtn", "#queueBtn", "#leaveQueueBtn", "#deliciousBtn"].forEach(selector => { const el = $(selector); if (el) el.disabled = !countersOpen || (selector === "#leaveQueueBtn" && !queueJoined); });
+    const stats = $(".stats-bar"), actionBox = $("#homeActionBox");
+    if (stats) stats.style.display = publicSettings.showCounters ? "grid" : "none";
+    if (actionBox) actionBox.style.display = publicSettings.showCounters ? "" : "none";
+    [".feedback-entry-box", "#feedbackSubmitBox"].forEach(selector => { const el = $(selector); if (el) el.style.display = publicSettings.showFeedback ? "" : "none"; });
+    $$(".reply-compose textarea, .reply-compose button").forEach(el => { el.disabled = !commentsOpen && !isAdminUser(); });
+    const settingsStatus = $("#adminSettingStatus");
+    if (settingsStatus && !settingsStatus.dataset.dirty) settingsStatus.textContent = serverMode ? "共有設定を読み込みました。保存すると全端末に反映されます。" : "ローカル表示です。Firebase接続後に全端末へ共有できます。";
+  }
+  function syncAdminSettingsForm() {
+    if (!isAdminUser()) return;
+    $("#adminHeroLead").value = String(publicSettings.heroLead || "");
+    $("#adminAnnouncementText").value = String(publicSettings.announcementText || "");
+    $("#adminAnnouncementEnabled").checked = Boolean(publicSettings.announcementEnabled);
+    $("#adminMaintenance").checked = Boolean(publicSettings.maintenanceMode);
+    $("#adminPauseComments").checked = Boolean(publicSettings.pauseComments);
+    $("#adminPauseFeedback").checked = Boolean(publicSettings.pauseFeedback);
+    $("#adminShowCounters").checked = Boolean(publicSettings.showCounters);
+    $("#adminShowFeedback").checked = Boolean(publicSettings.showFeedback);
+    $("#adminTheme").value = ["blueprint", "graphite", "amber"].includes(publicSettings.theme) ? publicSettings.theme : "blueprint";
+  }
+  function updateAdminUI() {
+    const admin = isAdminUser();
+    const adminStateChanged = admin !== lastAdminUiState;
+    lastAdminUiState = admin;
+    const panel = $("#adminPanel"), logout = $("#logoutBtn"), login = $("#loginBtn");
+    if (panel) panel.style.display = admin ? "block" : "none";
+    if (logout) logout.hidden = !admin;
+    if (login) login.hidden = admin;
+    const email = firebaseAuth && firebaseAuth.currentUser ? (firebaseAuth.currentUser.email || "認証済みアカウント") : "未ログイン";
+    const status = $("#adminAuthStatus");
+    if (status) status.textContent = admin ? `管理者としてログイン中：${email}` : (firebaseAuth && firebaseAuth.currentUser ? "一般ユーザーとしてログイン中（管理者権限なし）" : "未ログイン");
+    const uid = $("#adminUidValue");
+    if (uid) uid.textContent = admin ? firebaseAuth.currentUser.uid : "未取得";
+    if (admin) { syncAdminSettingsForm(); renderAdminDashboard(); }
+    if (adminStateChanged && Array.isArray(allComments)) renderComments();
+  }
   let remoteQueueJoined = false;
   function firebaseStatus(message, isConnected = false) {
     const el = document.getElementById("counterStatus");
@@ -3659,12 +3835,13 @@ button:hover { filter: brightness(1.1); }
 
   function renderReply(comment, reply) {
     const item = document.createElement("div");
-    item.className = "reply-item";
+    item.className = `reply-item${reply.role === "admin" ? " is-admin-reply" : ""}`;
     const head = document.createElement("div");
     head.className = "reply-head";
     const name = document.createElement("span");
     name.className = "reply-name";
     name.textContent = reply.name || "匿名";
+    if (reply.role === "admin") { const badge = document.createElement("span"); badge.className = "reply-admin-badge"; badge.textContent = "運営"; name.appendChild(badge); }
     const date = document.createElement("time");
     date.className = "reply-date";
     date.textContent = formatDate(reply.time);
@@ -3688,10 +3865,11 @@ button:hover { filter: brightness(1.1); }
       commentsEl.appendChild(empty);
     }
 
-    const sorted = [...allComments].sort((a, b) => (Number(b.time) || 0) - (Number(a.time) || 0));
+    const visibleComments = isAdminUser() ? allComments : allComments.filter(item => !item.hidden);
+    const sorted = [...visibleComments].sort((a, b) => (Number(b.time) || 0) - (Number(a.time) || 0));
     sorted.forEach((comment, commentIndex) => {
       const card = document.createElement("article");
-      card.className = `comment ${comment.style || ""}`;
+      card.className = `comment ${comment.style || ""}${comment.hidden ? " is-hidden-record" : ""}`;
       card.style.setProperty("--comment-delay", `${Math.min(commentIndex, 10) * 42}ms`);
 
       const header = document.createElement("div");
@@ -3711,7 +3889,14 @@ button:hover { filter: brightness(1.1); }
       meta.textContent = formatDate(comment.time);
 
       card.append(header, content, meta);
-      renderCommentMedia(comment.attachments, card);
+      if (comment.warningNote && (!comment.hidden || isAdminUser())) {
+        const warning = document.createElement("p");
+        warning.className = "comment-moderation-note";
+        warning.textContent = `運営からのお願い：${comment.warningNote}`;
+        card.appendChild(warning);
+      }
+      if (!comment.hidden || isAdminUser()) renderCommentMedia(comment.attachments, card);
+      else { content.textContent = "この投稿は運営により一時的に非表示になっています。"; }
 
       const actions = document.createElement("div");
       actions.className = "comment-actions";
@@ -3758,6 +3943,7 @@ button:hover { filter: brightness(1.1); }
       compose.append(replyInput, replySubmit);
       compose.addEventListener("submit", async event => {
         event.preventDefault();
+        if ((publicSettings.maintenanceMode || publicSettings.pauseComments) && !isAdminUser()) { popup("現在コメントへの返信受付を停止しています。"); return; }
         const text = maskBadWords(replyInput.value.trim());
         if (!text) return;
         const userName = $("#name").value.trim().slice(0, 15) || "匿名";
@@ -3783,7 +3969,7 @@ button:hover { filter: brightness(1.1); }
       commentsEl.appendChild(card);
     });
 
-    const ranking = [...allComments].sort((a, b) => (Number(b.likes) || 0) - (Number(a.likes) || 0)).slice(0, 5);
+    const ranking = [...visibleComments].sort((a, b) => (Number(b.likes) || 0) - (Number(a.likes) || 0)).slice(0, 5);
     rankingEl.replaceChildren();
     ranking.forEach((comment, index) => {
       const row = document.createElement("div");
@@ -3879,8 +4065,8 @@ button:hover { filter: brightness(1.1); }
       const featureBox = $("#buzzFeatureBox");
       if (featureBox) featureBox.classList.remove("is-spotlit");
     }
-    if (allComments.length) {
-      const average = allComments.reduce((sum, item) => sum + (Number(item.rating) || 0), 0) / allComments.length;
+    if (visibleComments.length) {
+      const average = visibleComments.reduce((sum, item) => sum + (Number(item.rating) || 0), 0) / visibleComments.length;
       $("#avg").textContent = average.toFixed(1);
     } else {
       $("#avg").textContent = "-";
@@ -4039,6 +4225,7 @@ button:hover { filter: brightness(1.1); }
 
   /* Main review submit */
   $("#postBtn").addEventListener("click", async () => {
+    if ((publicSettings.maintenanceMode || publicSettings.pauseComments) && !isAdminUser()) { popup("現在コメント投稿を停止しています。"); return; }
     if (!dataReady) { popup("保存データを準備しています。少し待ってください"); return; }
     const text = maskBadWords($("#text").value.trim());
     if (!text && !selectedAttachments.length) { popup("感想か画像・動画を追加してください"); return; }
@@ -4104,7 +4291,8 @@ button:hover { filter: brightness(1.1); }
     await firestore.runTransaction(async tx => { const snap = await tx.get(ref); if (!snap.exists) tx.set(ref, { sold: 0, lineCount: 0, updatedAt: Date.now() }); });
   }
   function updateStats() {
-    $("#commentCount").textContent = `${allComments.length}件`;
+    const publicCommentCount = isAdminUser() ? allComments.length : allComments.filter(item => !item.hidden).length;
+    $("#commentCount").textContent = `${publicCommentCount}件`;
     $("#sold").textContent = `${sold.toLocaleString("ja-JP")}回`;
     $("#line").textContent = `${lineCount.toLocaleString("ja-JP")}人`;
     const status = $("#counterStatus");
@@ -4182,6 +4370,18 @@ button:hover { filter: brightness(1.1); }
     body.className = "feedback-card-text";
     body.textContent = item.text || "（本文なし）";
     card.append(head, body);
+    if (item.status && item.status !== "未対応") {
+      const status = document.createElement("p");
+      status.className = "feedback-status";
+      status.textContent = `対応状況：${item.status}`;
+      card.appendChild(status);
+    }
+    if (item.adminReply) {
+      const reply = document.createElement("p");
+      reply.className = "admin-feedback-reply";
+      reply.textContent = `運営からの返信：${item.adminReply}`;
+      card.appendChild(reply);
+    }
     return card;
   }
   function renderFeedbackTarget(target, items, emptyText) {
@@ -4202,6 +4402,7 @@ button:hover { filter: brightness(1.1); }
     feedbackCountBadge.textContent = `${allFeedback.length}件`;
     feedbackDrawerCount.textContent = String(allFeedback.length);
     feedbackDrawerStatus.textContent = serverMode ? "Firebaseで共有されている質問・改善メモを表示しています。" : "この端末に保存された質問・改善メモを表示しています。";
+    renderAdminDashboard();
   }
   function openFeedbackDrawer() {
     feedbackPreviouslyFocused = document.activeElement;
@@ -4233,6 +4434,7 @@ button:hover { filter: brightness(1.1); }
   });
 
   $("#badBtn").addEventListener("click", async () => {
+    if (publicSettings.maintenanceMode || publicSettings.pauseFeedback) { popup("現在、質問・改善メモの受付を停止しています。"); return; }
     if (!dataReady) { popup("保存領域を準備しています。少し待ってください"); return; }
     const name = maskBadWords($("#badName").value.trim().slice(0, 40)) || "匿名";
     const text = maskBadWords($("#badText").value.trim().slice(0, 1500));
@@ -4244,6 +4446,110 @@ button:hover { filter: brightness(1.1); }
     $("#feedbackStatus").textContent = "メモを共有しました。";
     popup("メモを保存しました");
   });
+
+  function adminButton(label, className, action) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = className || "btn-secondary";
+    button.textContent = label;
+    button.addEventListener("click", action);
+    return button;
+  }
+  async function persistAdminComment(comment) {
+    if (!requireAdmin()) return;
+    try { await saveComments(comment); renderComments(); popup("コメント管理を保存しました。"); }
+    catch (error) { console.error(error); popup("保存できませんでした。Firestore Security Rulesを確認してください。"); }
+  }
+  async function adminDeleteComment(comment) {
+    if (!requireAdmin()) return;
+    if (!window.confirm("このコメントと返信を完全に削除します。よろしいですか？")) return;
+    try {
+      if (serverMode) await firestore.collection("comments").doc(comment.id).delete();
+      else { allComments = allComments.filter(item => item.id !== comment.id); await saveState("comments", allComments); }
+      if (firebaseStorage && Array.isArray(comment.attachments)) {
+        const paths = comment.attachments.map(item => item && item.path).filter(Boolean);
+        await Promise.allSettled(paths.map(path => firebaseStorage.ref().child(path).delete()));
+      }
+      allComments = allComments.filter(item => item.id !== comment.id);
+      renderComments(); popup("コメントを削除しました。");
+    } catch (error) { console.error(error); popup("削除できません。Firestore Security Rulesを確認してください。"); }
+  }
+  async function adminReplyToComment(comment) {
+    if (!requireAdmin()) return;
+    const text = window.prompt("このコメントへの運営返信を入力してください（600文字以内）。");
+    if (text === null || !text.trim()) return;
+    comment.replies = Array.isArray(comment.replies) ? comment.replies : [];
+    comment.replies.push({ id: newId("reply"), authorUid: firebaseAuth.currentUser.uid, name: "運営", role: "admin", text: maskBadWords(text.trim().slice(0, 600)), time: Date.now() });
+    await persistAdminComment(comment);
+  }
+  async function adminDeleteFeedback(item) {
+    if (!requireAdmin()) return;
+    if (!window.confirm("この質問・改善メモを完全に削除します。よろしいですか？")) return;
+    try {
+      if (serverMode) await firestore.collection("feedback").doc(item.id).delete();
+      else { allFeedback = allFeedback.filter(row => row.id !== item.id); await saveState("feedback", allFeedback); }
+      allFeedback = allFeedback.filter(row => row.id !== item.id);
+      refreshFeedbackData(); popup("質問・改善メモを削除しました。");
+    } catch (error) { console.error(error); popup("削除できません。Firestore Security Rulesを確認してください。"); }
+  }
+  function renderAdminDashboard() {
+    const commentTarget = $("#adminCommentList"), feedbackTarget = $("#adminFeedbackList");
+    if (!commentTarget || !feedbackTarget) return;
+    if (!isAdminUser()) { commentTarget.replaceChildren(); feedbackTarget.replaceChildren(); return; }
+    $("#adminCommentCount").textContent = String(allComments.length);
+    $("#adminFeedbackCount").textContent = String(allFeedback.length);
+    commentTarget.replaceChildren();
+    const comments = [...allComments].sort((a,b)=>(Number(b.time)||0)-(Number(a.time)||0)).slice(0,40);
+    if (!comments.length) { const empty=document.createElement("p"); empty.className="admin-empty"; empty.textContent="管理対象のコメントはありません。"; commentTarget.appendChild(empty); }
+    comments.forEach(comment => {
+      const card=document.createElement("article"); card.className=`admin-record${comment.hidden?" is-hidden-record":""}`;
+      const head=document.createElement("div"); head.className="admin-record-head";
+      const name=document.createElement("strong"); name.className="admin-record-name"; name.textContent=`${comment.name||"匿名"}${comment.hidden?" · 非表示":""}`;
+      const date=document.createElement("time"); date.className="admin-record-meta"; date.textContent=formatDate(comment.time); head.append(name,date);
+      const body=document.createElement("p"); body.className="admin-record-body"; body.textContent=comment.text||"（本文なし・添付のみ）";
+      card.append(head,body);
+      if(comment.warningNote){const warning=document.createElement("p");warning.className="comment-moderation-note";warning.textContent=`現在の注意文：${comment.warningNote}`;card.appendChild(warning);}
+      const actions=document.createElement("div");actions.className="admin-record-actions";
+      actions.append(
+        adminButton(comment.warningNote?"注意文を解除":"注意文を付ける","btn-secondary",async()=>{
+          if(!requireAdmin())return;
+          if(comment.warningNote){if(!window.confirm("このコメントの注意文を解除しますか？"))return;comment.warningNote="";comment.warningAt=0;}
+          else{const note=window.prompt("公開する注意文を入力してください（例：個人情報を書かないでね）。");if(note===null||!note.trim())return;comment.warningNote=maskBadWords(note.trim().slice(0,300));comment.warningAt=Date.now();}
+          await persistAdminComment(comment);
+        }),
+        adminButton(comment.hidden?"再表示":"一時非表示","btn-secondary",async()=>{if(!requireAdmin())return;if(!window.confirm(comment.hidden?"この投稿を再表示しますか？":"この投稿を一般画面から一時的に非表示にしますか？"))return;comment.hidden=!comment.hidden;comment.moderatedAt=Date.now();await persistAdminComment(comment);}),
+        adminButton("運営返信","btn-secondary",()=>adminReplyToComment(comment)),
+        adminButton("削除","admin-danger-btn",()=>adminDeleteComment(comment))
+      );
+      card.appendChild(actions);commentTarget.appendChild(card);
+    });
+
+    feedbackTarget.replaceChildren();
+    const feedback=[...allFeedback].sort((a,b)=>(Number(b.time)||0)-(Number(a.time)||0)).slice(0,40);
+    if(!feedback.length){const empty=document.createElement("p");empty.className="admin-empty";empty.textContent="質問・改善メモはまだありません。";feedbackTarget.appendChild(empty);}
+    feedback.forEach(item=>{
+      const card=document.createElement("article");card.className="admin-record";
+      const head=document.createElement("div");head.className="admin-record-head";
+      const name=document.createElement("strong");name.className="admin-record-name";name.textContent=item.name||"匿名";
+      const date=document.createElement("time");date.className="admin-record-meta";date.textContent=formatDate(item.time);head.append(name,date);
+      const body=document.createElement("p");body.className="admin-record-body";body.textContent=item.text||"（本文なし）";card.append(head,body);
+      const status=document.createElement("select");status.setAttribute("aria-label","対応状況");
+      ["未対応","確認中","対応済み"].forEach(value=>{const option=document.createElement("option");option.value=value;option.textContent=value;status.appendChild(option);});status.value=["未対応","確認中","対応済み"].includes(item.status)?item.status:"未対応";
+      const reply=document.createElement("textarea");reply.maxLength=600;reply.rows=2;reply.placeholder="運営からの返信・改善結果を入力";reply.value=item.adminReply||"";
+      const actions=document.createElement("div");actions.className="admin-record-actions";
+      actions.append(
+        adminButton("返信・状態を保存","btn-secondary",async()=>{
+          if(!requireAdmin())return;
+          item.adminReply=maskBadWords(reply.value.trim().slice(0,600));item.status=status.value;item.adminReplyAt=Date.now();item.adminReplyBy=firebaseAuth.currentUser.uid;
+          try{await saveFeedback(item);popup("返信と対応状況を保存しました。");}catch(error){console.error(error);popup("保存できません。Firestore Security Rulesを確認してください。");}
+        }),
+        adminButton("メモを削除","admin-danger-btn",()=>adminDeleteFeedback(item))
+      );
+      card.append(status,reply,actions);
+      if(item.adminReply){const previous=document.createElement("p");previous.className="admin-feedback-reply";previous.textContent=`現在の返信：${item.adminReply}`;card.appendChild(previous);}
+      feedbackTarget.appendChild(card);
+    });
+  }
 
   function csvCell(value) {
     let text = String(value ?? "").replace(/\r\n?/g, "\n");
@@ -4263,10 +4569,18 @@ button:hover { filter: brightness(1.1); }
     window.setTimeout(() => URL.revokeObjectURL(url), 1200);
   }
   $("#exportFeedbackCsvBtn").addEventListener("click", () => {
+    if (!requireAdmin()) return;
     const rows = [["id", "name", "text", "created_at"]];
     allFeedback.forEach(item => rows.push([item.id, item.name || "匿名", item.text || "", new Date(Number(item.time) || Date.now()).toISOString()]));
     downloadCsv(`feedback_${new Date().toISOString().slice(0, 10)}.csv`, rows);
     popup("メモをCSVに書き出しました");
+  });
+  $("#exportCommentsCsvBtn").addEventListener("click", () => {
+    if (!requireAdmin()) return;
+    const rows = [["id", "name", "text", "likes", "dislikes", "hidden", "warning", "replies", "created_at"]];
+    allComments.forEach(item => rows.push([item.id, item.name || "匿名", item.text || "", Number(item.likes)||0, Number(item.dislikes)||0, Boolean(item.hidden), item.warningNote||"", (item.replies||[]).length, new Date(Number(item.time)||Date.now()).toISOString()]));
+    downloadCsv(`comments_${new Date().toISOString().slice(0, 10)}.csv`, rows);
+    popup("コメントをCSVに書き出しました");
   });
 
   /* Flow messages and fireworks */
@@ -4301,9 +4615,10 @@ button:hover { filter: brightness(1.1); }
       window.setTimeout(() => firework.remove(), 1000);
     }
   }
-  $("#fireBtn").addEventListener("click", fireworks);
-  $("#godBtn").addEventListener("click", () => { popup("注目の発見メモ演出"); fireworks(); });
+  $("#fireBtn").addEventListener("click", () => { if (!requireAdmin()) return; fireworks(); popup("演出テストを実行しました。"); });
+  $("#godBtn").addEventListener("click", () => { if (!requireAdmin()) return; popup("注目の発見メモ演出"); fireworks(); });
   $("#staffBtn").addEventListener("click", () => {
+    if (!requireAdmin()) return;
     const messages = ["ゼネバ機構の「止まる瞬間」に注目！", "カムの形で上下運動が生まれます！", "両てこ機構を手で動かしてみよう！", "気づいたことをコメントで教えてください！"];
     flowComment("展示スタッフ", messages[Math.floor(Math.random() * messages.length)]);
   });
@@ -4315,30 +4630,75 @@ button:hover { filter: brightness(1.1); }
   /* Admin uses Firebase Authentication; no hard-coded password. */
   $("#loginBtn").addEventListener("click", async () => {
     if (!serverMode || !firebaseAuth) { popup("先に firebase-config.js を設定してください"); return; }
+    const email = $("#adminEmail").value.trim();
+    const password = $("#adminPass").value;
+    if (!email || !password) { popup("管理者メールアドレスとパスワードを入力してください。"); return; }
     try {
-      await firebaseAuth.signInWithEmailAndPassword($("#adminEmail").value.trim(), $("#adminPass").value);
+      await firebaseAuth.signInWithEmailAndPassword(email, password);
       const user = firebaseAuth.currentUser;
+      if (!user || user.uid !== String(window.KARAAGE_ADMIN_UID || "")) {
+        await firebaseAuth.signOut();
+        await firebaseAuth.signInAnonymously().catch(() => {});
+        updateAdminUI();
+        popup("このアカウントに管理者権限がありません。管理者UIDの設定を確認してください。");
+        return;
+      }
       voterId = user.uid;
       localStorage.setItem(voterIdKey, voterId);
-      if (user.uid === String(window.KARAAGE_ADMIN_UID || "")) {
-        $("#adminPanel").style.display = "block";
-        popup("管理者としてログインしました");
-      } else {
-        await firebaseAuth.signOut();
-        popup("このアカウントに管理者権限がありません。firebase-config.js の管理者UIDを確認してください。");
-      }
-    } catch (error) { console.error(error); popup("ログインできません。認証設定とメールアドレスを確認してください。"); }
+      $("#adminPass").value = "";
+      updateAdminUI();
+      popup("管理者としてログインしました。");
+    } catch (error) { console.error(error); popup("ログインできません。Firebase Authenticationの登録状態を確認してください。"); }
+  });
+  $("#logoutBtn").addEventListener("click", async () => {
+    if (!firebaseAuth || !isAdminUser()) return;
+    try { await firebaseAuth.signOut(); await firebaseAuth.signInAnonymously(); popup("管理者からログアウトしました。"); }
+    catch (error) { console.error(error); popup("ログアウト後の一般接続に失敗しました。ページを再読み込みしてください。"); }
+    updateAdminUI();
   });
   if (firebaseAuth) firebaseAuth.onAuthStateChanged(async user => {
     if (user) { voterId = user.uid; localStorage.setItem(voterIdKey, voterId); }
-    if (!user) { $("#adminPanel").style.display = "none"; return; }
-    $("#adminPanel").style.display = user.uid === String(window.KARAAGE_ADMIN_UID || "") ? "block" : "none";
+    updateAdminUI();
+    applyPublicSettings(publicSettings);
+  });
+  ["#adminHeroLead", "#adminAnnouncementText", "#adminAnnouncementEnabled", "#adminMaintenance", "#adminPauseComments", "#adminPauseFeedback", "#adminShowCounters", "#adminShowFeedback", "#adminTheme"].forEach(selector => {
+    const field = $(selector);
+    if (!field) return;
+    field.addEventListener("input", () => { const status=$("#adminSettingStatus"); if(status) { status.textContent="未保存の変更があります。保存ボタンを押してください。"; status.dataset.dirty="1"; } });
+    field.addEventListener("change", () => { const status=$("#adminSettingStatus"); if(status) { status.textContent="未保存の変更があります。保存ボタンを押してください。"; status.dataset.dirty="1"; } });
+  });
+  $("#saveSiteSettingsBtn").addEventListener("click", async () => {
+    if (!requireAdmin()) return;
+    const next = {
+      announcementEnabled: $("#adminAnnouncementEnabled").checked,
+      announcementText: $("#adminAnnouncementText").value.trim().slice(0,240),
+      heroLead: $("#adminHeroLead").value.trim().slice(0,180),
+      maintenanceMode: $("#adminMaintenance").checked,
+      pauseComments: $("#adminPauseComments").checked,
+      pauseFeedback: $("#adminPauseFeedback").checked,
+      showCounters: $("#adminShowCounters").checked,
+      showFeedback: $("#adminShowFeedback").checked,
+      theme: $("#adminTheme").value,
+      updatedAt: Date.now(),
+      updatedBy: firebaseAuth.currentUser.uid
+    };
+    try {
+      if (serverMode) await firestore.collection("siteState").doc("publicSettings").set(next, { merge: true });
+      else await saveState("publicSettings", next);
+      applyPublicSettings(next);
+      const status=$("#adminSettingStatus");status.textContent="保存しました。公開中の全端末に反映されます。";delete status.dataset.dirty;
+      popup("画面設定を保存しました。");
+    } catch(error) { console.error(error); const status=$("#adminSettingStatus");status.textContent="保存失敗：Firestore Security Rulesで管理者の書き込みを許可してください。";popup("設定を保存できませんでした。"); }
   });
   $("#clearBtn").addEventListener("click", async () => {
-    if (!firebaseAuth || !firebaseAuth.currentUser) { popup("管理者ログインが必要です"); return; }
+    if (!requireAdmin()) return;
     if (!window.confirm("Firestore内のすべてのコメントと返信を削除します。よろしいですか？")) return;
     try {
       const snap = await firestore.collection("comments").get();
+      if (firebaseStorage) {
+        const mediaPaths = snap.docs.flatMap(doc => (doc.data().attachments || []).map(item => item && item.path).filter(Boolean));
+        await Promise.allSettled(mediaPaths.map(path => firebaseStorage.ref().child(path).delete()));
+      }
       const chunks = []; for (let i = 0; i < snap.docs.length; i += 400) chunks.push(snap.docs.slice(i, i + 400));
       for (const docs of chunks) { const batch = firestore.batch(); docs.forEach(doc => batch.delete(doc.ref)); await batch.commit(); }
       allComments = []; renderComments(); updateStats(); popup("コメントを削除しました");
@@ -4401,6 +4761,11 @@ button:hover { filter: brightness(1.1); }
   async function initializeData() {
     if (serverMode) {
       await ensureCounterDoc();
+      unsubscribeSettings = firestore.collection("siteState").doc("publicSettings").onSnapshot(snapshot => {
+        publicSettings = snapshot.exists ? { ...DEFAULT_PUBLIC_SETTINGS, ...snapshot.data() } : { ...DEFAULT_PUBLIC_SETTINGS };
+        applyPublicSettings(publicSettings);
+        syncAdminSettingsForm();
+      }, error => { console.error(error); firebaseStatus("公開設定の読み込みに失敗しました。Firestore Security Rulesを確認してください。"); });
       unsubscribeComments = firestore.collection("comments").orderBy("time", "desc").onSnapshot(snapshot => {
         allComments = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id, attachments: Array.isArray(doc.data().attachments) ? doc.data().attachments : [], replies: Array.isArray(doc.data().replies) ? doc.data().replies : [], reactions: doc.data().reactions || {} }));
         dataReady = true; renderComments(); updateStats();
@@ -4444,9 +4809,13 @@ button:hover { filter: brightness(1.1); }
       dataReady = true; initScrollObserver(); return;
     }
     firebaseStatus("Firebase未設定です。firebase-config.js を設定すると共有機能が有効になります。", false);
+    applyPublicSettings(publicSettings);
     const legacyCommentsRaw = localStorage.getItem("karaageComments");
     let loadedComments = await getState("comments", null);
     let loadedFeedback = await getState("feedback", null);
+    const localSettings = await getState("publicSettings", null);
+    publicSettings = { ...DEFAULT_PUBLIC_SETTINGS, ...(localSettings || {}) };
+    applyPublicSettings(publicSettings);
     if (!Array.isArray(loadedComments)) { try { const legacy = legacyCommentsRaw ? JSON.parse(legacyCommentsRaw) : []; loadedComments = Array.isArray(legacy) ? legacy.map(item => ({ ...item, id: item.id || newId("comment"), reactions: item.reactions || {}, replies: item.replies || [], attachments: [], time: Number(item.time) || Date.now() })) : []; } catch (_) { loadedComments = []; } }
     allComments = loadedComments.map(item => ({ ...item, id: item.id || newId("comment"), attachments: Array.isArray(item.attachments) ? item.attachments : [], reactions: item.reactions || {}, replies: item.replies || [], time: Number(item.time) || Date.now() }));
     if (!Array.isArray(loadedFeedback)) { try { loadedFeedback = JSON.parse(localStorage.getItem("karaageFeedback") || "[]"); } catch (_) { loadedFeedback = []; } }
@@ -4454,6 +4823,7 @@ button:hover { filter: brightness(1.1); }
     dataReady = true; renderComments(); refreshFeedbackData(); updateStats(); updateQueueButtonUI(); updateDeliciousUI(); initScrollObserver();
   }
 
+  applyPublicSettings(publicSettings);
   updateStats();
   updateQueueButtonUI();
   updateDeliciousUI();
