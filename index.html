@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" href="AprilGothicOne-R_v1.01.ttf" as="font" type="font/ttf" crossorigin>
 <title>かがわ科学体験フェスティバル | MECHANISM LAB</title>
 
 <!-- Google Fonts: M PLUS Rounded 1c (Weights: 300, 400, 500, 700, 800, 900) -->
@@ -293,7 +294,7 @@ header {
 @font-face {
   font-family: "April Gothic One";
   src: local("April Gothic One"), local("エイプリルゴシック"),
-       url("AprilGothicOne-R_v1.01.ttf") format("truetype");
+       url("./AprilGothicOne-R_v1.01.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -2471,7 +2472,7 @@ body.feedback-drawer-open { overflow:hidden; }
   --passion-ink: #061725;
   --passion-paper: #effaff;
   --passion-yellow: #e9f27c;
-  --passion-display: "M PLUS Rounded 1c", "Yu Gothic", sans-serif;
+  --passion-display: "April Gothic One", "エイプリルゴシック", "M PLUS Rounded 1c", "Yu Gothic", sans-serif;
   --campaign-orange: #18bacb;
   --campaign-orange-bright: #75e7e8;
   --campaign-orange-deep: #087b99;
@@ -2700,6 +2701,80 @@ body.theme-amber .passion-step{box-shadow:5px 5px 0 #bd843d!important}
 
 #loginBtn[hidden],#logoutBtn[hidden]{display:none!important}
 @media(max-width:560px){.site-announcement{margin:8px 10px 0;font-size:11px}.admin-toggle-grid,.admin-tool-grid{grid-template-columns:1fr}.admin-panel-heading h3{font-size:17px}.admin-record-head{display:block}.admin-record-meta{text-align:left;margin-top:3px}}
+
+
+
+/* =========================================================
+   APRIL GOTHIC ONE — DISPLAY TYPOGRAPHY
+   The TTF is expected beside index.html / this HTML file.
+   Use it for hierarchy and signage; keep explanatory copy readable.
+   ========================================================= */
+:root {
+  --passion-display: "April Gothic One", "エイプリルゴシック", "M PLUS Rounded 1c", "Yu Gothic", sans-serif;
+}
+
+/* Brand / navigation headings */
+.title-area .fw-900,
+.title-area > span:last-child,
+.box-header,
+.home-section-heading h2,
+.home-manifesto-kicker,
+.home-feature-title,
+.nav-label {
+  font-family: var(--passion-display) !important;
+  font-weight: 400;
+  letter-spacing: .015em;
+}
+.title-area .fw-900 { font-size: clamp(15px, 2.8vw, 20px); line-height: 1.15; }
+.title-area > span:last-child { letter-spacing: .12em; }
+
+/* Hero headlines and mechanism names */
+.home-campaign h1,
+.home-manifesto h2,
+.passion-hero h1,
+.passion-manifesto h2,
+.passion-section-heading h2,
+.passion-step h3,
+.passion-final h2,
+.buzz-heading,
+.composer-title {
+  font-family: var(--passion-display) !important;
+  font-weight: 400;
+  font-synthesis: none;
+}
+.home-kicker,
+.home-campaign-topline,
+.home-campaign-stamp,
+.passion-hero-topline,
+.passion-hero-sticker,
+.passion-step-number,
+.passion-step-type,
+.passion-step-tag,
+.passion-final-label,
+.passion-review-cta,
+.buzz-eyebrow {
+  font-family: var(--passion-display) !important;
+  font-weight: 400;
+  letter-spacing: .045em;
+}
+
+/* Administrator console: visual hierarchy without changing input readability */
+.admin-panel-heading h3,
+.admin-module-title,
+.admin-primary-btn {
+  font-family: var(--passion-display) !important;
+  font-weight: 400;
+  letter-spacing: .02em;
+}
+.admin-eyebrow,
+.admin-online-mark { font-family: var(--passion-display) !important; }
+
+/* Small screens: prevent the Japanese festival title from crowding the guide button. */
+@media (max-width: 430px) {
+  .title-area { gap: 6px; min-width: 0; }
+  .title-area .fw-900 { font-size: clamp(13px, 3.4vw, 16px); }
+  .title-area > span:last-child { font-size: .65em !important; letter-spacing: .08em; }
+}
 
 </style>
 </head>
