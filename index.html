@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>文化祭 唐揚げ模擬店 | KARAAGE STAND</title>
+<title>かがわ科学体験フェスティバル | MECHANISM LAB</title>
 
 <!-- Google Fonts: M PLUS Rounded 1c (Weights: 300, 400, 500, 700, 800, 900) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -286,7 +286,7 @@ header {
 }
 
 /* =========================================================
-   情熱タブ：オレンジ×ブラックのエディトリアル／キャンペーン表現
+   機構紹介タブ：ブループリント×シアンのエディトリアル表現
    April Gothic One（エイプリルゴシック）は見出し・ラベルに使用。
    AprilGothicOne-R_v1.01.ttf をこのHTMLと同じ階層に置くと読み込まれます。
    ========================================================= */
@@ -507,7 +507,7 @@ header {
 }
 
 .passion-manifesto::after {
-  content: "KARAAGE!";
+  content: "MECHANISM!";
   position: absolute;
   right: -10px;
   bottom: -26px;
@@ -941,7 +941,7 @@ button:active {
   font-size: 12px;
 }
 
-/* 「おいしい！」投票ボタン：押し込み感＋弾むリアクション */
+/* 「発見！」リアクション：押し込み感＋弾むリアクション */
 .delicious-area {
   margin: 16px auto 2px;
   width: 100%;
@@ -2448,6 +2448,217 @@ body.feedback-drawer-open { overflow:hidden; }
   }
 }
 
+
+
+/* =========================================================
+   KAGAWA SCIENCE EXPERIENCE FESTIVAL / MECHANISM LAB THEME
+   Blueprint navy × instrument cyan × signal yellow.
+   Layout, IDs, Firebase collections and event handlers are retained.
+   ========================================================= */
+:root {
+  --primary: #22c6d4;
+  --primary-hover: #0c98b5;
+  --accent: #72edf0;
+  --bg-card: rgba(8, 25, 40, 0.95);
+  --bg-input: rgba(5, 22, 37, 0.94);
+  --border-color: rgba(75, 213, 225, 0.31);
+  --text-main: #eefaff;
+  --text-muted: #9fbac8;
+  --gold: #f2dc75;
+  --danger: #ff6472;
+  --passion-orange: #20c2d0;
+  --passion-orange-light: #8ceff0;
+  --passion-ink: #061725;
+  --passion-paper: #effaff;
+  --passion-yellow: #e9f27c;
+  --passion-display: "M PLUS Rounded 1c", "Yu Gothic", sans-serif;
+  --campaign-orange: #18bacb;
+  --campaign-orange-bright: #75e7e8;
+  --campaign-orange-deep: #087b99;
+  --campaign-black: #061725;
+  --campaign-cream: #effaff;
+}
+
+body {
+  background-color: #061725 !important;
+  background-image:
+    linear-gradient(rgba(75, 191, 211, .075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75, 191, 211, .075) 1px, transparent 1px),
+    radial-gradient(ellipse at 12% 4%, rgba(17, 135, 166, .24), transparent 38%),
+    radial-gradient(ellipse at 88% 32%, rgba(18, 95, 128, .18), transparent 42%) !important;
+  background-size: 34px 34px, 34px 34px, auto, auto !important;
+  background-attachment: fixed !important;
+  color: var(--text-main);
+}
+
+header {
+  background: linear-gradient(135deg, rgba(4, 20, 34, .97), rgba(8, 43, 62, .97)) !important;
+  border-bottom: 2px solid var(--primary) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .28);
+}
+.title-area { color: var(--accent) !important; text-shadow: 0 0 18px rgba(77, 224, 235, .24) !important; }
+.guide-btn { background: rgba(35, 198, 212, .11) !important; border-color: rgba(114, 237, 240, .68) !important; color: var(--accent) !important; }
+.guide-btn:hover { background: rgba(35, 198, 212, .22) !important; }
+.stats-bar { background: rgba(2, 15, 27, .72) !important; border-color: var(--border-color) !important; }
+.stat-card .material-symbols-outlined { color: var(--accent) !important; }
+.stat-value { color: #f4fdff !important; }
+
+.box {
+  background: linear-gradient(145deg, rgba(10, 34, 52, .96), rgba(5, 19, 32, .97)) !important;
+  border-color: rgba(83, 206, 220, .23) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .24), inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+.box-header { color: var(--accent) !important; border-bottom-color: rgba(114, 237, 240, .13) !important; }
+input, textarea, select { background-color: var(--bg-input) !important; border-color: rgba(75, 213, 225, .28) !important; color: #effaff !important; }
+input:focus, textarea:focus, select:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 2px rgba(65, 211, 225, .16) !important; }
+button { background: linear-gradient(135deg, #20bfd0, #087eaa) !important; color: #041722 !important; box-shadow: 0 3px 10px rgba(17, 172, 196, .18) !important; }
+button:hover { filter: brightness(1.1); }
+.btn-secondary { background: rgba(24, 53, 70, .9) !important; color: #e4f7ff !important; border: 1px solid rgba(105, 197, 213, .25) !important; box-shadow: none !important; }
+.btn-secondary:hover { background: rgba(32, 78, 99, .95) !important; }
+
+.home-campaign {
+  background: #087f9c !important;
+  border-color: #041722 !important;
+  box-shadow: 7px 7px 0 #020d17 !important;
+}
+.home-campaign::before {
+  background:
+    linear-gradient(90deg, rgba(3, 17, 29, .94) 0%, rgba(3, 24, 39, .75) 46%, rgba(3, 24, 39, .13) 100%),
+    linear-gradient(0deg, rgba(3, 17, 29, .8), transparent 50%),
+    rgba(20, 190, 210, .12) !important;
+}
+.home-campaign::after { border-color: rgba(132, 241, 244, .3) !important; }
+.home-campaign-topline span:first-child { background: var(--campaign-orange-bright) !important; color: var(--campaign-black) !important; }
+.home-campaign h1 { text-shadow: 4px 4px 0 #03111d !important; }
+.home-campaign h1 em { background: #73e7e9 !important; color: #061725 !important; }
+.home-kicker { background: #eefcff !important; color: #061725 !important; }
+.home-campaign-stamp { background: var(--passion-yellow) !important; color: #071a26 !important; border-color: #061725 !important; }
+.home-manifesto { background: linear-gradient(135deg, #1bbdcb, #087f9d) !important; color: #041722 !important; border-color: #041722 !important; box-shadow: 7px 7px 0 #020d17 !important; }
+.home-manifesto::after { color: rgba(4, 23, 34, .10) !important; }
+.home-manifesto-kicker { color: rgba(4, 23, 34, .75) !important; }
+.home-manifesto h2 { color: #041722 !important; }
+.home-section-heading { border-bottom-color: rgba(114, 237, 240, .45) !important; }
+.home-section-heading h2 { color: #eafaff !important; }
+.feature-card { background: rgba(7, 26, 42, .96) !important; border-color: rgba(75, 213, 225, .28) !important; }
+.feature-card-body { color: #effaff !important; }
+.home-feature-title { color: #8ceff0 !important; }
+.home-feature-copy { color: #a9c3d0 !important; }
+
+/* Reuse the existing editorial sections, restyled as an engineering field guide. */
+.passion-tab { color: var(--passion-paper) !important; }
+.passion-hero {
+  background: #087f9c !important;
+  border-color: #041722 !important;
+  box-shadow: 7px 7px 0 #020d17 !important;
+}
+.passion-hero::before {
+  background:
+    linear-gradient(90deg, rgba(3, 17, 29, .92) 0%, rgba(3, 24, 39, .68) 48%, rgba(3, 24, 39, .13) 100%),
+    linear-gradient(0deg, rgba(3, 17, 29, .8), transparent 46%),
+    rgba(25, 192, 207, .12) !important;
+}
+.passion-hero::after { opacity: .1 !important; }
+.passion-hero-topline span:first-child { background: #75e7e8 !important; color: #061725 !important; }
+.passion-hero h1 { text-shadow: 4px 4px 0 #041722 !important; }
+.passion-hero h1 em { background: #75e7e8 !important; color: #061725 !important; }
+.passion-hero-sticker { background: #e9f27c !important; color: #061725 !important; border-color: #061725 !important; }
+.passion-manifesto { background: linear-gradient(135deg, #22c6d4, #087f9d) !important; color: #061725 !important; border-color: #041722 !important; box-shadow: 7px 7px 0 #020d17 !important; }
+.passion-manifesto::after { content: "MECHANISM" !important; color: rgba(4, 23, 34, .10) !important; }
+.passion-manifesto h2 { color: #041722 !important; }
+.passion-manifesto-copy { color: rgba(4, 23, 34, .88) !important; }
+.passion-manifesto-copy strong { background: #061725 !important; color: #e9f27c !important; }
+.passion-section-heading { border-bottom-color: #20c2d0 !important; }
+.passion-section-heading h2 { color: #eefaff !important; }
+.passion-section-heading span { color: #8ceff0 !important; }
+.passion-step { background: linear-gradient(145deg, #0b283d, #061725) !important; border-color: rgba(127, 222, 232, .22) !important; box-shadow: 5px 5px 0 rgba(30, 190, 207, .85) !important; }
+.passion-step-number { background: #e9f27c !important; color: #061725 !important; border-color: #061725 !important; }
+.passion-step-type { color: #8ceff0 !important; }
+.passion-step p { color: rgba(239, 250, 255, .82) !important; }
+.passion-step-tag { background: #73e7e9 !important; color: #061725 !important; }
+.passion-final { background: #e9f27c !important; color: #061725 !important; border-color: #061725 !important; box-shadow: 7px 7px 0 #1bbdcb !important; }
+.passion-final::before { content: "DISCOVER" !important; color: rgba(6, 23, 37, .09) !important; }
+.passion-final-label { background: #061725 !important; color: #e9f27c !important; }
+.passion-final h2 { color: #061725 !important; }
+.passion-final p { color: rgba(6, 23, 37, .82) !important; }
+.passion-review-cta { background: #061725 !important; color: #effaff !important; border-color: #061725 !important; box-shadow: 5px 5px 0 #1bbdcb !important; }
+.passion-review-cta:hover { background: #12384d !important; box-shadow: 7px 7px 0 #1bbdcb !important; }
+
+.counter-status { background: rgba(7, 29, 45, .94) !important; border-color: rgba(75, 213, 225, .28) !important; color: #a9dbe3 !important; }
+.counter-status.is-connected { border-color: rgba(83, 221, 174, .35) !important; }
+.counter-action-buy { background: linear-gradient(135deg, #e9f27c, #70e6e4 72%, #20aabe) !important; border-color: rgba(221, 255, 255, .7) !important; color: #061725 !important; }
+.counter-action-queue { background: linear-gradient(135deg, rgba(39, 134, 157, .55), rgba(8, 31, 48, .98)) !important; color: #effaff !important; border-color: rgba(126, 225, 235, .26) !important; }
+.queue-leave-btn { background: rgba(125, 196, 211, .07) !important; color: #c7e1e9 !important; border-color: rgba(125, 196, 211, .22) !important; }
+.queue-leave-btn:not(:disabled):hover { background: rgba(35, 193, 207, .15) !important; }
+
+.delicious-btn { color: #061725 !important; background: linear-gradient(115deg, #e9f27c 0%, #70e6e4 48%, #1bb5c8 100%) !important; border-color: rgba(224, 255, 255, .9) !important; box-shadow: 0 5px 0 #07566e, 0 9px 20px rgba(22, 183, 203, .18) !important; }
+.delicious-btn:hover { box-shadow: 0 6px 0 #07566e, 0 12px 24px rgba(22, 183, 203, .25) !important; }
+.delicious-btn:active { box-shadow: 0 1px 0 #07566e, 0 3px 8px rgba(22, 183, 203, .16) !important; }
+.delicious-btn.is-voted { background: linear-gradient(115deg, #f4ffd0 0%, #c8f6a0 50%, #75e7e8 100%) !important; border-color: #f4ffd0 !important; }
+.delicious-counter-line .material-symbols-outlined { color: #8ceff0 !important; }
+.delicious-particle { color: #e9f27c !important; }
+
+.local-data-note { background: rgba(26, 121, 145, .12) !important; border-color: rgba(87, 213, 225, .2) !important; color: #c7e4ec !important; }
+.feedback-open-btn { color: #eafaff !important; border-color: rgba(100, 220, 230, .28) !important; background: linear-gradient(110deg, rgba(28, 176, 197, .18), rgba(255,255,255,.035)) !important; }
+.feedback-open-btn:hover { background: linear-gradient(110deg, rgba(28, 176, 197, .27), rgba(255,255,255,.07)) !important; }
+.feedback-count-badge { background: rgba(57, 200, 215, .14) !important; border-color: rgba(90, 220, 230, .25) !important; color: #baf8fa !important; }
+.buzz-feature-box { color: #effaff !important; background: linear-gradient(135deg, rgba(20, 175, 198, .17), rgba(5, 22, 37, .98) 49%, rgba(8, 44, 61, .98)) !important; border-color: rgba(79, 213, 227, .38) !important; box-shadow: 5px 6px 0 rgba(20, 162, 184, .55), 0 16px 34px rgba(0,0,0,.22) !important; }
+.buzz-feature-box::before { background: radial-gradient(circle, rgba(83, 226, 232, .2), rgba(32, 185, 203, 0) 68%) !important; }
+.buzz-feature-box.is-spotlit { border-color: rgba(180, 251, 247, .85) !important; box-shadow: 7px 10px 0 var(--primary), 0 0 36px rgba(36, 190, 207, .2) !important; }
+.buzz-eyebrow { color: #8ceff0 !important; }
+.buzz-heading { color: #effaff !important; }
+.buzz-heading em { color: #72edf0 !important; }
+.buzz-feature-review { border-left-color: var(--primary) !important; background: linear-gradient(125deg, rgba(255,255,255,.085), rgba(255,255,255,.025)) !important; }
+.buzz-feature-review::after { color: rgba(114, 237, 240, .1) !important; }
+.buzz-review-avatar { color: #061725 !important; background: var(--primary) !important; box-shadow: 0 0 0 4px rgba(32, 194, 208, .12) !important; }
+.buzz-review-rating { color: #f2dc75 !important; }
+.buzz-review-like { color: #a8f5f1 !important; }
+.buzz-review-text { color: #effaff !important; }
+.buzz-review-bottom { color: #8faebb !important; }
+.buzz-spotlight-btn { border-color: rgba(103, 222, 230, .32) !important; background: rgba(32, 194, 208, .1) !important; color: #b9f5f5 !important; }
+.buzz-spotlight-btn:hover { background: rgba(32, 194, 208, .2) !important; }
+.buzz-empty { color: #b3cbd4 !important; }
+.comment-composer { background: linear-gradient(155deg, rgba(31, 177, 195, .12), rgba(7, 24, 39, .97) 43%) !important; border-color: rgba(80, 210, 224, .29) !important; }
+.composer-kicker { color: #8ceff0 !important; }
+.composer-title { color: #effaff !important; }
+#text.comment-textarea { border-color: rgba(100, 220, 230, .26) !important; background: rgba(2, 15, 27, .6) !important; color: #effaff !important; }
+#text.comment-textarea::placeholder { color: #7896a4 !important; }
+#text.comment-textarea:focus { background: rgba(3, 20, 34, .85) !important; box-shadow: 0 0 0 3px rgba(32, 194, 208, .12), inset 0 2px 10px rgba(0,0,0,.2) !important; }
+.composer-tool { background: rgba(145, 211, 224, .055) !important; color: #c5e2eb !important; border-color: rgba(130, 205, 219, .17) !important; }
+.composer-tool:hover { border-color: rgba(114, 237, 240, .48) !important; background: rgba(32, 194, 208, .12) !important; color: #f1ffff !important; }
+.composer-tool.is-open,.composer-tool[aria-expanded="true"] { color: #061725 !important; border-color: var(--accent) !important; background: linear-gradient(145deg, #a0f4ef, #1bbdcb) !important; box-shadow: 0 4px 12px rgba(32, 194, 208, .18) !important; }
+.composer-post-btn { color: #061725 !important; background: linear-gradient(145deg, #e9f27c, #20bfd0 78%) !important; box-shadow: 0 4px 0 #07566e, 0 8px 18px rgba(32, 194, 208, .16) !important; }
+.composer-panel-content { border-color: rgba(100, 220, 230, .22) !important; background: rgba(145, 211, 224, .035) !important; }
+.composer-panel-title { color: #9ceef0 !important; }
+.composer-status { color: #89aab8 !important; }
+.comment { border-left-color: var(--accent) !important; background: linear-gradient(145deg, rgba(15, 43, 60, .95), rgba(6, 22, 36, .97)) !important; }
+.comment::before { background: linear-gradient(var(--accent), rgba(32, 194, 208, 0)) !important; }
+.comment:hover { border-color: rgba(115, 228, 235, .35) !important; }
+.comment.is-reacting { border-color: rgba(137, 242, 239, .7) !important; }
+.rankItem { background: rgba(13, 38, 54, .92) !important; }
+.rank-badge { background: #e9f27c !important; color: #061725 !important; }
+.likeBtn { background: rgba(100, 222, 228, .1) !important; color: #9df0ed !important; border-color: rgba(100, 222, 228, .25) !important; }
+.guide-notice { border-color: rgba(100, 220, 230, .2) !important; background: linear-gradient(135deg, rgba(32, 194, 208, .08), rgba(255,255,255,.02)) !important; }
+.guide-notice h3 { color: #b9f5f5 !important; }
+.guide-notice p,.guide-notice li { color: #b0c5cf !important; }
+.adminPanel { background: rgba(2, 15, 27, .78) !important; }
+
+.bottom-nav {
+  border-color: rgba(150, 231, 238, .2) !important;
+  background: linear-gradient(135deg, rgba(183, 245, 248, .13), rgba(60, 150, 174, .055) 36%, rgba(3, 18, 31, .82) 100%), rgba(5, 23, 37, .72) !important;
+}
+.nav-item.active { color: #aaf4f2 !important; border-color: rgba(107, 230, 235, .22) !important; background: linear-gradient(145deg, rgba(81, 221, 226, .16), rgba(20, 145, 170, .075)) !important; }
+.nav-item.active .nav-icon { background: linear-gradient(145deg, rgba(125, 240, 239, .27), rgba(24, 167, 189, .16)) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 4px 12px rgba(32, 194, 208, .12) !important; }
+.nav-item:focus-visible { outline-color: rgba(123, 239, 238, .95) !important; }
+
+.liveLayer .flow { border-color: rgba(118, 236, 239, .38) !important; text-shadow: 0 0 8px rgba(76, 217, 226, .65), 0 2px 4px #000 !important; }
+.bigPopup { background: linear-gradient(135deg, #20bfd0 0%, #087eaa 100%) !important; color: #041722 !important; border-color: #e9fcff !important; }
+.firework { color: #e9f27c !important; }
+.gold { border-color: #e9f27c !important; background: linear-gradient(135deg, rgba(8, 34, 50, .96), rgba(27, 87, 93, .95)) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .home-campaign-image,.passion-hero > img,.passion-ticker-track { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
 </style>
 </head>
 
@@ -2457,8 +2668,8 @@ body.feedback-drawer-open { overflow:hidden; }
   <div class="header-inner">
     <div class="header-top-row">
       <div class="title-area">
-        <span class="material-symbols-outlined" style="font-size:26px;">restaurant</span>
-        <span class="fw-900">文化祭 唐揚げ模擬店</span> <span class="fw-300" style="font-size:0.75em; color:var(--text-muted);">FINAL</span>
+        <span class="material-symbols-outlined" style="font-size:26px;">precision_manufacturing</span>
+        <span class="fw-900">かがわ科学体験フェスティバル</span> <span class="fw-300" style="font-size:0.75em; color:var(--text-muted);">MECHANISM LAB</span>
       </div>
       <button class="guide-btn" id="openGuideBtn">
         <span class="material-symbols-outlined" style="font-size:16px;">help</span> 使い方
@@ -2477,13 +2688,13 @@ body.feedback-drawer-open { overflow:hidden; }
         <span class="stat-value fw-800" id="commentCount">0件</span>
       </div>
       <div class="stat-card">
-        <span class="material-symbols-outlined">shopping_cart</span>
-        <span>売上</span>
+        <span class="material-symbols-outlined">touch_app</span>
+        <span>体験</span>
         <span class="stat-value fw-800" id="sold">0個</span>
       </div>
       <div class="stat-card">
-        <span class="material-symbols-outlined">directions_walk</span>
-        <span>行列</span>
+        <span class="material-symbols-outlined">hourglass_top</span>
+        <span>体験待ち</span>
         <span class="stat-value fw-800" id="line">0人</span>
       </div>
     </div>
@@ -2508,7 +2719,7 @@ body.feedback-drawer-open { overflow:hidden; }
     <div class="guide-content">
       <div class="guide-step-item">
         <span class="material-symbols-outlined" style="color:var(--accent);">favorite</span>
-        <div><strong class="fw-700">1. 「おいしい！」で応援</strong><br><span class="fw-300" style="color:var(--text-muted);">ホーム画面でボタンを押すと応援投票を記録します。振動は対応端末・ブラウザーでのみ動作します。</span></div>
+        <div><strong class="fw-700">1. 「発見！」で応援</strong><br><span class="fw-300" style="color:var(--text-muted);">ホーム画面のボタンを押すと、体験のリアクションを記録します。振動は対応端末・ブラウザーでのみ動作します。</span></div>
       </div>
       <div class="guide-step-item">
         <span class="material-symbols-outlined" style="color:var(--accent);">rate_review</span>
@@ -2520,13 +2731,13 @@ body.feedback-drawer-open { overflow:hidden; }
       </div>
       <div class="guide-step-item">
         <span class="material-symbols-outlined" style="color:var(--accent);">local_fire_department</span>
-        <div><strong class="fw-700">4. 模擬店のこだわりを知る</strong><br><span class="fw-300" style="color:var(--text-muted);">「情熱」タブでは、仕込みや揚げ方へのこだわりを写真とインタラクションで楽しめます。</span></div>
+        <div><strong class="fw-700">4. 機構のしくみを知る</strong><br><span class="fw-300" style="color:var(--text-muted);">「機構を知る」タブでは、ゼネバ機構・カム機構・両てこ機構の動きと特徴を紹介します。</span></div>
       </div>
     </div>
     <div class="guide-notices" aria-label="ご利用にあたっての注意事項">
       <section class="guide-notice">
         <h3><span class="material-symbols-outlined">info</span>ご利用にあたって</h3>
-        <p>このページは文化祭の模擬店紹介・感想共有を目的としたものです。カウントやリアクションは参考値であり、会計・在庫・公式な来場者数の記録には使用しないでください。</p>
+        <p>このページは科学体験展示の紹介・感想共有を目的としたものです。体験カウントやリアクションは参考値であり、公式な来場者数・参加者数の記録には使用しないでください。</p>
       </section>
       <section class="guide-notice">
         <h3><span class="material-symbols-outlined">shield</span>投稿時の注意事項</h3>
@@ -2539,7 +2750,7 @@ body.feedback-drawer-open { overflow:hidden; }
       </section>
       <section class="guide-notice">
         <h3><span class="material-symbols-outlined">database</span>保存・プライバシー</h3>
-        <p>コメント・返信・リアクション・改善点・待機列カウントはFirebaseを通じて共有されます。画像・動画の保存にはFirebase Storageを利用します。添付ファイルを投稿する場合は、プロジェクトの料金条件を必ず確認してください。</p>
+        <p>コメント・返信・リアクション・改善メモ・体験待ちカウントはFirebaseを通じて共有されます。画像・動画の保存にはFirebase Storageを利用します。添付ファイルを投稿する場合は、プロジェクトの料金条件を必ず確認してください。</p>
       </section>
       <section class="guide-notice">
         <h3><span class="material-symbols-outlined">gavel</span>免責事項</h3>
@@ -2551,82 +2762,82 @@ body.feedback-drawer-open { overflow:hidden; }
 </div>
 <div class="container">
 
-  <!-- TAB 1: HOME / ORANGE EDITORIAL -->
+  <!-- TAB 1: HOME / MECHANISM LAB -->
   <div id="tab-home" class="tab-content active home-page">
 
     <section class="home-campaign scroll-animate" aria-labelledby="homeCampaignTitle">
-      <img src="01.png" alt="最高機械工学年の唐揚げ" class="home-campaign-image">
+      <img src="01.png" alt="3Dプリンターで製作した機構模型の集合" class="home-campaign-image">
       <div class="home-campaign-topline">
-        <span>文化祭限定</span>
-        <span>工程を、まっすぐ。</span>
+        <span>SCIENCE EXPERIENCE</span>
+        <span>動きを、手で理解する。</span>
       </div>
       <div class="home-campaign-content">
-        <p class="home-kicker">KARAAGE STAND</p>
-        <h1 id="homeCampaignTitle">唐揚げ、<br><em>本気です。</em></h1>
-        <p class="home-subcopy">ザクッと鳴って、ジュワッと広がる。<br>一口目から、ちゃんとうまい。</p>
+        <p class="home-kicker">MECHANISM LAB / KAGAWA</p>
+        <h1 id="homeCampaignTitle">動くって、<br><em>おもしろい。</em></h1>
+        <p class="home-subcopy">回して、止めて、動かして。<br>機械のしくみを、手で確かめよう。</p>
         <button class="home-passion-cta" type="button" data-jump-tab="tab-passion">
-          こだわりの裏側へ <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          3つの機構を見に行く <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
         </button>
       </div>
-      <div class="home-campaign-stamp" aria-hidden="true">300円<br>から！</div>
-      <div class="home-campaign-bottom"><span>HOT. CRUNCHY. JUICY.</span><span>今日だけの本気。</span></div>
+      <div class="home-campaign-stamp" aria-hidden="true">3つの<br>しくみ</div>
+      <div class="home-campaign-bottom"><span>ROTATION. MOTION. MECHANISM.</span><span>触って、発見。</span></div>
     </section>
 
     <div class="box scroll-animate home-action-box">
       <div class="box-header">
         <span class="material-symbols-outlined">bolt</span>
-        <span class="fw-800">模擬店のクイックアクション</span>
+        <span class="fw-800">体験カウンター</span>
       </div>
       <div class="counter-actions">
         <button id="buyBtn" class="counter-action counter-action-buy" type="button">
-          <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
-          <span><strong>買ったよ！</strong><small>購入報告を +1</small></span>
+          <span class="material-symbols-outlined" aria-hidden="true">touch_app</span>
+          <span><strong>体験した！</strong><small>体験報告を +1</small></span>
         </button>
         <button id="queueBtn" class="counter-action counter-action-queue" type="button">
           <span class="material-symbols-outlined" aria-hidden="true">groups</span>
-          <span><strong id="queueButtonLabel">並んでる！</strong><small id="queueButtonHint">待機列に参加</small></span>
+          <span><strong id="queueButtonLabel">体験待ちに参加</strong><small id="queueButtonHint">待機人数に +1</small></span>
         </button>
       </div>
       <div class="queue-leave-row">
         <button id="leaveQueueBtn" class="queue-leave-btn" type="button" disabled>
           <span class="material-symbols-outlined" aria-hidden="true">logout</span>
-          列から抜けた（−1）
+          体験待ちを解除（−1）
         </button>
       </div>
-      <p class="counter-note">購入はボタンを押した回数の累計です。行列はこの端末で「並んでる！」を押した人の申告人数で、「列から抜けた」で退出できます。操作できずに閉じた場合も、一定時間更新がなければ自動で人数から除外されます。</p>
+      <p class="counter-note">「体験した！」はボタンを押した回数の累計です。体験待ちは、この端末で参加を申告した人数です。「体験待ちを解除」で退出できます。画面を閉じた場合も、一定時間更新がなければ自動で人数から除外されます。</p>
     </div>
 
     <section class="home-manifesto scroll-animate" aria-labelledby="homeManifestoTitle">
-      <p class="home-manifesto-kicker">ONE BITE, ALL IN.</p>
-      <h2 id="homeManifestoTitle">一口目から、<br>ちゃんと旨い。</h2>
-      <p>揚げて、並べて、笑顔で渡す<br>当たり前を、ひとつずつ本気でやる。</p>
+      <p class="home-manifesto-kicker">FROM MOTION TO MECHANISM</p>
+      <h2 id="homeManifestoTitle">動きの裏には、<br>しくみがある。</h2>
+      <p>回転も、停止も、往復も。<br>部品の形とつながりから生まれる動きを見てみよう。</p>
     </section>
 
     <div class="home-section-heading scroll-animate">
-      <h2>おいしさの、こだわり。</h2>
+      <h2>3つの機構を見てみよう。</h2>
       <span class="material-symbols-outlined" aria-hidden="true">south</span>
     </div>
 
     <div class="dynamic-feature-grid home-feature-grid">
       <div class="feature-card scroll-animate">
-        <img src="02.png" alt="唐揚げの味付け">
+        <img src="02.png" alt="ゼネバ機構のスロットとピン">
         <div class="feature-card-body">
-          <div class="home-feature-title">マッチョ！！！</div>
-          <div class="home-feature-copy">マッチョとマヨネーズのバランスで、味を引き出す。</div>
+          <div class="home-feature-title">ゼネバ機構</div>
+          <div class="home-feature-copy">回転を、一定の間隔で進む間欠運動に変える。</div>
         </div>
       </div>
       <div class="feature-card scroll-animate">
-        <img src="03.png" alt="カリッとした衣">
+        <img src="03.png" alt="カムとフォロワーの機構模型">
         <div class="feature-card-body">
-          <div class="home-feature-title">カリザク衣</div>
-          <div class="home-feature-copy">外はカリッと香ばしく、中は肉汁ジューシー。</div>
+          <div class="home-feature-title">カム機構</div>
+          <div class="home-feature-copy">回転するカムの形で、上下・往復する動きをつくる。</div>
         </div>
       </div>
       <div class="feature-card scroll-animate">
-        <img src="04.png" alt="文化祭模擬店のチームワーク">
+        <img src="04.png" alt="両てこ機構の四節リンク模型">
         <div class="feature-card-body">
-          <div class="home-feature-title">熱々おもてなし</div>
-          <div class="home-feature-copy">クラスが一丸となって、できたてをお届け。</div>
+          <div class="home-feature-title">両てこ機構</div>
+          <div class="home-feature-copy">四節リンクで、2本のリンクが揺れ動く。</div>
         </div>
       </div>
     </div>
@@ -2634,95 +2845,95 @@ body.feedback-drawer-open { overflow:hidden; }
     <div class="box scroll-animate delicious-vote-box">
       <div class="box-header">
         <span class="material-symbols-outlined">favorite</span>
-        <span class="fw-800">おいしい！応援投票</span>
+        <span class="fw-800">しくみ発見！応援投票</span>
       </div>
-      <p class="delicious-intro">この唐揚げをおいしいと思ったら、ボタンで応援してください。あなたの一票が模擬店の励みになります。</p>
+      <p class="delicious-intro">機構の動きが面白いと思ったら、ボタンで応援してください。あなたの一票が展示づくりの励みになります。</p>
       <div class="delicious-area">
         <button id="deliciousBtn" class="delicious-btn" type="button" aria-pressed="false">
           <span class="material-symbols-outlined delicious-heart" aria-hidden="true">favorite</span>
           <span class="delicious-button-copy">
-            <strong id="deliciousLabel">おいしい！</strong>
-            <small>この唐揚げを応援する</small>
+            <strong id="deliciousLabel">発見！</strong>
+            <small>この展示を応援する</small>
           </span>
           <span class="material-symbols-outlined delicious-tap-icon" aria-hidden="true">touch_app</span>
         </button>
         <div class="delicious-counter-line" aria-live="polite">
           <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
-          <span id="deliciousScope">みんなの「おいしい」</span>
+          <span id="deliciousScope">みんなの「発見！」</span>
           <strong id="deliciousCount">0</strong>
           <span>票</span>
         </div>
-        <p class="delicious-status" id="deliciousStatus">おいしいと思ったらタップ！ もう一度押すと取り消せます。</p>
+        <p class="delicious-status" id="deliciousStatus">面白い発見があったらタップ！ もう一度押すと取り消せます。</p>
       </div>
     </div>
 
   </div>
 
-  <!-- TAB 2: PASSION / ORANGE EDITORIAL -->
+  <!-- TAB 2: MECHANISM / SCIENCE EDITORIAL -->
   <div id="tab-passion" class="tab-content passion-tab">
 
     <div class="passion-scroll-progress" aria-hidden="true"><span id="passionProgressBar"></span></div>
 
     <section class="passion-hero scroll-animate" aria-labelledby="passionHeroTitle" tabindex="0" role="button" aria-pressed="false" data-passion-interaction="hero">
-      <img src="05.png" alt="揚げたての唐揚げと調理場の熱気">
+      <img src="05.png" alt="3Dプリンター製の機構模型を並べた展示">
       <div class="passion-hero-content">
-        <h1 id="passionHeroTitle">うまいは、<br><em>正義。</em></h1>
-        <p class="passion-hero-lead">油がパチパチ鳴りだしたら、こっちの出番。<br>衣はザクッ。中はジュワッ。<br>語るのはここまで。あとは一口、食べてみて。</p>
+        <h1 id="passionHeroTitle">動きの正体を、<br><em>分解する。</em></h1>
+        <p class="passion-hero-lead">3Dプリンターで作った模型を回して、<br>動きが生まれる仕組みを観察しよう。<br>気になる機構は、カードをタップ。</p>
       </div>
-      <div class="passion-hero-sticker" aria-hidden="true">唐揚げ<br>一本勝負</div>
+      <div class="passion-hero-sticker" aria-hidden="true">3D PRINTED<br>MECHANISM</div>
     </section>
 
     <section class="passion-manifesto scroll-animate" aria-labelledby="passionManifestoTitle">
       <div>
-        <h2 id="passionManifestoTitle">たかが唐揚げ。<br>だから、手は抜かない。</h2>
+        <h2 id="passionManifestoTitle">動きを作るのは、<br>形とつながり。</h2>
       </div>
       <div class="passion-manifesto-copy">
-        <p>特別なことをしているつもりはない。冷凍品だとしても、ちゃんと揚げる。</p>
-        <p>でも、その「ちゃんと」をサボらない。<strong>おいしいものを出したい。</strong>理由はそれで十分。</p>
+        <p>複雑に見える機械も、よく見ると小さな部品の組み合わせでできています。</p>
+        <p>形やつなぎ方を少し変えるだけで、動きは大きく変わる。<strong>機械の動きを生み出す原理</strong>を、手で触れながら探してみよう。</p>
       </div>
     </section>
 
     <div class="passion-section-heading scroll-animate">
-      <h2>うまさの裏側。</h2>
+      <h2>3つの機構を観察する。</h2>
     </div>
 
-    <article class="passion-step scroll-animate" tabindex="0" role="button" aria-pressed="false" data-passion-step="01" aria-label="工程1 下ごしらえのこだわりを強調する">
+    <article class="passion-step scroll-animate" tabindex="0" role="button" aria-pressed="false" data-passion-step="01" aria-label="機構1 ゼネバ機構の動きを強調する">
       <div class="passion-step-media">
-        <img src="06.png" alt="画像06を使ってね">
+        <img src="06.png" alt="ゼネバ機構の駆動ピンと溝付き歯車">
         <span class="passion-step-number">01</span>
       </div>
       <div class="passion-step-body">
-        <h3>袋から取り出す。</h3>
-        <p>冷凍でカチコチになっていれば、その都度ほどいて揚げやすく整える。次の工程のためにも大切な作業。</p>
+        <h3>ゼネバ機構｜回って、止まる。</h3>
+        <p>回転する駆動ピンが溝に入ると、従動車が決まった角度だけ回転します。ピンが離れている間は停止。連続回転を「動く時間」と「止まる時間」に分ける機構です。</p>
       </div>
     </article>
 
-    <article class="passion-step reverse scroll-animate" tabindex="0" role="button" aria-pressed="false" data-passion-step="02" aria-label="工程2 味をしみ込ませるこだわりを強調する">
+    <article class="passion-step reverse scroll-animate" tabindex="0" role="button" aria-pressed="false" data-passion-step="02" aria-label="機構2 カム機構の動きを強調する">
       <div class="passion-step-media">
-        <img src="07.png" alt="タレに漬け込んで味をなじませる工程">
+        <img src="07.png" alt="回転カムと上下するフォロワーの模型">
         <span class="passion-step-number">02</span>
       </div>
       <div class="passion-step-body">
-        <h3>うまさは、待つ。</h3>
-        <p>いまかいまかと揚げられるのを待つ唐揚げ。期待で胸が踊るのを押さえ冷静に、</p>
+        <h3>カム機構｜形が動きを決める。</h3>
+        <p>偏心した円盤や特別な輪郭を持つカムを回すと、接しているフォロワーが上下・往復します。回転運動を、形状に応じた別の動きへ変換します。</p>
       </div>
     </article>
 
-    <article class="passion-step scroll-animate" tabindex="0" role="button" aria-pressed="false" data-passion-step="03" aria-label="工程3 揚げ方のこだわりを強調する">
+    <article class="passion-step scroll-animate" tabindex="0" role="button" aria-pressed="false" data-passion-step="03" aria-label="機構3 両てこ機構の動きを強調する">
       <div class="passion-step-media">
-        <img src="08.png" alt="衣をカリッと仕上げる揚げ工程">
+        <img src="08.png" alt="両てこ機構の四節リンク模型">
         <span class="passion-step-number">03</span>
       </div>
       <div class="passion-step-body">
-        <h3>最後は、音でわかる。</h3>
-        <p>じっくり火を通して、仕上げは高温でカリッと。油から上がる音と、ふわっと来る香り。ここまで来たら、もうお腹が黙ってない。</p>
+        <h3>両てこ機構｜両側が揺れる。</h3>
+        <p>4本のリンクをつないだ四節リンク機構の一種です。入力側も出力側も一回転せず、一定の角度範囲を行ったり来たりします。リンクの長さと支点の位置に注目してみよう。</p>
       </div>
     </article>
 
     <section class="passion-final scroll-animate" aria-labelledby="passionFinalTitle">
-      <h2 id="passionFinalTitle">食べたら、<br>正直な感想を。</h2>
-      <p>「うまい！」も「もっとこうして！」も大歓迎。ひとこと残してくれたら、次の一個がもっとおいしくなりますので、もしよろしければレビューの方お願いします！！！</p>
-      <button class="passion-review-cta" type="button" data-jump-tab="tab-comments">レビューを書く <span aria-hidden="true">↗</span></button>
+      <h2 id="passionFinalTitle">気づいたことを、<br>言葉にしよう。</h2>
+      <p>「ここが面白かった」「この動きが不思議」「もっと知りたい」。感想も質問も大歓迎です。ひとこと残していってください。</p>
+      <button class="passion-review-cta" type="button" data-jump-tab="tab-comments">感想・質問を書く <span aria-hidden="true">↗</span></button>
     </section>
 
   </div>
@@ -2732,44 +2943,44 @@ body.feedback-drawer-open { overflow:hidden; }
 
     <div class="local-data-note scroll-animate">
       <span class="material-symbols-outlined" aria-hidden="true">devices</span>
-      <span>コメント・返信・添付ファイルは外部データベースサービス(Google FireBaseといいます。)に保存されます。お手数をおかけし誠に恐縮ですが、どうか個人情報等にはお気をつけください。</span>
+      <span>コメント・返信・添付ファイルはFirebaseに保存され、ほかの端末にも共有されます。便利な共有機能ですが、氏名・住所・学校名など個人を特定できる情報は書き込まないでください。</span>
     </div>
 
     <div class="box feedback-entry-box scroll-animate">
       <div class="box-header">
         <span class="material-symbols-outlined">rate_review</span>
-        <span class="fw-800">当模擬店への改善メモ</span>
+        <span class="fw-800">展示への質問・改善メモ</span>
       </div>
-      <p class="feedback-entry-copy">「ここがよかった」「ここを直してほしい」。届いた意見を横から開いて確認できます。</p>
+      <p class="feedback-entry-copy">「ここが面白かった」「ここをもっと知りたい」。質問や気づきを投稿できます。</p>
       <button id="openFeedbackDrawerBtn" class="feedback-open-btn" type="button" aria-controls="feedbackDrawer" aria-expanded="false">
         <span class="material-symbols-outlined" aria-hidden="true">view_sidebar</span>
-        <span>ダメ出しを見てみる</span>
+        <span>質問・改善メモを見る</span>
         <span id="feedbackCountBadge" class="feedback-count-badge">0件</span>
       </button>
     </div>
 
     <!-- Buzz / featured review -->
     <section class="buzz-feature-box scroll-animate" id="buzzFeatureBox" aria-labelledby="buzzFeatureTitle">
-      <div class="buzz-eyebrow"><span>THE REVIEW THAT HITS</span><span>FEATURED / 01</span></div>
-      <h2 class="buzz-heading" id="buzzFeatureTitle">急上昇<em>レビュー</em></h2>
+      <div class="buzz-eyebrow"><span>IDEAS / QUESTIONS / DISCOVERY</span><span>FEATURED / 01</span></div>
+      <h2 class="buzz-heading" id="buzzFeatureTitle">注目の<em>発見メモ</em></h2>
       <div id="buzz" class="buzz-content" role="status" aria-live="polite">
-        <div class="buzz-empty">まだレビューがありません。最初のひとことが、ここに載るかもしれません。</div>
+        <div class="buzz-empty">まだ投稿がありません。最初の感想や質問が、ここに載るかもしれません。</div>
       </div>
       <button id="buzzSpotlightBtn" class="buzz-spotlight-btn" type="button" disabled>
         <span class="material-symbols-outlined" aria-hidden="true">flare</span>
-        このレビューを照らす
+        この投稿に注目する
       </button>
     </section>
 
     <!-- Minimal first-state comment composer -->
     <section class="comment-composer box scroll-animate" aria-labelledby="composerTitle">
       <div class="composer-header">
-        <p class="composer-kicker">YOUR WORDS / YOUR TAKE</p>
-        <h2 class="composer-title" id="composerTitle">ひとこと、どうぞ。</h2>
-        <p class="composer-lead">気に入ったところも、気になったところも。あなたの言葉で教えてください。</p>
+        <p class="composer-kicker">YOUR OBSERVATION / YOUR QUESTION</p>
+        <h2 class="composer-title" id="composerTitle">発見を、ひとこと。</h2>
+        <p class="composer-lead">面白かった動き、気になった部品、もっと知りたいこと。自由に書いてください。</p>
       </div>
 
-      <textarea id="text" class="comment-textarea fw-400" placeholder="コメントする、、、、、" maxlength="2000" aria-label="コメント本文"></textarea>
+      <textarea id="text" class="comment-textarea fw-400" placeholder="感想や質問を書いてください" maxlength="2000" aria-label="コメント本文"></textarea>
 
       <div class="composer-toolbar" role="group" aria-label="コメントの追加設定">
         <button class="composer-tool" type="button" data-composer-toggle="composerNamePanel" aria-controls="composerNamePanel" aria-expanded="false" aria-label="ユーザー名を設定" title="ユーザー名を設定">
@@ -2801,13 +3012,13 @@ body.feedback-drawer-open { overflow:hidden; }
         <section class="composer-panel" id="composerRatingPanel" aria-hidden="true" inert>
           <div class="composer-panel-inner">
             <div class="composer-panel-content">
-              <label class="composer-panel-title" for="rating"><span class="material-symbols-outlined" aria-hidden="true">star</span>唐揚げの評価</label>
-              <select id="rating" class="fw-500" aria-label="唐揚げの星評価">
-                <option value="5">★★★★★　最高！ (5)</option>
-                <option value="4">★★★★☆　おいしい (4)</option>
+              <label class="composer-panel-title" for="rating"><span class="material-symbols-outlined" aria-hidden="true">star</span>体験の評価</label>
+              <select id="rating" class="fw-500" aria-label="体験の星評価">
+                <option value="5">★★★★★　とても面白い！ (5)</option>
+                <option value="4">★★★★☆　面白い (4)</option>
                 <option value="3">★★★☆☆　ふつう (3)</option>
-                <option value="2">★★☆☆☆　もう少し (2)</option>
-                <option value="1">★☆☆☆☆　改善希望 (1)</option>
+                <option value="2">★★☆☆☆　少し難しかった (2)</option>
+                <option value="1">★☆☆☆☆　もっと説明がほしい (1)</option>
               </select>
             </div>
           </div>
@@ -2829,14 +3040,14 @@ body.feedback-drawer-open { overflow:hidden; }
           </div>
         </section>
       </div>
-      <p id="composerStatus" class="composer-status" role="status" aria-live="polite">設定は必要なものだけ開けます。投稿内容はFirebaseに保存されます。</p>
+      <p id="composerStatus" class="composer-status" role="status" aria-live="polite">名前・評価・画像は必要な場合だけ追加できます。投稿内容はFirebaseに保存されます。</p>
     </section>
 
     <!-- Ranking Box -->
     <div class="box">
       <div class="box-header">
         <span class="material-symbols-outlined" style="color:var(--gold);">trophy</span>
-        <span class="fw-800">人気ランキング TOP5</span>
+        <span class="fw-800">注目コメント TOP5</span>
       </div>
       <div id="ranking"></div>
     </div>
@@ -2852,23 +3063,23 @@ body.feedback-drawer-open { overflow:hidden; }
 
   </div>
 
-  <!-- TAB 4: その他情報 (Info) -->
+  <!-- TAB 4: 展示情報・管理 (Info) -->
   <div id="tab-info" class="tab-content">
     
     <!-- Improvement Corner -->
     <div class="box">
       <div class="box-header">
         <span class="material-symbols-outlined">report_problem</span>
-        <span class="fw-800">ダメ出し・改善点コーナー</span>
+        <span class="fw-800">質問・気づき・改善メモ</span>
       </div>
 
-      <p class="feedback-entry-copy">送信された意見は一覧に反映され、管理者はCSVとして保存できます。</p>
+      <p class="feedback-entry-copy">送信された質問や気づきは一覧に反映され、管理者はCSVとして保存できます。</p>
       <input id="badName" placeholder="名前 (任意)" maxlength="40" class="fw-500" aria-label="名前（任意）">
-      <textarea id="badText" placeholder="改善点やご意見を教えてください" maxlength="1500" class="fw-400" aria-label="改善点や意見"></textarea>
+      <textarea id="badText" placeholder="質問・気づき・改善案を教えてください" maxlength="1500" class="fw-400" aria-label="質問・気づき・改善案"></textarea>
       
       <div class="btn-group">
         <button id="badBtn" class="btn-secondary fw-700" type="button">
-          <span class="material-symbols-outlined">campaign</span> ダメ出しを送信
+          <span class="material-symbols-outlined">campaign</span> メモを送信
         </button>
       </div>
       <p id="feedbackStatus" class="feedback-status" role="status" aria-live="polite"></p>
@@ -2899,13 +3110,13 @@ body.feedback-drawer-open { overflow:hidden; }
             <span class="material-symbols-outlined">celebration</span> 花火演出
           </button>
           <button id="godBtn" class="btn-secondary fw-700">
-            <span class="material-symbols-outlined">workspace_premium</span> 神レビュー演出
+            <span class="material-symbols-outlined">workspace_premium</span> 注目メモ演出
           </button>
           <button id="staffBtn" class="btn-secondary fw-700" type="button">
-            <span class="material-symbols-outlined">record_voice_over</span> 店員アナウンス送信
+            <span class="material-symbols-outlined">record_voice_over</span> 展示アナウンス送信
           </button>
           <button id="exportFeedbackCsvBtn" class="btn-secondary fw-700" type="button">
-            <span class="material-symbols-outlined">download</span> 改善点をCSVに書き出す
+            <span class="material-symbols-outlined">download</span> 改善メモをCSVに書き出す
           </button>
         </div>
       </div>
@@ -2915,16 +3126,16 @@ body.feedback-drawer-open { overflow:hidden; }
 
 </div>
 
-<!-- 改善点・ダメ出しのスライドインパネル -->
+<!-- 質問・改善メモのスライドインパネル -->
 <div id="feedbackDrawerBackdrop" class="feedback-drawer-backdrop" hidden></div>
 <aside id="feedbackDrawer" class="feedback-drawer" role="dialog" aria-modal="true" aria-labelledby="feedbackDrawerTitle" aria-hidden="true" tabindex="-1">
   <div class="feedback-drawer-head">
     <div>
-      <p class="feedback-drawer-kicker">FEEDBACK / IMPROVEMENT</p>
-      <h2 id="feedbackDrawerTitle">ダメ出しを見てみる</h2>
-      <p class="feedback-drawer-subtitle">届いた声を、次の一個に活かす。</p>
+      <p class="feedback-drawer-kicker">QUESTIONS / IDEAS / IMPROVEMENT</p>
+      <h2 id="feedbackDrawerTitle">みんなの発見メモ</h2>
+      <p class="feedback-drawer-subtitle">届いた声を、次の展示づくりに活かす。</p>
     </div>
-    <button id="closeFeedbackDrawerBtn" class="feedback-drawer-close" type="button" aria-label="改善点パネルを閉じる">
+    <button id="closeFeedbackDrawerBtn" class="feedback-drawer-close" type="button" aria-label="メモパネルを閉じる">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
   </div>
@@ -2947,8 +3158,8 @@ body.feedback-drawer-open { overflow:hidden; }
     <span class="nav-label">ホーム</span>
   </button>
   <button class="nav-item" data-tab="tab-passion" type="button">
-    <span class="nav-icon"><span class="material-symbols-outlined" aria-hidden="true">local_fire_department</span></span>
-    <span class="nav-label">情熱</span>
+    <span class="nav-icon"><span class="material-symbols-outlined" aria-hidden="true">precision_manufacturing</span></span>
+    <span class="nav-label">機構を知る</span>
   </button>
   <button class="nav-item" data-tab="tab-comments" type="button">
     <span class="nav-icon"><span class="material-symbols-outlined" aria-hidden="true">forum</span></span>
@@ -2967,7 +3178,7 @@ body.feedback-drawer-open { overflow:hidden; }
 <script src="firebase-config.js"></script>
 <script>
 /* =========================================================
-   KARAAGE STAND — FIREBASE SHARED DATA
+   MECHANISM LAB — FIREBASE SHARED DATA
    Configure firebase-config.js before publishing.
    ========================================================= */
 (() => {
@@ -3278,7 +3489,7 @@ body.feedback-drawer-open { overflow:hidden; }
     passionHero.setAttribute("aria-pressed", String(lit));
     haptic(lit ? [18, 22, 12] : [10]);
     passionSparkBurst(passionHero);
-    showPassionToast(lit ? "揚げたてモード、点火！" : "熱気をチャージ中…");
+    showPassionToast(lit ? "機構観察モード、起動！" : "動きのしくみを観察中…");
   }
   passionHero.addEventListener("click", event => {
     if (!event.target.closest("button, a")) triggerPassionHero();
@@ -3299,10 +3510,10 @@ body.feedback-drawer-open { overflow:hidden; }
         const number = step.dataset.passionStep;
         haptic(number === "03" ? [16, 28, 16] : [12, 18, 10]);
         passionSparkBurst($(".passion-step-media", step) || step);
-        showPassionToast(number === "01" ? "下ごしらえに、ひと手間。" : number === "02" ? "うまさは、待つ。" : "仕上げのザクッ、完成！");
+        showPassionToast(number === "01" ? "回転と停止の切り替わりに注目！" : number === "02" ? "カムの形が動きを生み出す！" : "2本のリンクの揺れを観察！");
       } else {
         haptic([8]);
-        showPassionToast("工程のハイライトを解除しました");
+        showPassionToast("機構のハイライトを解除しました");
       }
     });
     step.addEventListener("keydown", event => {
@@ -3383,7 +3594,7 @@ body.feedback-drawer-open { overflow:hidden; }
   }
   async function saveFeedback(item = null) {
     if (serverMode) {
-      if (!item || !item.id) throw new Error("保存する改善点が指定されていません。");
+      if (!item || !item.id) throw new Error("保存する改善メモが指定されていません。");
       await firestore.collection("feedback").doc(item.id).set(item, { merge: false });
     } else {
       await saveState("feedback", allFeedback);
@@ -3473,7 +3684,7 @@ body.feedback-drawer-open { overflow:hidden; }
     if (!allComments.length) {
       const empty = document.createElement("div");
       empty.className = "comment-empty";
-      empty.textContent = "まだレビューがありません。最初の感想を書いてみてください。";
+      empty.textContent = "まだ投稿がありません。最初の感想や質問を書いてみてください。";
       commentsEl.appendChild(empty);
     }
 
@@ -3643,7 +3854,7 @@ body.feedback-drawer-open { overflow:hidden; }
       top.append(person, likes);
       const text = document.createElement("p");
       text.className = "buzz-review-text";
-      text.textContent = best.text || (best.attachments && best.attachments.length ? "写真・動画付きのレビュー" : "（本文なし）");
+      text.textContent = best.text || (best.attachments && best.attachments.length ? "写真・動画付きの投稿" : "（本文なし）");
       const bottom = document.createElement("div");
       bottom.className = "buzz-review-bottom";
       const date = document.createElement("time");
@@ -3658,12 +3869,12 @@ body.feedback-drawer-open { overflow:hidden; }
     } else {
       const empty = document.createElement("div");
       empty.className = "buzz-empty";
-      empty.textContent = "まだレビューがありません。最初のひとことが、ここに載るかもしれません。";
+      empty.textContent = "まだ投稿がありません。最初の発見メモが、ここに載るかもしれません。";
       buzzEl.appendChild(empty);
       if (buzzSpotlightBtn) {
         buzzSpotlightBtn.disabled = true;
         buzzSpotlightBtn.setAttribute("aria-pressed", "false");
-        buzzSpotlightBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">flare</span>このレビューを照らす';
+        buzzSpotlightBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">flare</span>この投稿に注目する';
       }
       const featureBox = $("#buzzFeatureBox");
       if (featureBox) featureBox.classList.remove("is-spotlit");
@@ -3737,11 +3948,11 @@ body.feedback-drawer-open { overflow:hidden; }
       buzzSpotlightBtn.setAttribute("aria-pressed", String(lit));
       buzzSpotlightBtn.innerHTML = lit
         ? '<span class="material-symbols-outlined" aria-hidden="true">flare</span>ハイライトを解除'
-        : '<span class="material-symbols-outlined" aria-hidden="true">flare</span>このレビューを照らす';
+        : '<span class="material-symbols-outlined" aria-hidden="true">flare</span>この投稿に注目する';
       haptic(lit ? [16, 24, 10] : [8]);
       if (lit) {
         buzzFeatureBox.scrollIntoView({ behavior: prefersReducedMotion.matches ? "auto" : "smooth", block: "center" });
-        popup("注目レビューをハイライト！");
+        popup("注目の発見メモをハイライト！");
       }
     });
   }
@@ -3862,7 +4073,7 @@ body.feedback-drawer-open { overflow:hidden; }
     $("#composerStatus").textContent = "投稿しました。感想をありがとう！";
     await saveComments(comment);
     renderComments();
-    popup("レビューを共有しました");
+    popup("投稿を共有しました");
     haptic([14, 22, 14]);
     $(".comment-composer").classList.add("is-posted");
     window.setTimeout(() => $(".comment-composer").classList.remove("is-posted"), 700);
@@ -3894,20 +4105,20 @@ body.feedback-drawer-open { overflow:hidden; }
   }
   function updateStats() {
     $("#commentCount").textContent = `${allComments.length}件`;
-    $("#sold").textContent = `${sold.toLocaleString("ja-JP")}個`;
+    $("#sold").textContent = `${sold.toLocaleString("ja-JP")}回`;
     $("#line").textContent = `${lineCount.toLocaleString("ja-JP")}人`;
     const status = $("#counterStatus");
     status.classList.add("is-visible");
     status.classList.toggle("is-connected", serverMode);
-    status.textContent = serverMode ? "Firebase共有に接続しています。購入報告はレジの実売上ではありません。" : "Firebase未設定：現在はこの端末内のみで動作しています。公開前に firebase-config.js を設定してください。";
+    status.textContent = serverMode ? "Firebase共有に接続しています。体験報告は公式な参加者数ではありません。" : "Firebase未設定：現在はこの端末内のみで動作しています。公開前に firebase-config.js を設定してください。";
   }
   function updateQueueButtonUI() {
     const queueButton = $("#queueBtn");
     const leaveButton = $("#leaveQueueBtn");
     queueButton.disabled = queueJoined;
     leaveButton.disabled = !queueJoined;
-    $("#queueButtonLabel").textContent = queueJoined ? "列に並んでいます" : "並んでる！";
-    $("#queueButtonHint").textContent = queueJoined ? "列から抜けるときは下のボタン" : "待機人数を +1";
+    $("#queueButtonLabel").textContent = queueJoined ? "体験待ちに参加中" : "体験待ちに参加";
+    $("#queueButtonHint").textContent = queueJoined ? "退出するときは下のボタン" : "待機人数を +1";
   }
   $("#buyBtn").addEventListener("click", async () => {
     try {
@@ -3915,7 +4126,7 @@ body.feedback-drawer-open { overflow:hidden; }
         const ref = firestore.collection("siteState").doc("counters");
         await firestore.runTransaction(async tx => { const snap = await tx.get(ref); const current = snap.exists ? Number(snap.data().sold || 0) : 0; tx.set(ref, { sold: current + 1, updatedAt: Date.now() }, { merge: true }); });
       } else { sold += 1; localStorage.setItem("sold", String(sold)); }
-      updateStats(); haptic([12, 24, 12]); popup("購入報告を記録しました！"); fireworks();
+      updateStats(); haptic([12, 24, 12]); popup("体験報告を記録しました！"); fireworks();
     } catch (error) { console.error(error); popup("記録できませんでした。接続とFirestoreルールを確認してください。"); }
   });
   $("#queueBtn").addEventListener("click", async () => {
@@ -3927,8 +4138,8 @@ body.feedback-drawer-open { overflow:hidden; }
         await queueUserRef().set({ joined: true, updatedAt: now, expiresAt: ownQueueExpiresAt }, { merge: true });
         queueJoined = true;
       } else { queueJoined = true; lineCount += 1; localStorage.setItem("queueJoined", "1"); localStorage.setItem("lineCount", String(lineCount)); }
-      updateQueueButtonUI(); updateStats(); haptic([12, 24, 12]); popup("行列カウントを +1 しました");
-    } catch (error) { console.error(error); popup("行列を更新できませんでした。設定を確認してください。"); }
+      updateQueueButtonUI(); updateStats(); haptic([12, 24, 12]); popup("体験待ちを +1 しました");
+    } catch (error) { console.error(error); popup("体験待ちを更新できませんでした。設定を確認してください。"); }
   });
   $("#leaveQueueBtn").addEventListener("click", async () => {
     if (!queueJoined) return;
@@ -3939,8 +4150,8 @@ body.feedback-drawer-open { overflow:hidden; }
         queueJoined = false;
         ownQueueExpiresAt = 0;
       } else { queueJoined = false; lineCount = Math.max(0, lineCount - 1); localStorage.setItem("queueJoined", "0"); localStorage.setItem("lineCount", String(lineCount)); }
-      updateQueueButtonUI(); updateStats(); haptic([8]); popup("行列カウントを解除しました");
-    } catch (error) { console.error(error); popup("行列を更新できませんでした。設定を確認してください。"); }
+      updateQueueButtonUI(); updateStats(); haptic([8]); popup("体験待ちを解除しました");
+    } catch (error) { console.error(error); popup("体験待ちを更新できませんでした。設定を確認してください。"); }
   });
 
   /* Feedback and slide-in drawer */
@@ -3986,11 +4197,11 @@ body.feedback-drawer-open { overflow:hidden; }
   }
   function refreshFeedbackData() {
     allFeedback.sort((a, b) => (Number(b.time) || 0) - (Number(a.time) || 0));
-    renderFeedbackTarget(badListEl, allFeedback.slice(0, 5), "まだ改善点は届いていません。気づいたことを送ってください。");
-    renderFeedbackTarget(feedbackDrawerList, allFeedback, "まだダメ出し・改善点は届いていません。投稿された意見がここに表示されます。");
+    renderFeedbackTarget(badListEl, allFeedback.slice(0, 5), "まだメモは届いていません。気づいたことを送ってください。");
+    renderFeedbackTarget(feedbackDrawerList, allFeedback, "まだ質問・改善メモは届いていません。投稿された内容がここに表示されます。");
     feedbackCountBadge.textContent = `${allFeedback.length}件`;
     feedbackDrawerCount.textContent = String(allFeedback.length);
-    feedbackDrawerStatus.textContent = serverMode ? "Firebaseで共有されている改善点を表示しています。" : "この端末に保存された改善点を表示しています。";
+    feedbackDrawerStatus.textContent = serverMode ? "Firebaseで共有されている質問・改善メモを表示しています。" : "この端末に保存された質問・改善メモを表示しています。";
   }
   function openFeedbackDrawer() {
     feedbackPreviouslyFocused = document.activeElement;
@@ -4025,13 +4236,13 @@ body.feedback-drawer-open { overflow:hidden; }
     if (!dataReady) { popup("保存領域を準備しています。少し待ってください"); return; }
     const name = maskBadWords($("#badName").value.trim().slice(0, 40)) || "匿名";
     const text = maskBadWords($("#badText").value.trim().slice(0, 1500));
-    if (!text) { $("#feedbackStatus").textContent = "改善点を入力してください。"; return; }
+    if (!text) { $("#feedbackStatus").textContent = "質問・気づき・改善案を入力してください。"; return; }
     const feedbackItem = { id: newId("feedback"), authorUid: firebaseAuth && firebaseAuth.currentUser ? firebaseAuth.currentUser.uid : voterId, name, text, time: Date.now() };
     allFeedback.unshift(feedbackItem);
     await saveFeedback(feedbackItem);
     $("#badText").value = "";
-    $("#feedbackStatus").textContent = "改善点を共有しました。";
-    popup("改善点を保存しました");
+    $("#feedbackStatus").textContent = "メモを共有しました。";
+    popup("メモを保存しました");
   });
 
   function csvCell(value) {
@@ -4055,7 +4266,7 @@ body.feedback-drawer-open { overflow:hidden; }
     const rows = [["id", "name", "text", "created_at"]];
     allFeedback.forEach(item => rows.push([item.id, item.name || "匿名", item.text || "", new Date(Number(item.time) || Date.now()).toISOString()]));
     downloadCsv(`feedback_${new Date().toISOString().slice(0, 10)}.csv`, rows);
-    popup("改善点CSVを書き出しました");
+    popup("メモをCSVに書き出しました");
   });
 
   /* Flow messages and fireworks */
@@ -4091,14 +4302,14 @@ body.feedback-drawer-open { overflow:hidden; }
     }
   }
   $("#fireBtn").addEventListener("click", fireworks);
-  $("#godBtn").addEventListener("click", () => { popup("殿堂入り神レビュー演出"); fireworks(); });
+  $("#godBtn").addEventListener("click", () => { popup("注目の発見メモ演出"); fireworks(); });
   $("#staffBtn").addEventListener("click", () => {
-    const messages = ["揚げたて出来上がりました！", "ただいまアツアツを提供中！", "秘伝ダレ仕込みの自信作！", "行列へのご協力ありがとうございます！"];
-    flowComment("店員", messages[Math.floor(Math.random() * messages.length)]);
+    const messages = ["ゼネバ機構の「止まる瞬間」に注目！", "カムの形で上下運動が生まれます！", "両てこ機構を手で動かしてみよう！", "気づいたことをコメントで教えてください！"];
+    flowComment("展示スタッフ", messages[Math.floor(Math.random() * messages.length)]);
   });
   window.setInterval(() => {
-    const messages = ["揚げたてアツアツ提供中！", "ヤケドにご注意ください！", "文化祭限定の特製唐揚げ！", "コメント募集中です！"];
-    flowComment("店員", messages[Math.floor(Math.random() * messages.length)]);
+    const messages = ["機構の動きをよく観察してみよう！", "模型はゆっくり回してみてください！", "3Dプリンターで作った機構模型です！", "感想や質問をコメントで募集中！"];
+    flowComment("展示スタッフ", messages[Math.floor(Math.random() * messages.length)]);
   }, 20000);
 
   /* Admin uses Firebase Authentication; no hard-coded password. */
@@ -4145,10 +4356,10 @@ body.feedback-drawer-open { overflow:hidden; }
   function updateDeliciousUI() {
     deliciousBtn.classList.toggle("is-voted", deliciousVoted);
     deliciousBtn.setAttribute("aria-pressed", String(deliciousVoted));
-    deliciousLabel.textContent = deliciousVoted ? "おいしいに投票済み！" : "おいしい！";
+    deliciousLabel.textContent = deliciousVoted ? "発見！に投票済み" : "発見！";
     deliciousCountEl.textContent = String(deliciousCount);
-    deliciousScope.textContent = serverMode ? "みんなの投票" : "この端末内の投票";
-    deliciousStatus.textContent = deliciousVoted ? "投票済み · もう一度押すと取り消せます。" : "おいしいと思ったらタップ！";
+    deliciousScope.textContent = serverMode ? "みんなの「発見！」" : "この端末内の投票";
+    deliciousStatus.textContent = deliciousVoted ? "投票済み · もう一度押すと取り消せます。" : "面白い発見があったらタップ！";
   }
   function animateDeliciousButton() {
     deliciousBtn.classList.remove("is-bouncing");
@@ -4196,7 +4407,7 @@ body.feedback-drawer-open { overflow:hidden; }
       }, error => { console.error(error); firebaseStatus("Firestoreの読み込みに失敗しました。Security Rulesとプロジェクト設定を確認してください。"); });
       unsubscribeFeedback = firestore.collection("feedback").orderBy("time", "desc").limit(500).onSnapshot(snapshot => {
         allFeedback = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })); refreshFeedbackData();
-      }, error => { console.error(error); $("#feedbackStatus").textContent = "改善点を読み込めません。Firestoreルールを確認してください。"; });
+      }, error => { console.error(error); $("#feedbackStatus").textContent = "改善メモを読み込めません。Firestoreルールを確認してください。"; });
       unsubscribeCounters = firestore.collection("siteState").doc("counters").onSnapshot(snapshot => {
         if (snapshot.exists) { const data = snapshot.data(); sold = Math.max(0, Number(data.sold || 0)); deliciousCount = Math.max(0, Number(data.deliciousCount || 0)); deliciousVoted = Boolean((data.deliciousVoters || {})[voterId]); updateDeliciousUI(); updateStats(); }
       }, error => console.error("Counter listener failed", error));
@@ -4207,7 +4418,7 @@ body.feedback-drawer-open { overflow:hidden; }
         ownQueueExpiresAt = own ? Number(own.expiresAt) : 0;
         updateQueueButtonUI();
         updateQueueCountFromLease();
-      }, error => { console.error("Queue listener failed", error); firebaseStatus("待機列の共有に失敗しました。Firestoreルールを確認してください。"); });
+      }, error => { console.error("Queue listener failed", error); firebaseStatus("体験待ちの共有に失敗しました。Firestoreルールを確認してください。"); });
       window.setInterval(async () => {
         updateQueueCountFromLease();
         if (!serverMode || !queueJoined || !firebaseAuth || !firebaseAuth.currentUser) return;
@@ -4216,7 +4427,7 @@ body.feedback-drawer-open { overflow:hidden; }
         try {
           await queueUserRef().set({ joined: true, updatedAt: now, expiresAt: ownQueueExpiresAt }, { merge: true });
         } catch (error) {
-          console.warn("待機列の更新に失敗しました。", error);
+          console.warn("体験待ちの更新に失敗しました。", error);
         }
       }, 90 * 1000);
       try {
@@ -4229,7 +4440,7 @@ body.feedback-drawer-open { overflow:hidden; }
         }
         updateQueueButtonUI();
       } catch (_) {}
-      firebaseStatus(firebaseStorage ? "Firebase共有に接続しました。投稿・改善点・カウンターが同期されます。" : "Firestore共有に接続しました。画像・動画の共有にはStorage（Blazeプラン）が別途必要です。", true);
+      firebaseStatus(firebaseStorage ? "Firebase共有に接続しました。投稿・改善メモ・カウンターが同期されます。" : "Firestore共有に接続しました。画像・動画の共有にはStorage（Blazeプラン）が別途必要です。", true);
       dataReady = true; initScrollObserver(); return;
     }
     firebaseStatus("Firebase未設定です。firebase-config.js を設定すると共有機能が有効になります。", false);
